@@ -1,16 +1,12 @@
 package fr.fingarde.mineandglory;
 
+import fr.fingarde.mineandglory.commands.CGive;
 import fr.fingarde.mineandglory.listeners.ForgeListener;
 import fr.fingarde.mineandglory.listeners.PlayerBreakBlockByHandListener;
-import fr.fingarde.mineandglory.objects.Rank;
-import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.recipes.Crafts;
-import fr.fingarde.mineandglory.utils.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class Main extends JavaPlugin {
     private static Main plugin;
@@ -18,6 +14,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        super.onEnable();
         plugin = this;
         console = Bukkit.getConsoleSender();
 
@@ -52,6 +49,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        super.onDisable();
        // Database.getSource().close();
     }
 

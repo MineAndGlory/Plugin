@@ -148,7 +148,7 @@ public enum CustomItems {
     TARTARITE, /give @p minecraft:leather_chestplate{display:{Name:'{"text":"Tartarite Chestplate"}',color:862}} 1
 
 */
-    STACK(null, 0, null, 64, null);
+    NULL(null, 0, null, 64, null);
 
     private Material material;
     private int customModelData;

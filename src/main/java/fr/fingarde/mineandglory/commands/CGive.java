@@ -1,4 +1,4 @@
-package fr.fingarde.mineandglory;
+package fr.fingarde.mineandglory.commands;
 
 import fr.fingarde.mineandglory.items.CustomItems;
 import org.bukkit.Bukkit;
