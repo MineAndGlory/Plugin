@@ -1,0 +1,9 @@
+main: fr.fingarde.mineandglory.Main
+name: MineAndGlory
+version: 1.0
+description: Plugin for MineAndGlory
+author: Fingarde
+api-version: 1.13
+commands:
+  cgive:
+    description: Give
