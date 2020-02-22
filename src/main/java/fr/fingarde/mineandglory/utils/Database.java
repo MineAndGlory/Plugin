@@ -42,38 +42,91 @@ public class Database {
             Statement statement = connection.createStatement();
 
             statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS tb_player(" +
-                            "uuid VARCHAR(36) NOT NULL PRIMARY KEY," +
-                            "player_rank VARCHAR(36)," +
-                            "money NUMERIC(15,2)," +
-                            "glory NUMERIC(10)," +
-                            "xp NUMERIC(10)," +
-                            "nick VARCHAR(64)," +
-                            "prefix VARCHAR(64)," +
-                            "suffix VARCHAR(64)," +
-                            "first_join NUMERIC(16)" +
-                            ");");
+            "CREATE TABLE IF NOT EXISTS tb_player(" +
+                    "pl_uuid VARCHAR(36) PRIMARY KEY," +
+                    "pl_rank VARCHAR(36)," +
+                    "pl_prefix VARCHAR(64)," +
+                    "pl_suffix VARCHAR(64)," +
+                    "pl_first_join DATE" +
+                ");" +
 
-            statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS tb_ender_chest(" +
-                            "player VARCHAR(36) NOT NULL PRIMARY KEY," +
-                            "size NUMERIC(2)," +
-                            "item TEXT" +
-                            ");");
+                "CREATE TABLE IF NOT EXISTS tb_bank(" +
+                    "bk_player VARCHAR(36) PRIMARY KEY," +
+                    "bk_money NUMERIC(15,2) DEFAULT 0," +
+                    "bk_glory NUMERIC(10) DEFAULT 0," +
+                    "bk_xp NUMERIC(10) DEFAULT 0," +
+                    "CONSTRAINT fk_tb_bank FOREIGN KEY(bk_player) REFERENCES tb_player(pl_uuid)" +
+                ");" +
 
-            statement.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS death(" +
-                            "id INT NOT NULL PRIMARY KEY AUTO_INCREMENT," +
-                            "player VARCHAR(36)," +
-                            "location VARCHAR(64)," +
-                            "gravestone_location VARCHAR(64)," +
-                            "reason VARCHAR(64)," +
-                            "date  NUMERIC(16)," +
-                            "collected BOOL," +
-                            "money  NUMERIC(15,2)," +
-                            "xp  NUMERIC(10)," +
-                            "item TEXT" +
-                            ");");
+                "CREATE TABLE IF NOT EXISTS tb_enderchest(" +
+                    "ec_player VARCHAR(36) PRIMARY KEY," +
+                    "ec_size NUMERIC(2) DEFAULT 0," +
+                    "ec_items TEXT," +
+                    "CONSTRAINT fk_tb_enderchest FOREIGN KEY(ec_player) REFERENCES tb_player(pl_uuid)" +
+                ");" +
+
+                "CREATE TABLE IF NOT EXISTS tb_death(" +
+                    "dh_uuid VARCHAR(36) PRIMARY KEY," +
+                    "dh_player VARCHAR(36)," +
+                    "dh_location VARCHAR(64)," +
+                    "dh_reason VARCHAR(64)," +
+                    "dh_date DATE" +
+                ");" +
+
+                "CREATE TABLE IF NOT EXISTS tb_death(" +
+                    "gs_death VARCHAR(36) PRIMARY KEY," +
+                    "gs_location VARCHAR(64)," +
+                    "gs_collected BOOL DEFAULT FALSE," +
+                    "gs_money NUMERIC(15,2) DEFAULT 0," +
+                    "gs_xp NUMERIC(10) DEFAULT 0," +
+                    "gs_items TEXT" +
+                    "CONSTRAINT fk_tb_death FOREIGN KEY(gs_death) REFERENCES tb_death(dh_uuid)" +
+                ");" +
+
+                "CREATE TABLE IF NOT EXISTS job(" +
+                    "jb_player VARCHAR(36) PRIMARY KEY," +
+
+                    "jb_farmer_lvl NUMERIC(3)," +
+                    "jb_farmer_exp NUMERIC(7)," +
+
+                    "animal_breeder_lvl NUMERIC(3)," +
+                    "animal_breeder_exp NUMERIC(7)," +
+
+                    "miner_lvl NUMERIC(3)," +
+                    "miner_exp NUMERIC(7)," +
+
+                    "woodcutter_lvl NUMERIC(3)," +
+                    "woodcutter_exp NUMERIC(7)," +
+
+                    "armorer_lvl NUMERIC(3)," +
+                    "armorer_exp NUMERIC(7)," +
+
+                    "fisher_lvl NUMERIC(3)," +
+                    "fisher_exp NUMERIC(7)," +
+
+                    "hunter_lvl NUMERIC(3)," +
+                    "hunter_exp NUMERIC(7)," +
+
+                    "cooker_lvl NUMERIC(3)," +
+                    "cooker_exp NUMERIC(7)," +
+
+                    "builder_lvl NUMERIC(3)," +
+                    "builder_exp NUMERIC(7)," +
+
+                    "terraformer_lvl NUMERIC(3)," +
+                    "terraformer_exp NUMERIC(7)," +
+
+                    "blacksmith_lvl NUMERIC(3)," +
+                    "blacksmith_exp NUMERIC(7)," +
+
+                    "enchanter_lvl NUMERIC(3)," +
+                    "enchanter_exp NUMERIC(7)," +
+
+                    "alchemist_lvl NUMERIC(3)," +
+                    "alchemist_exp NUMERIC(7)," +
+                    "CONSTRAINT fk_tb_job FOREIGN KEY(jb_player) REFERENCES tb_player(pl_uuid)" +
+                ");"
+            );
 
 
 
