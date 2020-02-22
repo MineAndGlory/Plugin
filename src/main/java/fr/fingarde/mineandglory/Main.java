@@ -40,7 +40,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         super.onDisable();
-       // Database.getSource().close();
+        Database.getSource().close();
     }
 
     public void registerEvents() {
