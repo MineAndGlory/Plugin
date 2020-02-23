@@ -31,7 +31,7 @@ public class User {
     private String prefix;
     private String suffix;
 
-    private Player player;
+    private OfflinePlayer player;
 
     public User(UUID uuid) {
         this.uuid = uuid;
@@ -57,7 +57,8 @@ public class User {
             money = result.getFloat("pl_money");
             glory = result.getInt("pl_glory");
 
-            player = Bukkit.getPlayer(uuid);
+            player = Bukkit.getOfflinePlayer(uuid);
+            Bukkit.broadcastMessage(player.getName());
 
             result.close();
             statement.close();
