@@ -50,7 +50,7 @@ public class Database {
                     "pl_first_join DATE" +
                 ");");
 
-            statement.executeUpdate(
+            /*statement.executeUpdate(
             "CREATE TABLE IF NOT EXISTS tb_enderchest(" +
                     "ec_player VARCHAR(36) PRIMARY KEY," +
                     "ec_size NUMERIC(2) DEFAULT 0," +
