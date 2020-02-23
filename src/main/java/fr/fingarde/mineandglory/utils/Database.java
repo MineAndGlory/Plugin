@@ -50,7 +50,16 @@ public class Database {
                     "pl_first_join DATE" +
                 ");");
 
-            /*statement.executeUpdate(
+            statement.executeUpdate(
+            "CREATE TABLE IF NOT EXISTS tb_bank(" +
+                    "bk_player VARCHAR(36) PRIMARY KEY," +
+                    "bk_money NUMERIC(15,2)," +
+                    "bk_glory NUMERIC(10)," +
+                    "bk_xp NUMERIC(10)," +
+                    "CONSTRAINT fk_tb_bank FOREIGN KEY(bk_player) REFERENCES tb_player(pl_uuid)" +
+                ");");
+
+            statement.executeUpdate(
             "CREATE TABLE IF NOT EXISTS tb_enderchest(" +
                     "ec_player VARCHAR(36) PRIMARY KEY," +
                     "ec_size NUMERIC(2) DEFAULT 0," +
@@ -74,12 +83,12 @@ public class Database {
                     "gs_collected BOOL DEFAULT FALSE," +
                     "gs_money NUMERIC(15,2) DEFAULT 0," +
                     "gs_xp NUMERIC(10) DEFAULT 0," +
-                    "gs_items TEXT" +
+                    "gs_items TEXT," +
                     "CONSTRAINT fk_tb_gravestone FOREIGN KEY(gs_death) REFERENCES tb_death(dh_uuid)" +
                 ");");
 
             statement.executeUpdate(
-            "CREATE TABLE IF NOT EXISTS job(" +
+            "CREATE TABLE IF NOT EXISTS tb_job(" +
                     "jb_player VARCHAR(36) PRIMARY KEY," +
 
                     "jb_farmer_lvl NUMERIC(3)," +
