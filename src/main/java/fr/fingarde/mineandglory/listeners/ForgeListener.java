@@ -209,7 +209,7 @@ public class ForgeListener implements Listener {
         }
 
         Location armorStandLoc = loc.clone();
-        armorStandLoc.setY(armorStandLoc.getY() + 1);
+        
 
         ArmorStand armorStand = (ArmorStand) loc.getWorld().spawnEntity(armorStandLoc, EntityType.ARMOR_STAND);
         armorStand.addScoreboardTag("mineandglory_anvil");
