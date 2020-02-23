@@ -58,7 +58,9 @@ public class User {
             glory = result.getInt("pl_glory");
 
             player = Bukkit.getPlayer(uuid);
-            Bukkit.broadcastMessage(player + "");
+            for(Player encule : Bukkit.getOnlinePlayers()) {
+                Bukkit.broadcastMessage(encule.getName());
+            }
 
             result.close();
             statement.close();
