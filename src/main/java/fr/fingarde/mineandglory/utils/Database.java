@@ -48,7 +48,7 @@ public class Database {
                     "pl_prefix VARCHAR(64)," +
                     "pl_suffix VARCHAR(64)," +
                     "pl_nick VARCHAR(64)," +
-                    "pl_first_join DATE," +
+                    "pl_first_join NUMERIC(16)," +
                     "pl_money NUMERIC(15,2) DEFAULT 0," +
                     "pl_glory NUMERIC(10) DEFAULT 0" +
                 ");");

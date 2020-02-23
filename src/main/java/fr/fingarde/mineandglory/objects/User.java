@@ -57,7 +57,7 @@ public class User {
             money = result.getFloat("pl_money");
             glory = result.getInt("pl_glory");
 
-            player = Bukkit.getOfflinePlayer(uuid);
+            player = Bukkit.getPlayer(uuid);
 
             result.close();
             statement.close();

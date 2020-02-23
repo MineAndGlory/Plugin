@@ -12,7 +12,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
 public class ConnectionListener implements Listener {
     @EventHandler
@@ -37,7 +41,7 @@ public class ConnectionListener implements Listener {
                     }
 
                     if (!result.next()) {
-                        statement.executeUpdate("INSERT INTO tb_player (pl_uuid, pl_rank, pl_first_join) VALUES ('" + player.getUniqueId().toString() + "', '" + defaultRank.getName() + "', '" + new Date(new java.util.Date().getTime()) + "')");
+                        statement.executeUpdate("INSERT INTO tb_player (pl_uuid, pl_rank, pl_first_join) VALUES ('" + player.getUniqueId().toString() + "', '" + defaultRank.getName() + "', '" + new Date().getTime() + "')");
                         statement.executeUpdate("INSERT INTO tb_enderchest (ec_player, ec_size) VALUES ('" + player.getUniqueId().toString() + "', '5')");
 
                         Bukkit.broadcastMessage(player.getDisplayName() + " §evient de rejoindre le serveur pour la première fois!");
@@ -45,7 +49,7 @@ public class ConnectionListener implements Listener {
                         connection.close();
                     }
 
-                    User user = new User(player.getUniqueId());
+                    User user = new User(event.getPlayer().getUniqueId());
                     User.users.add(user);
 
                     user.loadName();
