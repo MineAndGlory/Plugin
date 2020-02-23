@@ -43,6 +43,7 @@ public class ConnectionListener implements Listener {
                     if (!result.next()) {
                         statement.executeUpdate("INSERT INTO tb_player (pl_uuid, pl_rank, pl_first_join) VALUES ('" + player.getUniqueId().toString() + "', '" + defaultRank.getName() + "', '" + new Date().getTime() + "')");
                         statement.executeUpdate("INSERT INTO tb_enderchest (ec_player, ec_size) VALUES ('" + player.getUniqueId().toString() + "', '5')");
+                        statement.executeUpdate("INSERT INTO tb_job (jb_player) VALUES ('" + player.getUniqueId().toString() + "')");
 
                         Bukkit.broadcastMessage(player.getDisplayName() + " §evient de rejoindre le serveur pour la première fois!");
                         statement.close();

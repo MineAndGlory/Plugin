@@ -36,19 +36,15 @@ public class User {
     public User(UUID uuid) {
         this.uuid = uuid;
 
-        Bukkit.broadcastMessage(Bukkit.getOnlinePlayers().size() + "!");
         try {
             Connection connection = Database.getSource().getConnection();
             Statement statement = connection.createStatement();
 
-            Bukkit.broadcastMessage("1");
             ResultSet result = statement.executeQuery("SELECT pl_uuid, pl_rank, pl_prefix, pl_suffix, pl_nick, pl_money, pl_glory, tb_job.* " +
                     "FROM tb_player, tb_job " +
                     "WHERE jb_player = pl_uuid " +
                     "AND pl_uuid = '" + uuid.toString() + "'");
-            Bukkit.broadcastMessage("2");
             if(!result.next()) return;
-            Bukkit.broadcastMessage("3");
             rank = new Rank(result.getString("pl_rank"));
 
             Bukkit.broadcastMessage("4");
@@ -60,11 +56,7 @@ public class User {
             money = result.getFloat("pl_money");
             glory = result.getInt("pl_glory");
 
-            player = Bukkit.getPlayer(uuid);
-            Bukkit.broadcastMessage(Bukkit.getOnlinePlayers().size() + "!");
-            for(Player encule : Bukkit.getOnlinePlayers()) {
-                Bukkit.broadcastMessage(encule.getName() + " .");
-            }
+            player = Bukkit.getOfflinePlayer(uuid);
 
             result.close();
             statement.close();
