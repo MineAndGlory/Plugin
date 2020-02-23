@@ -31,7 +31,7 @@ public class User {
     private String prefix;
     private String suffix;
 
-    private OfflinePlayer player;
+    private Player player;
 
     public User(UUID uuid) {
         this.uuid = uuid;
@@ -98,6 +98,7 @@ public class User {
     // Functions
 
     public void loadName() {
+        Bukkit.broadcastMessage(player + "");
         String nameNickname = player.getName();
         String namePrefix = "", nameSuffix = "";
 
