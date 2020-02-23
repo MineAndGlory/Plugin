@@ -50,7 +50,7 @@ public class Database {
                     "pl_first_join DATE" +
                 ");");
 
-            statement.executeUpdate(
+            /*statement.executeUpdate(
             "CREATE TABLE IF NOT EXISTS tb_bank(" +
                     "bk_player VARCHAR(36)," +
                     "bk_money NUMERIC(15,2)," +
@@ -58,7 +58,7 @@ public class Database {
                     "bk_xp NUMERIC(10)," +
                     "CONSTRAINT fk_tb_bank FOREIGN KEY(bk_player) REFERENCES tb_player(pl_uuid)" +
                 ");");
-
+*/
             statement.executeUpdate(
             "CREATE TABLE IF NOT EXISTS tb_enderchest(" +
                     "ec_player VARCHAR(36) PRIMARY KEY," +
