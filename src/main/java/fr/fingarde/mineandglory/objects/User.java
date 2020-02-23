@@ -47,12 +47,10 @@ public class User {
             if(!result.next()) return;
             rank = new Rank(result.getString("pl_rank"));
 
-            Bukkit.broadcastMessage("4");
             prefix = result.getString("pl_prefix");
             suffix = result.getString("pl_suffix");
             nickname = result.getString("pl_nick");
 
-            Bukkit.broadcastMessage("5");
             money = result.getFloat("pl_money");
             glory = result.getInt("pl_glory");
 
@@ -97,7 +95,6 @@ public class User {
     // Functions
 
     public void loadName() {
-        Bukkit.broadcastMessage(player + "");
         String nameNickname = player.getName();
         String namePrefix = "", nameSuffix = "";
 
