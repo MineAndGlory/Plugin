@@ -51,8 +51,8 @@ public class Database {
                 ");");
 
             statement.executeUpdate(
-                "CREATE TABLE IF NOT EXISTS tb_bank(" +
-                    "bk_player VARCHAR(36) PRIMARY KEY," +
+            "CREATE TABLE IF NOT EXISTS tb_bank(" +
+                    "bk_player VARCHAR(36)," +
                     "bk_money NUMERIC(15,2) DEFAULT 0," +
                     "bk_glory NUMERIC(10) DEFAULT 0," +
                     "bk_xp NUMERIC(10) DEFAULT 0," +
@@ -60,7 +60,7 @@ public class Database {
                 ");");
 
             statement.executeUpdate(
-                "CREATE TABLE IF NOT EXISTS tb_enderchest(" +
+            "CREATE TABLE IF NOT EXISTS tb_enderchest(" +
                     "ec_player VARCHAR(36) PRIMARY KEY," +
                     "ec_size NUMERIC(2) DEFAULT 0," +
                     "ec_items TEXT," +
@@ -68,7 +68,7 @@ public class Database {
                 ");");
 
             statement.executeUpdate(
-                "CREATE TABLE IF NOT EXISTS tb_death(" +
+            "CREATE TABLE IF NOT EXISTS tb_death(" +
                     "dh_uuid VARCHAR(36) PRIMARY KEY," +
                     "dh_player VARCHAR(36)," +
                     "dh_location VARCHAR(64)," +
@@ -77,7 +77,7 @@ public class Database {
                 ");");
 
             statement.executeUpdate(
-                "CREATE TABLE IF NOT EXISTS tb_death(" +
+            "CREATE TABLE IF NOT EXISTS tb_death(" +
                     "gs_death VARCHAR(36) PRIMARY KEY," +
                     "gs_location VARCHAR(64)," +
                     "gs_collected BOOL DEFAULT FALSE," +
@@ -88,7 +88,7 @@ public class Database {
                 ");");
 
             statement.executeUpdate(
-                "CREATE TABLE IF NOT EXISTS job(" +
+            "CREATE TABLE IF NOT EXISTS job(" +
                     "jb_player VARCHAR(36) PRIMARY KEY," +
 
                     "jb_farmer_lvl NUMERIC(3)," +
