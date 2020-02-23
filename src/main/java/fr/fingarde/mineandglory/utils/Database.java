@@ -37,7 +37,7 @@ public class Database {
     }
 
     public static void createTables() {
-        try {
+        trfgzesrerfbhnrytg" rzhy {
             Connection connection = source.getConnection();
             Statement statement = connection.createStatement();
 
@@ -77,14 +77,14 @@ public class Database {
                 ");");
 
             statement.executeUpdate(
-            "CREATE TABLE IF NOT EXISTS tb_death(" +
+            "CREATE TABLE IF NOT EXISTS tb_gravestone(" +
                     "gs_death VARCHAR(36) PRIMARY KEY," +
                     "gs_location VARCHAR(64)," +
                     "gs_collected BOOL DEFAULT FALSE," +
                     "gs_money NUMERIC(15,2) DEFAULT 0," +
                     "gs_xp NUMERIC(10) DEFAULT 0," +
                     "gs_items TEXT" +
-                    "CONSTRAINT fk_tb_death FOREIGN KEY(gs_death) REFERENCES tb_death(dh_uuid)" +
+                    "CONSTRAINT fk_tb_gravestone FOREIGN KEY(gs_death) REFERENCES tb_death(dh_uuid)" +
                 ");");
 
             statement.executeUpdate(
