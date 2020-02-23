@@ -47,16 +47,10 @@ public class Database {
                     "pl_rank VARCHAR(36)," +
                     "pl_prefix VARCHAR(64)," +
                     "pl_suffix VARCHAR(64)," +
-                    "pl_first_join DATE" +
-                ");");
-
-            statement.executeUpdate(
-            "CREATE TABLE IF NOT EXISTS tb_bank(" +
-                    "bk_player VARCHAR(36) PRIMARY KEY," +
-                    "bk_money NUMERIC(15,2)," +
-                    "bk_glory NUMERIC(10)," +
-                    "bk_xp NUMERIC(10)," +
-                    "CONSTRAINT fk_tb_bank FOREIGN KEY(bk_player) REFERENCES tb_player(pl_uuid)" +
+                    "pl_nick VARCHAR(64)," +
+                    "pl_first_join DATE," +
+                    "pl_money NUMERIC(15,2) DEFAULT 0," +
+                    "pl_glory NUMERIC(10) DEFAULT 0" +
                 ");");
 
             statement.executeUpdate(
@@ -91,44 +85,44 @@ public class Database {
             "CREATE TABLE IF NOT EXISTS tb_job(" +
                     "jb_player VARCHAR(36) PRIMARY KEY," +
 
-                    "jb_farmer_lvl NUMERIC(3)," +
-                    "jb_farmer_exp NUMERIC(7)," +
+                    "jb_farmer_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_farmer_exp NUMERIC(7) DEFAULT 0," +
 
-                    "animal_breeder_lvl NUMERIC(3)," +
-                    "animal_breeder_exp NUMERIC(7)," +
+                    "jb_animal_breeder_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_animal_breeder_exp NUMERIC(7) DEFAULT 0," +
 
-                    "miner_lvl NUMERIC(3)," +
-                    "miner_exp NUMERIC(7)," +
+                    "jb_miner_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_miner_exp NUMERIC(7) DEFAULT 0," +
 
-                    "woodcutter_lvl NUMERIC(3)," +
-                    "woodcutter_exp NUMERIC(7)," +
+                    "jb_woodcutter_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_woodcutter_exp NUMERIC(7) DEFAULT 0," +
 
-                    "armorer_lvl NUMERIC(3)," +
-                    "armorer_exp NUMERIC(7)," +
+                    "jb_armorer_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_armorer_exp NUMERIC(7) DEFAULT 0," +
 
-                    "fisher_lvl NUMERIC(3)," +
-                    "fisher_exp NUMERIC(7)," +
+                    "jb_fisher_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_fisher_exp NUMERIC(7) DEFAULT 0," +
 
-                    "hunter_lvl NUMERIC(3)," +
-                    "hunter_exp NUMERIC(7)," +
+                    "jb_hunter_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_hunter_exp NUMERIC(7) DEFAULT 0," +
 
-                    "cooker_lvl NUMERIC(3)," +
-                    "cooker_exp NUMERIC(7)," +
+                    "jb_cooker_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_cooker_exp NUMERIC(7) DEFAULT 0," +
 
-                    "builder_lvl NUMERIC(3)," +
-                    "builder_exp NUMERIC(7)," +
+                    "jb_builder_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_builder_exp NUMERIC(7) DEFAULT 0," +
 
-                    "terraformer_lvl NUMERIC(3)," +
-                    "terraformer_exp NUMERIC(7)," +
+                    "jb_terraformer_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_terraformer_exp NUMERIC(7) DEFAULT 0," +
 
-                    "blacksmith_lvl NUMERIC(3)," +
-                    "blacksmith_exp NUMERIC(7)," +
+                    "jb_blacksmith_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_blacksmith_exp NUMERIC(7) DEFAULT 0," +
 
-                    "enchanter_lvl NUMERIC(3)," +
-                    "enchanter_exp NUMERIC(7)," +
+                    "jb_enchanter_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_enchanter_exp NUMERIC(7) DEFAULT 0," +
 
-                    "alchemist_lvl NUMERIC(3)," +
-                    "alchemist_exp NUMERIC(7)," +
+                    "jb_alchemist_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_alchemist_exp NUMERIC(7) DEFAULT 0," +
                     "CONSTRAINT fk_tb_job FOREIGN KEY(jb_player) REFERENCES tb_player(pl_uuid)" +
                 ");");
 

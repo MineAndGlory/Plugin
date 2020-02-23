@@ -31,8 +31,6 @@ public class User {
     private String prefix;
     private String suffix;
 
-    private long firstJoin;
-
     private OfflinePlayer player;
 
     public User(UUID uuid) {
@@ -42,17 +40,22 @@ public class User {
             Connection connection = Database.getSource().getConnection();
             Statement statement = connection.createStatement();
 
-            ResultSet result = statement.executeQuery("SELECT * FROM player WHERE uuid = '" + uuid.toString() + "'");
+            ResultSet result = statement.executeQuery("SELECT pl_uuid, pl_rank, pl_prefix, pl_suffix, pl_nick, pl_money, pl_glory, tb_job.* " +
+                    "FROM tb_player, tb_job " +
+                    "WHERE jb_player = pl_uuid " +
+                    "AND pl_uuid = '" + uuid.toString() + "'");
 
             if(!result.next()) return;
 
-            rank = new Rank(result.getString("player_rank"));
+            rank = new Rank(result.getString("pl_rank"));
 
-            money = result.getFloat("money");
-            glory = result.getInt("glory");
-            xp = result.getInt("xp");
 
-            firstJoin = result.getLong("first_join");
+            prefix = result.getString("pl_prefix");
+            suffix = result.getString("pl_suffix");
+            nickname = result.getString("pl_nick");
+
+            money = result.getFloat("pl_money");
+            glory = result.getInt("pl_glory");
 
             player = Bukkit.getOfflinePlayer(uuid);
 
