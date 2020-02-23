@@ -48,31 +48,35 @@ public class Database {
                     "pl_prefix VARCHAR(64)," +
                     "pl_suffix VARCHAR(64)," +
                     "pl_first_join DATE" +
-                ");" +
+                ");");
 
+            statement.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS tb_bank(" +
                     "bk_player VARCHAR(36) PRIMARY KEY," +
                     "bk_money NUMERIC(15,2) DEFAULT 0," +
                     "bk_glory NUMERIC(10) DEFAULT 0," +
                     "bk_xp NUMERIC(10) DEFAULT 0," +
                     "CONSTRAINT fk_tb_bank FOREIGN KEY(bk_player) REFERENCES tb_player(pl_uuid)" +
-                ");" +
+                ");");
 
+            statement.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS tb_enderchest(" +
                     "ec_player VARCHAR(36) PRIMARY KEY," +
                     "ec_size NUMERIC(2) DEFAULT 0," +
                     "ec_items TEXT," +
                     "CONSTRAINT fk_tb_enderchest FOREIGN KEY(ec_player) REFERENCES tb_player(pl_uuid)" +
-                ");" +
+                ");");
 
+            statement.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS tb_death(" +
                     "dh_uuid VARCHAR(36) PRIMARY KEY," +
                     "dh_player VARCHAR(36)," +
                     "dh_location VARCHAR(64)," +
                     "dh_reason VARCHAR(64)," +
                     "dh_date DATE" +
-                ");" +
+                ");");
 
+            statement.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS tb_death(" +
                     "gs_death VARCHAR(36) PRIMARY KEY," +
                     "gs_location VARCHAR(64)," +
@@ -81,8 +85,9 @@ public class Database {
                     "gs_xp NUMERIC(10) DEFAULT 0," +
                     "gs_items TEXT" +
                     "CONSTRAINT fk_tb_death FOREIGN KEY(gs_death) REFERENCES tb_death(dh_uuid)" +
-                ");" +
+                ");");
 
+            statement.executeUpdate(
                 "CREATE TABLE IF NOT EXISTS job(" +
                     "jb_player VARCHAR(36) PRIMARY KEY," +
 
@@ -125,8 +130,7 @@ public class Database {
                     "alchemist_lvl NUMERIC(3)," +
                     "alchemist_exp NUMERIC(7)," +
                     "CONSTRAINT fk_tb_job FOREIGN KEY(jb_player) REFERENCES tb_player(pl_uuid)" +
-                ");"
-            );
+                ");");
 
 
 

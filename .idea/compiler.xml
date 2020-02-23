@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MineAndGlory-Propre" />
-        <module name="Plugin" />
-        <module name="MineAndGlory" />
         <module name="Mineandglory" />
+        <module name="MineAndGlory" />
+        <module name="Plugin" />
       </profile>
     </annotationProcessing>
   </component>
