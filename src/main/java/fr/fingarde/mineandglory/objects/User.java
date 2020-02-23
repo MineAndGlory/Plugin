@@ -59,7 +59,7 @@ public class User {
 
             player = Bukkit.getPlayer(uuid);
             for(Player encule : Bukkit.getOnlinePlayers()) {
-                Bukkit.broadcastMessage(encule.getName());
+                Bukkit.broadcastMessage(encule.getName() + " .");
             }
 
             result.close();
