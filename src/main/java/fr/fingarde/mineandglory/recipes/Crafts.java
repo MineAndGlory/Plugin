@@ -18,10 +18,9 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
+import static org.bukkit.Bukkit.getServer;
 
 public class Crafts implements Listener {
     public static List<ShapelessCraft> shapelessCrafts = new LinkedList<>();
@@ -82,7 +81,20 @@ public class Crafts implements Listener {
         stoneShieldPlate.addIngredient(new ItemStack(Material.STICK));
         shapelessCrafts.add(stoneShieldPlate);
 
-        Main.getPlugin().getServer().removeRecipe(NamespacedKey.minecraft("stone_pickaxe"));
+       remove(Material.STONE_PICKAXE);
+    }
+
+    public static void remove(Material m) {
+        Iterator<Recipe> it = getServer().recipeIterator();
+        Recipe recipe;
+        while(it.hasNext())
+        {
+            recipe = it.next();
+            if (recipe != null && recipe.getResult().getType() == m)
+            {
+                it.remove();
+            }
+        }
     }
 
     @EventHandler
