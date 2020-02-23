@@ -53,9 +53,9 @@ public class Database {
             statement.executeUpdate(
             "CREATE TABLE IF NOT EXISTS tb_bank(" +
                     "bk_player VARCHAR(36)," +
-                    "bk_money NUMERIC(15,2) DEFAULT 0," +
-                    "bk_glory NUMERIC(10) DEFAULT 0," +
-                    "bk_xp NUMERIC(10) DEFAULT 0," +
+                    "bk_money NUMERIC(15,2)," +
+                    "bk_glory NUMERIC(10)," +
+                    "bk_xp NUMERIC(10)," +
                     "CONSTRAINT fk_tb_bank FOREIGN KEY(bk_player) REFERENCES tb_player(pl_uuid)" +
                 ");");
 
