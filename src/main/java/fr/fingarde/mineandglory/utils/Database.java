@@ -37,7 +37,7 @@ public class Database {
     }
 
     public static void createTables() {
-        trfgzesrerfbhnrytg" rzhy {
+        try {
             Connection connection = source.getConnection();
             Statement statement = connection.createStatement();
 
