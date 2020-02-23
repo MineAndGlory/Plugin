@@ -36,6 +36,7 @@ public class User {
     public User(UUID uuid) {
         this.uuid = uuid;
 
+        Bukkit.broadcastMessage(Bukkit.getOnlinePlayers().size() + "!");
         try {
             Connection connection = Database.getSource().getConnection();
             Statement statement = connection.createStatement();
