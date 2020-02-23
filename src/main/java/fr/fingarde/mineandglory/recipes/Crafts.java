@@ -83,10 +83,6 @@ public class Crafts implements Listener {
         shapelessCrafts.add(stoneShieldPlate);
 
         Main.getPlugin().getServer().removeRecipe(NamespacedKey.minecraft("stone_pickaxe"));
-        Main.getPlugin().getServer().removeRecipe(NamespacedKey.minecraft("stone_axe"));
-        Main.getPlugin().getServer().removeRecipe(NamespacedKey.minecraft("stone_sword"));
-        Main.getPlugin().getServer().removeRecipe(NamespacedKey.minecraft("stone_hoe"));
-        Main.getPlugin().getServer().removeRecipe(NamespacedKey.minecraft("stone_shovel"));
     }
 
     @EventHandler
