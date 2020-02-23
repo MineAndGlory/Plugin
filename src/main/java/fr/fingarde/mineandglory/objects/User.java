@@ -41,20 +41,22 @@ public class User {
             Connection connection = Database.getSource().getConnection();
             Statement statement = connection.createStatement();
 
+            Bukkit.broadcastMessage("1");
             ResultSet result = statement.executeQuery("SELECT pl_uuid, pl_rank, pl_prefix, pl_suffix, pl_nick, pl_money, pl_glory, tb_job.* " +
                     "FROM tb_player, tb_job " +
                     "WHERE jb_player = pl_uuid " +
                     "AND pl_uuid = '" + uuid.toString() + "'");
-
+            Bukkit.broadcastMessage("2");
             if(!result.next()) return;
-
+            Bukkit.broadcastMessage("3");
             rank = new Rank(result.getString("pl_rank"));
 
-
+            Bukkit.broadcastMessage("4");
             prefix = result.getString("pl_prefix");
             suffix = result.getString("pl_suffix");
             nickname = result.getString("pl_nick");
 
+            Bukkit.broadcastMessage("5");
             money = result.getFloat("pl_money");
             glory = result.getInt("pl_glory");
 
