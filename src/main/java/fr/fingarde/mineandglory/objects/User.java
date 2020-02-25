@@ -22,6 +22,7 @@ public class User {
     private UUID uuid;
 
     private Rank rank;
+    private Job jobs;
 
     private float money;
     private int glory;
@@ -44,8 +45,12 @@ public class User {
                     "FROM tb_player, tb_job " +
                     "WHERE jb_player = pl_uuid " +
                     "AND pl_uuid = '" + uuid.toString() + "'");
+
             if(!result.next()) return;
+
             rank = new Rank(result.getString("pl_rank"));
+            jobs = new Job();
+
 
             prefix = result.getString("pl_prefix");
             suffix = result.getString("pl_suffix");
@@ -56,6 +61,7 @@ public class User {
 
             player = Bukkit.getOfflinePlayer(uuid);
 
+            //jobs.setAchemistExp(result.getInt());
             result.close();
             statement.close();
             connection.close();

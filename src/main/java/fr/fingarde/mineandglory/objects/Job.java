@@ -37,8 +37,8 @@ public class Job {
     private int enchanterLvl;
     private int enchanterExp;
 
-    private int achemistLvl;
-    private int achemistExp;
+    private int alchemistLvl;
+    private int alchemistExp;
 
     public int getFarmerLvl() {
         return farmerLvl;
@@ -232,19 +232,19 @@ public class Job {
         this.enchanterExp = enchanterExp;
     }
 
-    public int getAchemistLvl() {
-        return achemistLvl;
+    public int getAlchemistLvl() {
+        return alchemistLvl;
     }
 
-    public void setAchemistLvl(int achemistLvl) {
-        this.achemistLvl = achemistLvl;
+    public void setAlchemistLvl(int achemistLvl) {
+        this.alchemistLvl = achemistLvl;
     }
 
     public int getAchemistExp() {
-        return achemistExp;
+        return alchemistExp;
     }
 
     public void setAchemistExp(int achemistExp) {
-        this.achemistExp = achemistExp;
+        this.alchemistExp = achemistExp;
     }
 }
