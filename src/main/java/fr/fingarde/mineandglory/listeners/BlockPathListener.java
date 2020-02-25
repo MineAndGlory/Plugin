@@ -17,7 +17,7 @@ public class BlockPathListener implements Listener {
         Player player = event.getPlayer();
 
         if (player.getLocation().getBlock().getType() == Material.GRASS_PATH) {
-            player.setVelocity(player.getVelocity().add(new Vector(1, 0, 0)));
+            player.setVelocity(player.getVelocity().add(new Vector(0, 1, 0)));
         }
     }
 
