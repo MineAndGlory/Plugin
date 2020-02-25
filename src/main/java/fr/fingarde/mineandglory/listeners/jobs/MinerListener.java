@@ -29,7 +29,8 @@ public class MinerListener implements Listener {
         int oldExp = user.getJobs().getMinerExp();
         int newExp = oldExp + miner.getXp();
 
-        if(newExp >= 100 + -100 * (user.getJobs().getMinerLvl() - 1 * 2.5)) {
+        Bukkit.broadcastMessage(newExp + "/" + (100 + 100 * ((user.getJobs().getMinerLvl() - 1) * 2.5)));
+        if(newExp >= 100 + 100 * ((user.getJobs().getMinerLvl() - 1) * 2.5)) {
             user.getJobs().setMinerExp(0);
             user.getJobs().setMinerLvl(user.getJobs().getMinerLvl() + 1);
             Bukkit.broadcastMessage("You leveled up to lvl " + user.getJobs().getMinerLvl());
