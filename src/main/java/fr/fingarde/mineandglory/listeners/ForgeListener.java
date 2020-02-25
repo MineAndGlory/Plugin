@@ -35,7 +35,11 @@ public class ForgeListener implements Listener {
     public void onClickWithRock(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
+        if (event.getHand() != EquipmentSlot.HAND) return;
+
         if (event.getClickedBlock() == null) return;
+        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+
         if (event.getItem() == null) return;
 
         if (event.getClickedBlock().getType() != Material.STONE) return;
