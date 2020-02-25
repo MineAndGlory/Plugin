@@ -18,7 +18,8 @@ public class MinerListener implements Listener {
         User user = User.getByUUID(event.getPlayer().getUniqueId());
 
         if(user.getJobs().getMinerLvl() < miner.getMinLvl()) {
-            event.getPlayer().sendMessage("Vous ne pouvez pas miner ce bloc");
+            event.getPlayer().sendMessage("§cIl vous faut etre niveau " + miner.getMinLvl() + " mineur pour casser ce bloc");
+            event.setCancelled(true);
             return;
         }
 
