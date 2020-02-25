@@ -222,5 +222,7 @@ public class ForgeListener implements Listener {
         armorStand.setGravity(false);
         armorStand.setVisible(false);
         armorStand.setMarker(true);
+
+        event.getWhoClicked().closeInventory();
     }
 }
