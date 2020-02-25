@@ -59,9 +59,47 @@ public class User {
             money = result.getFloat("pl_money");
             glory = result.getInt("pl_glory");
 
+            jobs.setFarmerLvl(result.getInt("jb_farmer_lvl"));
+            jobs.setFarmerExp(result.getInt("jb_farmer_lvl"));
+
+            jobs.setAnimalBreaderLvl(result.getInt("jb_animal_breeder_lvl"));
+            jobs.setAnimalBreaderExp(result.getInt("jb_animal_breeder_exp"));
+
+            jobs.setMinerLvl(result.getInt("jb_miner_lvl"));
+            jobs.setMinerExp(result.getInt("jb_miner_exp"));
+
+            jobs.setWoodcutterLvl(result.getInt("jb_woodcutter_lvl"));
+            jobs.setWoodcutterExp(result.getInt("jb_woodcutter_exp"));
+
+            jobs.setArmorerLvl(result.getInt("jb_armorer_lvl"));
+            jobs.setArmorerExp(result.getInt("jb_armorer_exp"));
+
+            jobs.setFisherLvl(result.getInt("jb_fisher_lvl"));
+            jobs.setFisherExp(result.getInt("jb_fisher_exp"));
+
+            jobs.setHunterLvl(result.getInt("jb_hunter_lvl"));
+            jobs.setHunterExp(result.getInt("jb_hunter_exp"));
+
+            jobs.setCookerLvl(result.getInt("jb_cooker_lvl"));
+            jobs.setCookerExp(result.getInt("jb_cooker_exp"));
+
+            jobs.setBuilderLvl(result.getInt("jb_builder_lvl"));
+            jobs.setBuilderExp(result.getInt("jb_builder_exp"));
+
+            jobs.setTerraformerLvl(result.getInt("jb_terraformer_lvl"));
+            jobs.setTerraformerExp(result.getInt("jb_terraformer_exp"));
+
+            jobs.setBlacksmithLvl(result.getInt("jb_blacksmith_lvl"));
+            jobs.setBlacksmithExp(result.getInt("jb_blacksmith_exp"));
+
+            jobs.setEnchanterLvl(result.getInt("jb_enchanter_lvl"));
+            jobs.setEnchanterExp(result.getInt("jb_enchanter_lvl"));
+
+            jobs.setAlchemistLvl(result.getInt("jb_alchemist_lvl"));
+            jobs.setAlchemistExp(result.getInt("jb_alchemist_exp"));
+
             player = Bukkit.getOfflinePlayer(uuid);
 
-            //jobs.setAchemistExp(result.getInt());
             result.close();
             statement.close();
             connection.close();
@@ -96,6 +134,10 @@ public class User {
 
     public UUID getUUID() {
         return uuid;
+    }
+
+    public Job getJobs() {
+        return jobs;
     }
 
     // Functions

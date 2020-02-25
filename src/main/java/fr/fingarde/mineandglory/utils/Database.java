@@ -86,44 +86,45 @@ public class Database {
             "CREATE TABLE IF NOT EXISTS tb_job(" +
                     "jb_player VARCHAR(36) PRIMARY KEY," +
 
-                    "jb_farmer_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_farmer_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_farmer_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_animal_breeder_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_animal_breeder_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_animal_breeder_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_miner_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_miner_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_miner_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_woodcutter_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_woodcutter_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_woodcutter_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_armorer_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_armorer_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_armorer_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_fisher_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_fisher_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_fisher_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_hunter_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_hunter_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_hunter_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_cooker_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_cooker_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_cooker_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_builder_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_builder_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_builder_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_terraformer_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_terraformer_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_terraformer_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_blacksmith_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_blacksmith_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_blacksmith_exp NUMERIC(7) DEFAULT 0," +
 
-                    "jb_enchanter_lvl NUMERIC(3) DEFAULT 0," +
-                    "jb_enchanter_exp NUMERIC(7) DEFAULT 0," +
+                    "jb_enchanter_lvl NUMERIC(3) DEFAULT 1," +
+                    "jb_enchanter_lvl NUMERIC(7) DEFAULT 0," +
 
-                    "jb_alchemist_lvl NUMERIC(3) DEFAULT 0," +
+                    "jb_alchemist_lvl NUMERIC(3) DEFAULT 1," +
                     "jb_alchemist_exp NUMERIC(7) DEFAULT 0," +
+
                     "CONSTRAINT fk_tb_job FOREIGN KEY(jb_player) REFERENCES tb_player(pl_uuid)" +
                 ");");
 

@@ -5,6 +5,7 @@ import fr.fingarde.mineandglory.listeners.BlockPathListener;
 import fr.fingarde.mineandglory.listeners.ConnectionListener;
 import fr.fingarde.mineandglory.listeners.ForgeListener;
 import fr.fingarde.mineandglory.listeners.PlayerBreakBlockByHandListener;
+import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
 import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.recipes.Crafts;
@@ -52,6 +53,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
         getServer().getPluginManager().registerEvents(new BlockPathListener(), this);
 
+        getServer().getPluginManager().registerEvents(new MinerListener(), this);
     }
 
     public void registerCommands() {

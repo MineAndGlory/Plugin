@@ -240,11 +240,11 @@ public class Job {
         this.alchemistLvl = achemistLvl;
     }
 
-    public int getAchemistExp() {
+    public int getAlchemistExp() {
         return alchemistExp;
     }
 
-    public void setAchemistExp(int achemistExp) {
+    public void setAlchemistExp(int achemistExp) {
         this.alchemistExp = achemistExp;
     }
 }
