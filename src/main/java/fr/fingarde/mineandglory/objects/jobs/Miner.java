@@ -12,4 +12,14 @@ public enum Miner {
     public int getXp() {
         return xp;
     }
+
+    public static int getXp(String value) {
+        for (Miner miner : Miner.values()) {
+            if (miner.name().equals(value)) {
+                return miner.xp;
+            }
+        }
+
+        return 0;
+    }
 }

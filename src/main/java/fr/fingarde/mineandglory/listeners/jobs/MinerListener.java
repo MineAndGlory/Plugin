@@ -10,8 +10,9 @@ public class MinerListener implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
         if(event.isCancelled()) return;
-        Miner minerBlock = Miner.valueOf("BREAK_" + event.getBlock().getType());
+        int xp = Miner.getXp("BREAK_" + event.getBlock().getType());
 
-        Bukkit.broadcastMessage("§a+" + minerBlock.getXp() + "xp");
+        if(xp == 0) return;
+        Bukkit.broadcastMessage("§a+" + xp + "xp");
     }
 }
