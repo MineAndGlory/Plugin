@@ -1,7 +1,7 @@
 package fr.fingarde.mineandglory;
 
 import fr.fingarde.mineandglory.commands.CGive;
-import fr.fingarde.mineandglory.listeners.BlockPathEvent;
+import fr.fingarde.mineandglory.listeners.BlockPathListener;
 import fr.fingarde.mineandglory.listeners.ConnectionListener;
 import fr.fingarde.mineandglory.listeners.ForgeListener;
 import fr.fingarde.mineandglory.listeners.PlayerBreakBlockByHandListener;
@@ -50,7 +50,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ForgeListener(), this);
         getServer().getPluginManager().registerEvents(new Crafts(), this);
         getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
-        getServer().getPluginManager().registerEvents(new BlockPathEvent(), this);
+        getServer().getPluginManager().registerEvents(new BlockPathListener(), this);
 
     }
 
