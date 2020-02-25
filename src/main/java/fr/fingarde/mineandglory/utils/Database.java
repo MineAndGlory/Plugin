@@ -67,7 +67,8 @@ public class Database {
                     "dh_player VARCHAR(36)," +
                     "dh_location VARCHAR(64)," +
                     "dh_reason VARCHAR(64)," +
-                    "dh_date DATE" +
+                    "dh_date DATE," +
+                    "CONSTRAINT fk_tb_death FOREIGN KEY(dh_player) REFERENCES tb_player(pl_uuid)" +
                 ");");
 
             statement.executeUpdate(
