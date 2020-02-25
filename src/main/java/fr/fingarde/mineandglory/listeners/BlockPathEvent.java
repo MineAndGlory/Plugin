@@ -13,6 +13,7 @@ public class BlockPathEvent implements Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
         if (event.getPlayer().getLocation().getBlock().getType() == Material.GRASS_PATH) {
+            event.getPlayer().removePotionEffect(PotionEffectType.SPEED);
             event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 1,true,false ,false));
         }
     }
