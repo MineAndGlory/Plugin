@@ -20,9 +20,19 @@ public class MinerListener implements Listener {
         if(user.getJobs().getMinerLvl() < miner.getMinLvl()) {
             event.getPlayer().sendMessage("§cIl vous faut etre niveau " + miner.getMinLvl() + " mineur pour casser ce bloc");
             event.setCancelled(true);
+
             return;
         }
 
         Bukkit.broadcastMessage("§a+" + miner.getXp() + "xp");
+
+        int oldExp = user.getJobs().getMinerExp();
+        int newExp = oldExp + miner.getXp();
+
+        if(newExp >= 100 + -100 * (user.getJobs().getMinerLvl() - 1 * 2.5)) {
+            user.getJobs().setMinerExp(0);
+            user.getJobs().setMinerLvl(user.getJobs().getMinerLvl() + 1);
+            Bukkit.broadcastMessage("You leveled up to lvl " + user.getJobs().getMinerLvl());
+        }
     }
 }
