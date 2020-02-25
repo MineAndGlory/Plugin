@@ -2,22 +2,19 @@ package fr.fingarde.mineandglory.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.util.Vector;
 
 public class BlockPathListener implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        Player player = event.getPlayer();
-
-        if (player.getLocation().getBlock().getType() == Material.GRASS_PATH) {
-            player.setVelocity(player.getVelocity().add(new Vector(0, 1, 0)));
+        if (event.getPlayer().getLocation().getBlock().getType() == Material.GRASS_PATH) {
+            event.getPlayer().removePotionEffect(PotionEffectType.SPEED);
+            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, 1,true,false ,false));
         }
     }
 
