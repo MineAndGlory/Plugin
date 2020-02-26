@@ -1,10 +1,7 @@
 package fr.fingarde.mineandglory;
 
 import fr.fingarde.mineandglory.commands.CGive;
-import fr.fingarde.mineandglory.listeners.BlockPathListener;
-import fr.fingarde.mineandglory.listeners.ConnectionListener;
-import fr.fingarde.mineandglory.listeners.ForgeListener;
-import fr.fingarde.mineandglory.listeners.PlayerBreakBlockByHandListener;
+import fr.fingarde.mineandglory.listeners.*;
 import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
 import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
@@ -47,6 +44,8 @@ public class Main extends JavaPlugin {
     }
 
     public void registerEvents() {
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
+
         getServer().getPluginManager().registerEvents(new PlayerBreakBlockByHandListener(), this);
         getServer().getPluginManager().registerEvents(new ForgeListener(), this);
         getServer().getPluginManager().registerEvents(new Crafts(), this);
