@@ -5,10 +5,7 @@ import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.utils.Database;
 import fr.fingarde.mineandglory.utils.Title;
-import org.bukkit.Bukkit;
-import org.bukkit.EntityEffect;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -75,10 +72,13 @@ public class ConnectionListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
+                Location loc = player.getLocation();
+                loc.setY(loc.getY() + 1.8);
+
                 player.spawnParticle(Particle.TOTEM, player.getLocation(), 150, 0, 0, 0, 0.4);
                 Title.sendTitle(player, "§cMine And Glory");
             }
-        }.runTaskLater(Main.getPlugin(), 10);
+        }.runTaskLater(Main.getPlugin(), 5);
     }
 
     @EventHandler
