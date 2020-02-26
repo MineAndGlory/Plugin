@@ -2,11 +2,11 @@ package fr.fingarde.mineandglory.objects.jobs;
 
 public enum Miner {
     BREAK_STONE(0, 2),
-    BREAK_COAL_ORE(1, 50),
-    BREAK_IRON_ORE(3, 75),
-    BREAK_GOLD_ORE(10, 100),
-    BREAK_DIAMOND_ORE(15, 200),
-    BREAK_EMERALD_ORE(20, 300);
+    BREAK_COAL_ORE(1, 8),
+    BREAK_IRON_ORE(3, 12),
+    BREAK_GOLD_ORE(10, 20),
+    BREAK_DIAMOND_ORE(15, 30),
+    BREAK_EMERALD_ORE(20, 40);
 
     private int minLvl;
     private int xp;

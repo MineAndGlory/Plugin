@@ -247,4 +247,8 @@ public class Job {
     public void setAlchemistExp(int achemistExp) {
         this.alchemistExp = achemistExp;
     }
+
+    public static int getTotalXpForNextLvl(int currentLvl) {
+        return (int) (currentLvl * (currentLvl / 8.0) * 100 + 68);
+    }
 }

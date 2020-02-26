@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.listeners.jobs;
 
+import fr.fingarde.mineandglory.objects.Job;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.objects.jobs.Miner;
 import fr.fingarde.mineandglory.utils.Title;
@@ -27,16 +28,21 @@ public class MinerListener implements Listener {
 
         Title.sendActionbar(event.getPlayer(), "§a+" + miner.getXp() + "xp");
 
+        int currentLvl = user.getJobs().getMinerLvl();
         int oldExp = user.getJobs().getMinerExp();
         int newExp = oldExp + miner.getXp();
 
-        user.getJobs().setMinerExp(newExp);
-   
-        Bukkit.broadcastMessage(newExp + "/" + (100 + 100 * ((user.getJobs().getMinerLvl() - 1) * 2.5)));
-        if(newExp >= 100 + 100 * ((user.getJobs().getMinerLvl() - 1) * 2.5)) {
-            user.getJobs().setMinerExp(0);
-            user.getJobs().setMinerLvl(user.getJobs().getMinerLvl() + 1);
-            Bukkit.broadcastMessage("You leveled up to lvl " + user.getJobs().getMinerLvl());
+
+        int xpTotalForNextLvl = Job.getTotalXpForNextLvl(currentLvl + 1);
+
+        Bukkit.broadcastMessage(newExp + "/" + xpTotalForNextLvl);
+        if(newExp >= xpTotalForNextLvl) {
+            user.getJobs().setMinerLvl(currentLvl + 1);
+            Bukkit.broadcastMessage("§eYou leveled up to lvl " + user.getJobs().getMinerLvl());
+
+            newExp = xpTotalForNextLvl / newExp;
         }
+
+        user.getJobs().setMinerExp(newExp);
     }
 }
