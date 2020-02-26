@@ -35,6 +35,6 @@ public class ChatListener implements Listener {
             }
         }
 
-        Bukkit.broadcastMessage(player.getDisplayName() + "§r§6> " + message);
+        Bukkit.broadcastMessage(player.getDisplayName() + " §r§6❭❭ " + message);
     }
 }
