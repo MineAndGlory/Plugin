@@ -78,7 +78,7 @@ public class ConnectionListener implements Listener {
                 player.spawnParticle(Particle.TOTEM, player.getLocation(), 150);
                 Title.sendTitle(player, "§cMine And Glory");
             }
-        }.runTaskLater(Main.getPlugin(), 40);
+        }.runTaskLater(Main.getPlugin(), 20);
     }
 
     @EventHandler
