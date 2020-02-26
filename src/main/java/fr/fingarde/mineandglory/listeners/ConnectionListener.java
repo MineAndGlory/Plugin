@@ -4,6 +4,7 @@ import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.utils.Database;
+import fr.fingarde.mineandglory.utils.Title;
 import org.bukkit.Bukkit;
 import org.bukkit.EntityEffect;
 import org.bukkit.Sound;
@@ -61,7 +62,7 @@ public class ConnectionListener implements Listener {
                     Bukkit.broadcastMessage("§a§l+§r " + player.getDisplayName());
 
                     player.playEffect(EntityEffect.TOTEM_RESURRECT);
-                    player.playSound(player.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
+                    Title.sendTitle(player, "§cMine And Glory");
                     result.close();
                     statement.close();
                     connection.close();
