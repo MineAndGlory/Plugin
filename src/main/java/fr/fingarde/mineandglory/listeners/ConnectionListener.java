@@ -72,8 +72,13 @@ public class ConnectionListener implements Listener {
             }
         }.runTaskAsynchronously(Main.getPlugin());
 
-        player.spawnParticle(Particle.TOTEM, player.getLocation(), 150);
-        Title.sendTitle(player, "§cMine And Glory");
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                player.spawnParticle(Particle.TOTEM, player.getLocation(), 150);
+                Title.sendTitle(player, "§cMine And Glory");
+            }
+        }.runTaskLater(Main.getPlugin(), 40);
     }
 
     @EventHandler
