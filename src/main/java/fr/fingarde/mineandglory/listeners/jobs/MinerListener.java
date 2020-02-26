@@ -2,6 +2,7 @@ package fr.fingarde.mineandglory.listeners.jobs;
 
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.objects.jobs.Miner;
+import fr.fingarde.mineandglory.utils.Title;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,13 +25,13 @@ public class MinerListener implements Listener {
             return;
         }
 
-        Bukkit.broadcastMessage("§a+" + miner.getXp() + "xp");
+        Title.sendActionbar(event.getPlayer(), "§a+" + miner.getXp() + "xp");
 
         int oldExp = user.getJobs().getMinerExp();
         int newExp = oldExp + miner.getXp();
 
         user.getJobs().setMinerExp(newExp);
-
+   
         Bukkit.broadcastMessage(newExp + "/" + (100 + 100 * ((user.getJobs().getMinerLvl() - 1) * 2.5)));
         if(newExp >= 100 + 100 * ((user.getJobs().getMinerLvl() - 1) * 2.5)) {
             user.getJobs().setMinerExp(0);
