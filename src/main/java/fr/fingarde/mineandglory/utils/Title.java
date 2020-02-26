@@ -20,4 +20,18 @@ public class Title {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "title " + player.getName() + " times " + fadeIn + " " + duration + " " + fadeOut);
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "title " + player.getName() + " title {\"text\":\"" + message + "\"}");
     }
+
+    public static void sendSubtitle(Player player, String message) {
+        sendSubtitle(player, message, 40);
+    }
+
+    public static void sendSubtitle(Player player, String message, int duration) {
+        sendSubtitle(player, message, 5, duration, 5);
+    }
+
+    public static void sendSubtitle(Player player, String message, int fadeIn, int duration, int fadeOut) {
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "title " + player.getName() + " times " + fadeIn + " " + duration + " " + fadeOut);
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "title " + player.getName() + " subtitle {\"text\":\"" + message + "\"}");
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "title " + player.getName() + " subtitle {\"text\":\" \"}");
+    }
 }
