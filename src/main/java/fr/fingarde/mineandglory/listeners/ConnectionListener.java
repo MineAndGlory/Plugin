@@ -7,6 +7,7 @@ import fr.fingarde.mineandglory.utils.Database;
 import fr.fingarde.mineandglory.utils.Title;
 import org.bukkit.Bukkit;
 import org.bukkit.EntityEffect;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,11 +27,11 @@ public class ConnectionListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         event.setJoinMessage(null);
 
+        Player player = event.getPlayer();
+
         new BukkitRunnable() {
             @Override
             public void run() {
-                Player player = event.getPlayer();
-
                 try {
                     Connection connection = Database.getSource().getConnection();
                     Statement statement = connection.createStatement();
@@ -61,8 +62,6 @@ public class ConnectionListener implements Listener {
 
                     Bukkit.broadcastMessage("§a§l+§r " + player.getDisplayName());
 
-                    player.playEffect(EntityEffect.TOTEM_RESURRECT);
-                    Title.sendTitle(player, "§cMine And Glory");
                     result.close();
                     statement.close();
                     connection.close();
@@ -72,6 +71,9 @@ public class ConnectionListener implements Listener {
                 }
             }
         }.runTaskAsynchronously(Main.getPlugin());
+
+        player.spawnParticle(Particle.TOTEM, player.getLocation(), 150, 0.4);
+        Title.sendTitle(player, "§cMine And Glory");
     }
 
     @EventHandler
