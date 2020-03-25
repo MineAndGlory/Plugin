@@ -1,6 +1,7 @@
 package fr.fingarde.mineandglory.objects;
 
-public class Job {
+public class Job
+{
     private int farmerLvl;
     private int farmerExp;
 
@@ -40,215 +41,268 @@ public class Job {
     private int alchemistLvl;
     private int alchemistExp;
 
-    public int getFarmerLvl() {
+    public int getFarmerLvl()
+    {
         return farmerLvl;
     }
 
-    public void setFarmerLvl(int farmerLvl) {
+    public void setFarmerLvl(int farmerLvl)
+    {
         this.farmerLvl = farmerLvl;
     }
 
-    public int getFarmerExp() {
+    public int getFarmerExp()
+    {
         return farmerExp;
     }
 
-    public void setFarmerExp(int farmerExp) {
+    public void setFarmerExp(int farmerExp)
+    {
         this.farmerExp = farmerExp;
     }
 
-    public int getAnimalBreaderLvl() {
+    public int getAnimalBreaderLvl()
+    {
         return animalBreaderLvl;
     }
 
-    public void setAnimalBreaderLvl(int animalBreaderLvl) {
+    public void setAnimalBreaderLvl(int animalBreaderLvl)
+    {
         this.animalBreaderLvl = animalBreaderLvl;
     }
 
-    public int getAnimalBreaderExp() {
+    public int getAnimalBreaderExp()
+    {
         return animalBreaderExp;
     }
 
-    public void setAnimalBreaderExp(int animalBreaderExp) {
+    public void setAnimalBreaderExp(int animalBreaderExp)
+    {
         this.animalBreaderExp = animalBreaderExp;
     }
 
-    public int getMinerLvl() {
+    public int getMinerLvl()
+    {
         return minerLvl;
     }
 
-    public void setMinerLvl(int minerLvl) {
+    public void setMinerLvl(int minerLvl)
+    {
         this.minerLvl = minerLvl;
     }
 
-    public int getMinerExp() {
+    public int getMinerExp()
+    {
         return minerExp;
     }
 
-    public void setMinerExp(int minerExp) {
+    public void setMinerExp(int minerExp)
+    {
         this.minerExp = minerExp;
     }
 
-    public int getWoodcutterLvl() {
+    public int getWoodcutterLvl()
+    {
         return woodcutterLvl;
     }
 
-    public void setWoodcutterLvl(int woodcutterLvl) {
+    public void setWoodcutterLvl(int woodcutterLvl)
+    {
         this.woodcutterLvl = woodcutterLvl;
     }
 
-    public int getWoodcutterExp() {
+    public int getWoodcutterExp()
+    {
         return woodcutterExp;
     }
 
-    public void setWoodcutterExp(int woodcutterExp) {
+    public void setWoodcutterExp(int woodcutterExp)
+    {
         this.woodcutterExp = woodcutterExp;
     }
 
-    public int getArmorerLvl() {
+    public int getArmorerLvl()
+    {
         return armorerLvl;
     }
 
-    public void setArmorerLvl(int armorerLvl) {
+    public void setArmorerLvl(int armorerLvl)
+    {
         this.armorerLvl = armorerLvl;
     }
 
-    public int getArmorerExp() {
+    public int getArmorerExp()
+    {
         return armorerExp;
     }
 
-    public void setArmorerExp(int armorerExp) {
+    public void setArmorerExp(int armorerExp)
+    {
         this.armorerExp = armorerExp;
     }
 
-    public int getFisherLvl() {
+    public int getFisherLvl()
+    {
         return fisherLvl;
     }
 
-    public void setFisherLvl(int fisherLvl) {
+    public void setFisherLvl(int fisherLvl)
+    {
         this.fisherLvl = fisherLvl;
     }
 
-    public int getFisherExp() {
+    public int getFisherExp()
+    {
         return fisherExp;
     }
 
-    public void setFisherExp(int fisherExp) {
+    public void setFisherExp(int fisherExp)
+    {
         this.fisherExp = fisherExp;
     }
 
-    public int getHunterLvl() {
+    public int getHunterLvl()
+    {
         return hunterLvl;
     }
 
-    public void setHunterLvl(int hunterLvl) {
+    public void setHunterLvl(int hunterLvl)
+    {
         this.hunterLvl = hunterLvl;
     }
 
-    public int getHunterExp() {
+    public int getHunterExp()
+    {
         return hunterExp;
     }
 
-    public void setHunterExp(int hunterExp) {
+    public void setHunterExp(int hunterExp)
+    {
         this.hunterExp = hunterExp;
     }
 
-    public int getCookerLvl() {
+    public int getCookerLvl()
+    {
         return cookerLvl;
     }
 
-    public void setCookerLvl(int cookerLvl) {
+    public void setCookerLvl(int cookerLvl)
+    {
         this.cookerLvl = cookerLvl;
     }
 
-    public int getCookerExp() {
+    public int getCookerExp()
+    {
         return cookerExp;
     }
 
-    public void setCookerExp(int cookerExp) {
+    public void setCookerExp(int cookerExp)
+    {
         this.cookerExp = cookerExp;
     }
 
-    public int getBuilderLvl() {
+    public int getBuilderLvl()
+    {
         return builderLvl;
     }
 
-    public void setBuilderLvl(int builderLvl) {
+    public void setBuilderLvl(int builderLvl)
+    {
         this.builderLvl = builderLvl;
     }
 
-    public int getBuilderExp() {
+    public int getBuilderExp()
+    {
         return builderExp;
     }
 
-    public void setBuilderExp(int builderExp) {
+    public void setBuilderExp(int builderExp)
+    {
         this.builderExp = builderExp;
     }
 
-    public int getTerraformerLvl() {
+    public int getTerraformerLvl()
+    {
         return terraformerLvl;
     }
 
-    public void setTerraformerLvl(int terraformerLvl) {
+    public void setTerraformerLvl(int terraformerLvl)
+    {
         this.terraformerLvl = terraformerLvl;
     }
 
-    public int getTerraformerExp() {
+    public int getTerraformerExp()
+    {
         return terraformerExp;
     }
 
-    public void setTerraformerExp(int terraformerExp) {
+    public void setTerraformerExp(int terraformerExp)
+    {
         this.terraformerExp = terraformerExp;
     }
 
-    public int getBlacksmithLvl() {
+    public int getBlacksmithLvl()
+    {
         return blacksmithLvl;
     }
 
-    public void setBlacksmithLvl(int blacksmithLvl) {
+    public void setBlacksmithLvl(int blacksmithLvl)
+    {
         this.blacksmithLvl = blacksmithLvl;
     }
 
-    public int getBlacksmithExp() {
+    public int getBlacksmithExp()
+    {
         return blacksmithExp;
     }
 
-    public void setBlacksmithExp(int blacksmithExp) {
+    public void setBlacksmithExp(int blacksmithExp)
+    {
         this.blacksmithExp = blacksmithExp;
     }
 
-    public int getEnchanterLvl() {
+    public int getEnchanterLvl()
+    {
         return enchanterLvl;
     }
 
-    public void setEnchanterLvl(int enchanterLvl) {
+    public void setEnchanterLvl(int enchanterLvl)
+    {
         this.enchanterLvl = enchanterLvl;
     }
 
-    public int getEnchanterExp() {
+    public int getEnchanterExp()
+    {
         return enchanterExp;
     }
 
-    public void setEnchanterExp(int enchanterExp) {
+    public void setEnchanterExp(int enchanterExp)
+    {
         this.enchanterExp = enchanterExp;
     }
 
-    public int getAlchemistLvl() {
+    public int getAlchemistLvl()
+    {
         return alchemistLvl;
     }
 
-    public void setAlchemistLvl(int achemistLvl) {
+    public void setAlchemistLvl(int achemistLvl)
+    {
         this.alchemistLvl = achemistLvl;
     }
 
-    public int getAlchemistExp() {
+    public int getAlchemistExp()
+    {
         return alchemistExp;
     }
 
-    public void setAlchemistExp(int achemistExp) {
+    public void setAlchemistExp(int achemistExp)
+    {
         this.alchemistExp = achemistExp;
     }
 
-    public static int getTotalXpForNextLvl(int currentLvl) {
+    public static int getTotalXpForNextLvl(int currentLvl)
+    {
         return (int) (currentLvl * (currentLvl / 8.0) * 100 + 68);
     }
 }

@@ -30,20 +30,22 @@ import java.util.List;
 import java.util.Set;
 
 
-public class ForgeListener implements Listener {
+public class ForgeListener implements Listener
+{
     @EventHandler
-    public void onClickWithRock(PlayerInteractEvent event) {
+    public void onClickWithRock(PlayerInteractEvent event)
+    {
         Player player = event.getPlayer();
 
         if (event.getHand() != EquipmentSlot.HAND) return;
 
         if (event.getClickedBlock() == null) return;
-        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
         if (event.getItem() == null) return;
 
         if (event.getClickedBlock().getType() != Material.STONE) return;
-        if (! event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.ROCK.name())) return;
+        if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.ROCK.name())) return;
 
         Location location = event.getClickedBlock().getLocation();
         location.setX(location.getBlockX() + 0.5);
@@ -53,10 +55,13 @@ public class ForgeListener implements Listener {
         Collection<Entity> entities = location.getWorld().getNearbyEntities(location, 1, 1, 1);
 
         boolean isPresent = false;
-        for(Entity entity : entities) {
+        for (Entity entity : entities)
+        {
             if (entity.getType() != EntityType.ARMOR_STAND) return;
-            for(String tag : entity.getScoreboardTags()) {
-                if (tag.equals("mineandglory_anvil")) {
+            for (String tag : entity.getScoreboardTags())
+            {
+                if (tag.equals("mineandglory_anvil"))
+                {
                     isPresent = true;
                     break;
                 }
@@ -82,7 +87,8 @@ public class ForgeListener implements Listener {
         player.openInventory(inventory);
 
 
-        for(CustomItems tool : stoneTools) {
+        for (CustomItems tool : stoneTools)
+        {
             ItemStack toolItemStack = CustomItems.getFromValue(tool);
             ItemMeta toolItemMeta = toolItemStack.getItemMeta();
             List<String> toolLore = new ArrayList<>();
@@ -99,11 +105,12 @@ public class ForgeListener implements Listener {
     }
 
     @EventHandler
-    public void onClickWithHand(PlayerInteractEvent event) {
+    public void onClickWithHand(PlayerInteractEvent event)
+    {
         if (event.getHand() != EquipmentSlot.HAND) return;
 
         if (event.getClickedBlock() == null) return;
-        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
         if (event.getClickedBlock().getType() != Material.STONE) return;
 
@@ -116,10 +123,13 @@ public class ForgeListener implements Listener {
         Collection<Entity> entities = armorStandLoc.getWorld().getNearbyEntities(armorStandLoc, 1, 1, 1);
 
         ArmorStand armorStand = null;
-        for(Entity entity : entities) {
+        for (Entity entity : entities)
+        {
             if (entity.getType() != EntityType.ARMOR_STAND) return;
-            for(String tag : entity.getScoreboardTags()) {
-                if (tag.equals("mineandglory_anvil")) {
+            for (String tag : entity.getScoreboardTags())
+            {
+                if (tag.equals("mineandglory_anvil"))
+                {
                     armorStand = (ArmorStand) entity;
                     break;
                 }
@@ -130,49 +140,55 @@ public class ForgeListener implements Listener {
 
         CustomItems item = null;
         int percent = 0;
-        for(String tag : armorStand.getScoreboardTags()) {
-            if (tag.startsWith("mineandglory_anvil_percent_")) {
+        for (String tag : armorStand.getScoreboardTags())
+        {
+            if (tag.startsWith("mineandglory_anvil_percent_"))
+            {
                 String[] tagSplitted = tag.split("_");
 
                 percent = Integer.parseInt(tagSplitted[tagSplitted.length - 1]);
             }
 
-            if (tag.startsWith("mineandglory_anvil_item_")) {
+            if (tag.startsWith("mineandglory_anvil_item_"))
+            {
                 String[] tagSplitted = tag.split("_");
 
                 item = CustomItems.valueOf(tagSplitted[tagSplitted.length - 1].replaceAll("-", "_"));
             }
         }
 
-        percent ++;
+        percent++;
 
         Location dropLoc = event.getClickedBlock().getLocation().clone();
         dropLoc.setY(dropLoc.getY() + 1);
 
-        if (percent == 100) {
+        if (percent == 100)
+        {
             dropLoc.getWorld().dropItem(dropLoc, CustomItems.getFromValue(item));
 
             armorStand.remove();
             return;
         }
 
-        armorStand.removeScoreboardTag("mineandglory_anvil_percent_" + ( percent - 1 ));
-        armorStand.setCustomName(armorStand.getCustomName().replace("§e" + ( percent - 1 ), "§e" + percent ));
+        armorStand.removeScoreboardTag("mineandglory_anvil_percent_" + (percent - 1));
+        armorStand.setCustomName(armorStand.getCustomName().replace("§e" + (percent - 1), "§e" + percent));
         armorStand.addScoreboardTag("mineandglory_anvil_percent_" + percent);
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        if (! event.getView().getTitle().equals("Stone Anvil")) return;
+    public void onInventoryClick(InventoryClickEvent event)
+    {
+        if (!event.getView().getTitle().equals("Stone Anvil")) return;
         event.setCancelled(true);
 
         ItemStack item = event.getCurrentItem();
         if (item == null) return;
-        if (! item.getItemMeta().getLocalizedName().endsWith("_HEAD")) return;
+        if (!item.getItemMeta().getLocalizedName().endsWith("_HEAD")) return;
 
 
         int numberRocks = 0;
-        for(ItemStack itemStack : event.getWhoClicked().getInventory().getContents()) {
+        for (ItemStack itemStack : event.getWhoClicked().getInventory().getContents())
+        {
             if (itemStack == null) continue;
             if (!itemStack.getItemMeta().getLocalizedName().equals(CustomItems.ROCK.name())) continue;
 
@@ -185,7 +201,7 @@ public class ForgeListener implements Listener {
         JsonObject obj;
 
         List<String> lore = item.getItemMeta().getLore();
-        if (! lore.get(0).startsWith("§eCost")) return;
+        if (!lore.get(0).startsWith("§eCost")) return;
 
         obj = new JsonParser().parse(LoreSerializer.deserialize(lore.get(1))).getAsJsonObject();
 
@@ -195,25 +211,27 @@ public class ForgeListener implements Listener {
         if (cost > numberRocks) return;
         int numberToRemove = cost;
 
-        for(ItemStack itemStack : event.getWhoClicked().getInventory().getContents()) {
+        for (ItemStack itemStack : event.getWhoClicked().getInventory().getContents())
+        {
 
             if (numberToRemove <= 0) break;
             if (itemStack == null) continue;
             if (!itemStack.getItemMeta().getLocalizedName().equals(CustomItems.ROCK.name())) continue;
 
             int diff = itemStack.getAmount() - numberToRemove;
-            if (diff < 0) {
+            if (diff < 0)
+            {
                 itemStack.setAmount(0);
                 numberToRemove = Math.abs(diff);
-            }
-            else {
+            } else
+            {
                 itemStack.setAmount(diff);
                 numberToRemove = 0;
             }
         }
 
         Location armorStandLoc = loc.clone();
-        
+
 
         ArmorStand armorStand = (ArmorStand) loc.getWorld().spawnEntity(armorStandLoc, EntityType.ARMOR_STAND);
         armorStand.addScoreboardTag("mineandglory_anvil");

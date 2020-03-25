@@ -22,15 +22,18 @@ import java.util.*;
 
 import static org.bukkit.Bukkit.getServer;
 
-public class Crafts implements Listener {
+public class Crafts implements Listener
+{
     public static List<ShapelessCraft> shapelessCrafts = new LinkedList<>();
     public static Main plugin = Main.getPlugin();
 
-    public static void registerCrafts() {
+    public static void registerCrafts()
+    {
         stoneCrafts();
     }
 
-    private static void stoneCrafts() {
+    private static void stoneCrafts()
+    {
         ShapelessCraft stonePickaxe = new ShapelessCraft(new ItemStack(Material.STONE_PICKAXE));
         stonePickaxe.addIngredient(CustomItems.getFromValue(CustomItems.STONE_PICKAXE_HEAD));
         stonePickaxe.addIngredient(new ItemStack(Material.STICK));
@@ -81,13 +84,14 @@ public class Crafts implements Listener {
         stoneShieldPlate.addIngredient(new ItemStack(Material.STICK));
         shapelessCrafts.add(stoneShieldPlate);
 
-       remove(Material.STONE_PICKAXE);
+        remove(Material.STONE_PICKAXE);
     }
 
-    public static void remove(Material m) {
+    public static void remove(Material m)
+    {
         Iterator<Recipe> it = getServer().recipeIterator();
         Recipe recipe;
-        while(it.hasNext())
+        while (it.hasNext())
         {
             recipe = it.next();
             if (recipe != null && recipe.getResult().getType() == m)
@@ -98,9 +102,12 @@ public class Crafts implements Listener {
     }
 
     @EventHandler
-    public void onPrepareCraft(PrepareItemCraftEvent event) {
-        for(ShapelessCraft craft : shapelessCrafts) {
-            if (craft.equals(event.getInventory().getMatrix())) {
+    public void onPrepareCraft(PrepareItemCraftEvent event)
+    {
+        for (ShapelessCraft craft : shapelessCrafts)
+        {
+            if (craft.equals(event.getInventory().getMatrix()))
+            {
                 event.getInventory().setResult(craft.getResult());
                 return;
             }
@@ -108,32 +115,39 @@ public class Crafts implements Listener {
     }
 
     @EventHandler
-    public void onCraft(final InventoryClickEvent event) {
-        if(event.getClickedInventory().getType() != InventoryType.WORKBENCH) return;
+    public void onCraft(final InventoryClickEvent event)
+    {
+        if (event.getClickedInventory().getType() != InventoryType.WORKBENCH) return;
 
         final CraftingInventory inv = (CraftingInventory) event.getClickedInventory();
 
-        if(event.getSlotType() != InventoryType.SlotType.RESULT) return;
-        if(inv.getResult() == null) return;
-        if(inv.getRecipe() != null) return;
+        if (event.getSlotType() != InventoryType.SlotType.RESULT) return;
+        if (inv.getResult() == null) return;
+        if (inv.getRecipe() != null) return;
 
-        if(event.getCursor().getMaxStackSize() == 1) return;
-        if(event.getCursor().getItemMeta() != null) {
-            if (!event.getCursor().getItemMeta().getLocalizedName().equals("")) {
+        if (event.getCursor().getMaxStackSize() == 1) return;
+        if (event.getCursor().getItemMeta() != null)
+        {
+            if (!event.getCursor().getItemMeta().getLocalizedName().equals(""))
+            {
                 if (CustomItems.valueOf(event.getCursor().getItemMeta().getLocalizedName()).getMaxStack() == 1) return;
             }
         }
 
-        if(event.getClick().name().startsWith("SHIFT")) {
+        if (event.getClick().name().startsWith("SHIFT"))
+        {
             event.setCancelled(true);
             return;
         }
 
-        new BukkitRunnable() {
+        new BukkitRunnable()
+        {
             @Override
-            public void run() {
-                for(ItemStack item : inv.getMatrix()) {
-                    if(item == null) continue;
+            public void run()
+            {
+                for (ItemStack item : inv.getMatrix())
+                {
+                    if (item == null) continue;
 
                     item.setAmount(item.getAmount() / 2);
                 }

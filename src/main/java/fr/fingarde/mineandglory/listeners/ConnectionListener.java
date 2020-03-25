@@ -19,29 +19,36 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
-public class ConnectionListener implements Listener {
+public class ConnectionListener implements Listener
+{
     @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
+    public void onJoin(PlayerJoinEvent event)
+    {
         event.setJoinMessage(null);
 
         Player player = event.getPlayer();
 
-        new BukkitRunnable() {
+        new BukkitRunnable()
+        {
             @Override
-            public void run() {
-                try {
+            public void run()
+            {
+                try
+                {
                     Connection connection = Database.getSource().getConnection();
                     Statement statement = connection.createStatement();
 
                     ResultSet result = statement.executeQuery("SELECT * FROM tb_player WHERE pl_uuid = '" + player.getUniqueId().toString() + "'");
 
                     Rank defaultRank = Rank.getDefaultRank();
-                    if(defaultRank == null) {
+                    if (defaultRank == null)
+                    {
                         Main.getConsole().sendMessage("Aucun rank par défaut n'a été défini");
                         return;
                     }
 
-                    if (!result.next()) {
+                    if (!result.next())
+                    {
                         statement.executeUpdate("INSERT INTO tb_player (pl_uuid, pl_rank, pl_first_join) VALUES ('" + player.getUniqueId().toString() + "', '" + defaultRank.getName() + "', '" + new Date().getTime() + "')");
                         statement.executeUpdate("INSERT INTO tb_enderchest (ec_player, ec_size) VALUES ('" + player.getUniqueId().toString() + "', '5')");
                         statement.executeUpdate("INSERT INTO tb_job (jb_player) VALUES ('" + player.getUniqueId().toString() + "')");
@@ -62,16 +69,18 @@ public class ConnectionListener implements Listener {
                     result.close();
                     statement.close();
                     connection.close();
-                }
-                catch (SQLException e) {
+                } catch (SQLException e)
+                {
                     e.printStackTrace();
                 }
             }
         }.runTaskAsynchronously(Main.getPlugin());
 
-        new BukkitRunnable() {
+        new BukkitRunnable()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 Location loc = player.getLocation();
                 loc.setY(loc.getY() + 1.8);
 
@@ -82,7 +91,8 @@ public class ConnectionListener implements Listener {
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent event) {
+    public void onQuit(PlayerQuitEvent event)
+    {
         event.setQuitMessage(null);
 
         User user = User.getByUUID(event.getPlayer().getUniqueId());

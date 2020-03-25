@@ -6,7 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public enum CustomItems {
+public enum CustomItems
+{
     BACKPACK(Material.IRON_NUGGET, 9001, "Backpack", 1, null),
     BIG_BACKPACK(Material.IRON_NUGGET, 9002, "Big Backpack", 1, null),
     ENDER_BACKPACK(Material.IRON_NUGGET, 9003, "Ender Backpack", 1, null),
@@ -156,23 +157,28 @@ public enum CustomItems {
     private int maxStack;
     private JsonObject data;
 
-    CustomItems(Material material, int customModelData, String title, int maxStack, JsonObject data) {
+    CustomItems(Material material, int customModelData, String title, int maxStack, JsonObject data)
+    {
         this.material = material;
         this.customModelData = customModelData;
         this.title = title;
         this.maxStack = maxStack
-;       this.data = data;
+        ;
+        this.data = data;
     }
 
-    public int getMaxStack() {
+    public int getMaxStack()
+    {
         return maxStack;
     }
 
-    public JsonObject getData() {
+    public JsonObject getData()
+    {
         return data;
     }
 
-    public static ItemStack getFromValue(CustomItems customItems) {
+    public static ItemStack getFromValue(CustomItems customItems)
+    {
         ItemStack item = new ItemStack(customItems.material);
         ItemMeta meta = item.getItemMeta();
 

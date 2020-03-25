@@ -8,43 +8,50 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Config {
+public class Config
+{
     private static String folder = "MineAndGlory";
 
-    public static YamlConfiguration getDatabaseConfig() {
-        try {
+    public static YamlConfiguration getDatabaseConfig()
+    {
+        try
+        {
             YamlConfiguration config = new YamlConfiguration();
 
             File configFile = new File("plugins/" + folder + "/", "database.yml");
-            if(!configFile.exists()) createDatabaseConfig();
+            if (!configFile.exists()) createDatabaseConfig();
 
             config.load(configFile);
 
             return config;
-        }
-        catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (InvalidConfigurationException e)
+        {
             e.printStackTrace();
         }
 
         return null;
     }
 
-    public static YamlConfiguration getRankConfig() {
-        try {
+    public static YamlConfiguration getRankConfig()
+    {
+        try
+        {
             YamlConfiguration config = new YamlConfiguration();
 
             File configFile = new File("plugins/" + folder + "/", "rank.yml");
-            if(!configFile.exists()) createRankConfig();
+            if (!configFile.exists()) createRankConfig();
 
             config.load(configFile);
 
             return config;
-        }
-        catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (InvalidConfigurationException e)
+        {
             e.printStackTrace();
         }
 
@@ -52,14 +59,17 @@ public class Config {
     }
 
 
-    private static void createConfigFolder() {
+    private static void createConfigFolder()
+    {
         File file = new File("plugins/" + folder);
 
-        if(!file.exists()) file.mkdirs();
+        if (!file.exists()) file.mkdirs();
     }
 
-    private static void createDatabaseConfig() {
-        try {
+    private static void createDatabaseConfig()
+    {
+        try
+        {
             YamlConfiguration config = new YamlConfiguration();
 
             File configFile = new File("plugins/" + folder + "/", "database.yml");
@@ -74,14 +84,16 @@ public class Config {
             config.set("password", "root");
 
             config.save(configFile);
-        }
-        catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
-    private static void createRankConfig() {
-        try {
+    private static void createRankConfig()
+    {
+        try
+        {
             YamlConfiguration config = new YamlConfiguration();
 
             File configFile = new File("plugins/" + folder + "/", "rank.yml");
@@ -124,8 +136,8 @@ public class Config {
             owner.set("place_in_tab", "1");
 
             config.save(configFile);
-        }
-        catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }

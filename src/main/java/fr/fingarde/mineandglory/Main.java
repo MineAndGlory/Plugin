@@ -13,12 +13,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin
+{
     private static Main plugin;
     private static ConsoleCommandSender console;
 
     @Override
-    public void onEnable() {
+    public void onEnable()
+    {
         super.onEnable();
         plugin = this;
         console = Bukkit.getConsoleSender();
@@ -27,7 +29,6 @@ public class Main extends JavaPlugin {
         Database.createTables();
 
         Rank.loadRanks();
-
 
         registerEvents();
         registerCommands();
@@ -38,12 +39,14 @@ public class Main extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable()
+    {
         super.onDisable();
         Database.getSource().close();
     }
 
-    public void registerEvents() {
+    public void registerEvents()
+    {
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
         getServer().getPluginManager().registerEvents(new PlayerBreakBlockByHandListener(), this);
@@ -55,16 +58,21 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MinerListener(), this);
     }
 
-    public void registerCommands() {
+    public void registerCommands()
+    {
         getCommand("cgive").setExecutor(new CGive());
     }
 
 
-    private void RestorePlayers() {
-        new BukkitRunnable() {
+    private void RestorePlayers()
+    {
+        new BukkitRunnable()
+        {
             @Override
-            public void run() {
-                for (Player player : Bukkit.getOnlinePlayers()) {
+            public void run()
+            {
+                for (Player player : Bukkit.getOnlinePlayers())
+                {
                     User user = new User(player.getUniqueId());
 
                     user.loadName();
@@ -81,11 +89,13 @@ public class Main extends JavaPlugin {
 
     // Getters
 
-    public static Main getPlugin() {
+    public static Main getPlugin()
+    {
         return plugin;
     }
 
-    public static ConsoleCommandSender getConsole() {
+    public static ConsoleCommandSender getConsole()
+    {
         return console;
     }
 }

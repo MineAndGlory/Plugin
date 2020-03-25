@@ -16,7 +16,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class User {
+public class User
+{
     public static ArrayList<User> users = new ArrayList<>();
 
     private UUID uuid;
@@ -34,19 +35,20 @@ public class User {
 
     private OfflinePlayer player;
 
-    public User(UUID uuid) {
+    public User(UUID uuid)
+    {
         this.uuid = uuid;
 
-        try {
-            Connection connection = Database.getSource().getConnection();
-            Statement statement = connection.createStatement();
+        try (Connection connection = Database.getSource().getConnection();
+             Statement statement = connection.createStatement();
 
-            ResultSet result = statement.executeQuery("SELECT pl_uuid, pl_rank, pl_prefix, pl_suffix, pl_nick, pl_money, pl_glory, tb_job.* " +
-                    "FROM tb_player, tb_job " +
-                    "WHERE jb_player = pl_uuid " +
-                    "AND pl_uuid = '" + uuid.toString() + "'");
+             ResultSet result = statement.executeQuery("SELECT pl_uuid, pl_rank, pl_prefix, pl_suffix, pl_nick, pl_money, pl_glory, tb_job.* " +
+                     "FROM tb_player, tb_job " +
+                     "WHERE jb_player = pl_uuid " +
+                     "AND pl_uuid = '" + uuid.toString() + "'"))
+        {
 
-            if(!result.next()) return;
+            if (!result.next()) return;
 
             rank = new Rank(result.getString("pl_rank"));
             jobs = new Job();
@@ -101,61 +103,66 @@ public class User {
             player = Bukkit.getOfflinePlayer(uuid);
 
             result.close();
-            statement.close();
-            connection.close();
-
-        }
-        catch (SQLException e) {
+        } catch (SQLException e)
+        {
             e.printStackTrace();
         }
     }
 
     // Getters and setters
 
-    public Rank getRank() {
+    public Rank getRank()
+    {
         return rank;
     }
 
-    public String getNickname() {
+    public String getNickname()
+    {
         return nickname;
     }
 
-    public String getPrefix() {
+    public String getPrefix()
+    {
         return prefix;
     }
 
-    public String getSuffix() {
+    public String getSuffix()
+    {
         return suffix;
     }
 
-    public OfflinePlayer getPlayer() {
+    public OfflinePlayer getPlayer()
+    {
         return player;
     }
 
-    public UUID getUUID() {
+    public UUID getUUID()
+    {
         return uuid;
     }
 
-    public Job getJobs() {
+    public Job getJobs()
+    {
         return jobs;
     }
 
     // Functions
 
-    public void loadName() {
+    public void loadName()
+    {
         String nameNickname = player.getName();
         String namePrefix = "", nameSuffix = "";
 
-        if(rank.getPrefix() != null) namePrefix = rank.getPrefix();
-        if(rank.getSuffix() != null) nameSuffix = rank.getSuffix();
+        if (rank.getPrefix() != null) namePrefix = rank.getPrefix();
+        if (rank.getSuffix() != null) nameSuffix = rank.getSuffix();
 
-        if(prefix != null) namePrefix = prefix;
-        if(suffix != null) nameSuffix = suffix;
+        if (prefix != null) namePrefix = prefix;
+        if (suffix != null) nameSuffix = suffix;
 
-        if(nickname != null) nameNickname = nickname;
+        if (nickname != null) nameNickname = nickname;
 
-        if(namePrefix != "") namePrefix = namePrefix + " ";
-        if(nameSuffix != "") nameSuffix = " " + nameSuffix;
+        if (namePrefix != "") namePrefix = namePrefix + " ";
+        if (nameSuffix != "") nameSuffix = " " + nameSuffix;
 
         ((Player) player).setDisplayName(namePrefix + nameNickname + nameSuffix);
         ((Player) player).setPlayerListName(((Player) player).getDisplayName());
@@ -163,31 +170,39 @@ public class User {
         try
         {
             Bukkit.getScoreboardManager().getMainScoreboard().registerNewTeam(rank.getTeamName());
+        } catch (IllegalArgumentException e)
+        {
         }
-        catch (IllegalArgumentException e) { }
 
         Team team = Bukkit.getScoreboardManager().getMainScoreboard().getTeam(rank.getTeamName());
         team.addEntry(((Player) player).getName());
     }
 
-    public void loadPermissions() {
-        if (rank.getPermissions() != null) {
+    public void loadPermissions()
+    {
+        if (rank.getPermissions() != null)
+        {
             PermissionAttachment attachment = ((Player) player).addAttachment(Main.getPlugin());
 
-            for (String permission : rank.getPermissions()) {
-                if (permission.startsWith("-")) {
+            for (String permission : rank.getPermissions())
+            {
+                if (permission.startsWith("-"))
+                {
                     permission = permission.substring(1);
                     attachment.setPermission(permission, false);
-                } else {
+                } else
+                {
                     attachment.setPermission(permission, true);
                 }
             }
         }
     }
 
-    public static User getByUUID(UUID uuid) {
-        for(User user : users) {
-            if(user.uuid == uuid) return user;
+    public static User getByUUID(UUID uuid)
+    {
+        for (User user : users)
+        {
+            if (user.uuid == uuid) return user;
         }
 
         return null;

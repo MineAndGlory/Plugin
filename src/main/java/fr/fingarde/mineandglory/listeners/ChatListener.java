@@ -9,9 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class ChatListener implements Listener {
+public class ChatListener implements Listener
+{
     @EventHandler
-    public void onChat(AsyncPlayerChatEvent event) {
+    public void onChat(AsyncPlayerChatEvent event)
+    {
         Player player = event.getPlayer();
 
         event.setCancelled(true);
@@ -22,9 +24,12 @@ public class ChatListener implements Listener {
 
         message = ((user.getRank().getChatColor() == null) ? "§r" : user.getRank().getChatColor()) + message;
 
-        if(player.hasPermission("chat.mention.user")) {
-            for (Player players : Bukkit.getOnlinePlayers()) {
-                if (message.toLowerCase().contains(players.getName().toLowerCase())) {
+        if (player.hasPermission("chat.mention.user"))
+        {
+            for (Player players : Bukkit.getOnlinePlayers())
+            {
+                if (message.toLowerCase().contains(players.getName().toLowerCase()))
+                {
                     String color = ChatColor.getLastColors(message.substring(0, message.toLowerCase().lastIndexOf(players.getName().toLowerCase())));
                     int start = message.toLowerCase().indexOf(players.getName().toLowerCase());
 

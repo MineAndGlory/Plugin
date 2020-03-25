@@ -9,17 +9,20 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class MinerListener implements Listener {
+public class MinerListener implements Listener
+{
     @EventHandler
-    public void onBreak(BlockBreakEvent event) {
-        if(event.isCancelled()) return;
+    public void onBreak(BlockBreakEvent event)
+    {
+        if (event.isCancelled()) return;
         Miner miner = Miner.getMiner("BREAK_" + event.getBlock().getType());
 
-        if(miner == null) return;
+        if (miner == null) return;
 
         User user = User.getByUUID(event.getPlayer().getUniqueId());
 
-        if(user.getJobs().getMinerLvl() < miner.getMinLvl()) {
+        if (user.getJobs().getMinerLvl() < miner.getMinLvl())
+        {
             event.getPlayer().sendMessage("§cIl vous faut etre niveau " + miner.getMinLvl() + " mineur pour casser ce bloc");
             event.setCancelled(true);
 
@@ -36,7 +39,8 @@ public class MinerListener implements Listener {
         int xpTotalForNextLvl = Job.getTotalXpForNextLvl(currentLvl + 1);
 
         Bukkit.broadcastMessage(newExp + "/" + xpTotalForNextLvl);
-        if(newExp >= xpTotalForNextLvl) {
+        if (newExp >= xpTotalForNextLvl)
+        {
             user.getJobs().setMinerLvl(currentLvl + 1);
             Bukkit.broadcastMessage("§eYou leveled up to lvl " + user.getJobs().getMinerLvl());
 

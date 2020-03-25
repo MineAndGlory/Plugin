@@ -8,13 +8,16 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class BlockPathListener implements Listener {
+public class BlockPathListener implements Listener
+{
 
     @EventHandler
-    public void onMove(PlayerMoveEvent event) {
-        if (event.getPlayer().getLocation().getBlock().getType() == Material.GRASS_PATH) {
+    public void onMove(PlayerMoveEvent event)
+    {
+        if (event.getPlayer().getLocation().getBlock().getType() == Material.GRASS_PATH)
+        {
             event.getPlayer().removePotionEffect(PotionEffectType.SPEED);
-            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, 1,true,false ,false));
+            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 100, 1, true, false, false));
         }
     }
 

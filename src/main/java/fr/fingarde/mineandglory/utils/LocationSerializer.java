@@ -3,7 +3,8 @@ package fr.fingarde.mineandglory.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
-public class LocationSerializer {
+public class LocationSerializer
+{
     public static String serializeCentered(Location location)
     {
         String value = location.getWorld().getName() + " " + (location.getBlockX() + 0.5) + " " + location.getBlockY() + " " + (location.getBlockZ() + 0.5);
@@ -32,9 +33,9 @@ public class LocationSerializer {
     {
         String[] values = string.split(" ");
 
-        if(values.length < 4 || values.length > 6) return null;
+        if (values.length < 4 || values.length > 6) return null;
 
-        Location loc = new Location(Bukkit.getWorld(values[0]), Double.valueOf(values[1]), Double.valueOf(values[2]), Double.valueOf(values[3]), (values.length < 5) ? 0 : Float.valueOf(values[4]) ,  (values.length < 6) ? 0 : Float.valueOf(values[5]));
+        Location loc = new Location(Bukkit.getWorld(values[0]), Double.valueOf(values[1]), Double.valueOf(values[2]), Double.valueOf(values[3]), (values.length < 5) ? 0 : Float.valueOf(values[4]), (values.length < 6) ? 0 : Float.valueOf(values[5]));
         return loc;
     }
 }
