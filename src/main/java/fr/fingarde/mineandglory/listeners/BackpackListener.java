@@ -57,6 +57,7 @@ public class BackpackListener implements Listener
         {
             Bukkit.broadcastMessage("Create");
 
+            bagUUID = UUID.randomUUID();
             try (Connection connection = Database.getSource().getConnection();
                  Statement statement = connection.createStatement())
             {
