@@ -31,7 +31,6 @@ public class BackpackListener implements Listener
         if (event.getHand() != EquipmentSlot.HAND) return;
 
         Bukkit.broadcastMessage("2");
-        if (event.getClickedBlock() == null) return;
         Bukkit.broadcastMessage("3");
         if (event.getAction() != Action.RIGHT_CLICK_AIR) return;
         Bukkit.broadcastMessage("4");
