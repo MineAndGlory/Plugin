@@ -26,15 +26,19 @@ public class BackpackListener implements Listener
     {
         Player player = event.getPlayer();
 
+        Bukkit.broadcastMessage("1");
         if (event.getHand() != EquipmentSlot.HAND) return;
 
+        Bukkit.broadcastMessage("2");
         if (event.getClickedBlock() == null) return;
+        Bukkit.broadcastMessage("3");
         if (event.getAction() != Action.RIGHT_CLICK_AIR) return;
-
+        Bukkit.broadcastMessage("4");
         if (event.getItem() == null) return;
-
+        Bukkit.broadcastMessage("5");
         if (event.getItem().getType() != Material.IRON_NUGGET) return;
 
+        Bukkit.broadcastMessage("6");
         ItemMeta meta = event.getItem().getItemMeta();
         if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
 
