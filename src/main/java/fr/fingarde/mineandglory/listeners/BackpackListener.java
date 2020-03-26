@@ -42,7 +42,7 @@ public class BackpackListener implements Listener
         ItemMeta meta = event.getItem().getItemMeta();
         if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
 
-
+        Bukkit.broadcastMessage("7");
         UUID bagUUID = null;
         for(String lore : meta.getLore()) {
             if(lore.replaceAll("§", "").startsWith("eID: ")) {
