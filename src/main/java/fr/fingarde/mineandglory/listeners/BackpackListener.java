@@ -44,12 +44,15 @@ public class BackpackListener implements Listener
 
         Bukkit.broadcastMessage("7");
         UUID bagUUID = null;
-        for(String lore : meta.getLore()) {
-            if(lore.replaceAll("§", "").startsWith("eID: ")) {
-                bagUUID = UUID.fromString(lore.split(" ")[1]);
+        if(meta.getLore() != null)
+        {
+            for(String lore : meta.getLore()) {
+                if(lore.replaceAll("§", "").startsWith("eID: ")) {
+                    bagUUID = UUID.fromString(lore.split(" ")[1]);
+                }
             }
         }
-
+        Bukkit.broadcastMessage("8");
         if(bagUUID == null)
         {
             Bukkit.broadcastMessage("Create");
