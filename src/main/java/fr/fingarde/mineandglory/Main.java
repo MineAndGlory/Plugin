@@ -56,6 +56,7 @@ public class Main extends JavaPlugin
         getServer().getPluginManager().registerEvents(new BlockPathListener(), this);
 
         getServer().getPluginManager().registerEvents(new MinerListener(), this);
+        getServer().getPluginManager().registerEvents(new BackpackListener(), this);
     }
 
     public void registerCommands()

@@ -53,7 +53,6 @@ public class User
             rank = new Rank(result.getString("pl_rank"));
             jobs = new Job();
 
-
             prefix = result.getString("pl_prefix");
             suffix = result.getString("pl_suffix");
             nickname = result.getString("pl_nick");

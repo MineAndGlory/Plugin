@@ -131,6 +131,13 @@ public class Database
                             "CONSTRAINT fk_tb_job FOREIGN KEY(jb_player) REFERENCES tb_player(pl_uuid)" +
                             ");");
 
+            statement.executeUpdate(
+                    "CREATE TABLE IF NOT EXISTS tb_backpack(" +
+                            "bp_id VARCHAR(36) NOT NULL PRIMARY KEY," +
+                            "bp_size NUMERIC(2)," +
+                            "bp_item TEXT" +
+                            ");");
+
 
 
             /* NOT USED
