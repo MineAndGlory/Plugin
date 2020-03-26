@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -65,8 +66,9 @@ public class BackpackListener implements Listener
                 statement.executeUpdate("INSERT INTO tb_backpack(bp_id, bp_size) VALUES('" + bagUUID.toString() + "', '" + size + "')");
 
                 List<String> lore = event.getItem().getItemMeta().getLore();
-                lore.add("§eID: " + bagUUID.toString());
+                if(lore == null) lore = new ArrayList<>();
 
+                lore.add("§eID: " + bagUUID.toString());
                 meta.setLore(lore);
                 event.getItem().setItemMeta(meta);
             } catch (SQLException e)
