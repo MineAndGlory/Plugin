@@ -76,6 +76,15 @@ public class BackpackListener implements Listener
                 e.printStackTrace();
             }
 
+            try (Connection connection = Database.getSource().getConnection();
+                 Statement statement = connection.createStatement();
+                 ResultSet result = statement.executeQuery("") )
+            {
+
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
         } else
         {
             Bukkit.broadcastMessage("is ok");
