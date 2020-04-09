@@ -30,6 +30,8 @@ public enum Miner
 
     public static Miner getMiner(String value)
     {
+        // >HEIN ?
+        // Miner.valueOf(value) ???
         for (Miner miner : Miner.values())
         {
             if (miner.name().equals(value))
