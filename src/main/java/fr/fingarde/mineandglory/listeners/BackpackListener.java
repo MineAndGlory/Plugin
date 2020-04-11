@@ -100,7 +100,7 @@ public class BackpackListener implements Listener
 
         if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;
         if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() != Material.IRON_NUGGET) return;
-        if (!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
+        if(!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
 
         event.setCancelled(true);
     }
@@ -110,7 +110,10 @@ public class BackpackListener implements Listener
         if(event.getCurrentItem() == null) return;
         if(!event.getView().getTitle().startsWith("Backpack")) return;
 
-        if(event.getCurrentItem().getType() == Material.IRON_NUGGET) event.setCancelled(true);
+        if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
+        if(!event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
+
+        event.setCancelled(true);
     }
 
     @EventHandler
