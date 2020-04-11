@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -52,8 +53,9 @@ public class EnderChestListener implements Listener
             e.printStackTrace();
         }
     }
+
     @EventHandler
-    public void onClick(PlayerInteractEvent event)
+    public void onClickAir(PlayerInteractEvent event)
     {
         Player player = event.getPlayer();
 
@@ -76,6 +78,10 @@ public class EnderChestListener implements Listener
 
             if(result.getString("ec_items") != null) {
                 inv.setContents(ItemSerializer.deserializeArray(result.getString("ec_items")));
+            }
+
+            for(int i = result.getInt("ec_size") - 1; i < 36; i++) {
+                inv.setItem(i, new ItemStack(Material.BARRIER));
             }
 
             player.openInventory(inv);
@@ -101,4 +107,15 @@ public class EnderChestListener implements Listener
             e.printStackTrace();
         }
     }
+
+    @EventHandler
+    public void onClick(InventoryClickEvent event) {
+        if(!event.getView().getTitle().equals("Enderchest")) return;
+
+        if(event.getCurrentItem() == null) return;
+        if(event.getCurrentItem().getType() != Material.BARRIER) return;
+
+        event.setCancelled(true);
+    }
+
 }
