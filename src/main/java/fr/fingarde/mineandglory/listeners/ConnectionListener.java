@@ -24,7 +24,7 @@ public class ConnectionListener implements Listener
     @EventHandler
     public void onJoin(PlayerJoinEvent event)
     {
-        event.setJoinMessage("Salut connard");
+        event.setJoinMessage(null);
 
 
         Player player = event.getPlayer();
