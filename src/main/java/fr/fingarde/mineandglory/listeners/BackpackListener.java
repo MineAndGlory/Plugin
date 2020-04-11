@@ -1,6 +1,7 @@
 package fr.fingarde.mineandglory.listeners;
 
 import fr.fingarde.mineandglory.items.CustomItems;
+import fr.fingarde.mineandglory.utils.ColorUtils;
 import fr.fingarde.mineandglory.utils.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -42,16 +43,17 @@ public class BackpackListener implements Listener
         if(meta.getLore() != null)
         {
             for(String lore : meta.getLore()) {
-                if(lore.replaceAll("§", "").startsWith("eID: ")) {
+                if(ColorUtils.removeColor(lore).startsWith("ID: ")) {
+                    Bukkit.broadcastMessage(lore.split(" ")[1]);
                     bagUUID = UUID.fromString(lore.split(" ")[1]);
+
+
                 }
             }
         }
 
         if(bagUUID == null)
         {
-            Bukkit.broadcastMessage("Create");
-
             bagUUID = UUID.randomUUID();
             try (Connection connection = Database.getSource().getConnection();
                  Statement statement = connection.createStatement())
@@ -71,6 +73,7 @@ public class BackpackListener implements Listener
             }
         }
 
+        Bukkit.broadcastMessage("bag oppened");
         try (Connection connection = Database.getSource().getConnection();
              Statement statement = connection.createStatement();
              ResultSet result = statement.executeQuery("") )
