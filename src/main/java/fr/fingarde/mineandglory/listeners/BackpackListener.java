@@ -28,22 +28,16 @@ public class BackpackListener implements Listener
     {
         Player player = event.getPlayer();
 
-        Bukkit.broadcastMessage("1");
         if (event.getHand() != EquipmentSlot.HAND) return;
 
-        Bukkit.broadcastMessage("2");
-        Bukkit.broadcastMessage("3");
         if (event.getAction() != Action.RIGHT_CLICK_AIR) return;
-        Bukkit.broadcastMessage("4");
         if (event.getItem() == null) return;
-        Bukkit.broadcastMessage("5");
+
         if (event.getItem().getType() != Material.IRON_NUGGET) return;
 
-        Bukkit.broadcastMessage("6");
         ItemMeta meta = event.getItem().getItemMeta();
         if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
 
-        Bukkit.broadcastMessage("7");
         UUID bagUUID = null;
         if(meta.getLore() != null)
         {
@@ -53,7 +47,7 @@ public class BackpackListener implements Listener
                 }
             }
         }
-        Bukkit.broadcastMessage("8");
+
         if(bagUUID == null)
         {
             Bukkit.broadcastMessage("Create");
@@ -66,7 +60,7 @@ public class BackpackListener implements Listener
                 statement.executeUpdate("INSERT INTO tb_backpack(bp_id, bp_size) VALUES('" + bagUUID.toString() + "', '" + size + "')");
 
                 List<String> lore = event.getItem().getItemMeta().getLore();
-                if(lore == null) lore = new ArrayList<>();
+                if (lore == null) lore = new ArrayList<>();
 
                 lore.add("§eID: " + bagUUID.toString());
                 meta.setLore(lore);
@@ -75,19 +69,17 @@ public class BackpackListener implements Listener
             {
                 e.printStackTrace();
             }
-
-            try (Connection connection = Database.getSource().getConnection();
-                 Statement statement = connection.createStatement();
-                 ResultSet result = statement.executeQuery("") )
-            {
-
-            } catch (SQLException e)
-            {
-                e.printStackTrace();
-            }
-        } else
-        {
-            Bukkit.broadcastMessage("is ok");
         }
+
+        try (Connection connection = Database.getSource().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet result = statement.executeQuery("") )
+        {
+            Bukkit.broadcastMessage("bag oppened");
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }
