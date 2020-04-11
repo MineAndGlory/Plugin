@@ -95,7 +95,7 @@ public class BackpackListener implements Listener
 
     @EventHandler
     public void onClickInvetory(InventoryClickEvent event) {
-        if(!event.getView().getTitle().startsWith("Backpack")) return;
+        if(!event.getView().getTitle().startsWith("Backpack") && !event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
         if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
 
         event.setCancelled(true);
