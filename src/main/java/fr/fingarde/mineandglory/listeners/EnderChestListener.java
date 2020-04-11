@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -42,7 +43,7 @@ public class EnderChestListener implements Listener
             }
 
             for(int i = result.getInt("ec_size") - 1; i < 36; i++) {
-                inv.getItem(i).setType(Material.BARRIER);
+                inv.setItem(i, new ItemStack(Material.BARRIER));
             }
 
             event.getPlayer().openInventory(inv);
