@@ -5,6 +5,7 @@ import fr.fingarde.mineandglory.utils.ColorUtils;
 import fr.fingarde.mineandglory.utils.Database;
 import fr.fingarde.mineandglory.utils.ItemSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -95,7 +96,7 @@ public class BackpackListener implements Listener
     @EventHandler
     public void onClose(InventoryCloseEvent event) {
         if(!event.getView().getTitle().startsWith("Backpack")) return;
-        UUID bagUUID = UUID.fromString(event.getView().getTitle().split(" ")[1]);
+        UUID bagUUID = UUID.fromString(ColorUtils.unhideChars(event.getView().getTitle().split(" ")[1]));
 
         try (Connection connection = Database.getSource().getConnection();
              Statement statement = connection.createStatement()
