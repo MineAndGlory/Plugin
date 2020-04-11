@@ -41,6 +41,10 @@ public class EnderChestListener implements Listener
                 inv.setContents(ItemSerializer.deserializeArray(result.getString("ec_items")));
             }
 
+            for(int i = result.getInt("ec_size") - 1; i < 36; i++) {
+                inv.getItem(i).setType(Material.BARRIER);
+            }
+
             event.getPlayer().openInventory(inv);
         } catch (SQLException e)
         {
@@ -88,6 +92,7 @@ public class EnderChestListener implements Listener
              Statement statement = connection.createStatement()
         )
         {
+            event.getInventory().remove(Material.BARRIER);
             statement.executeUpdate("UPDATE tb_enderchest SET ec_items = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE ec_player = '" + event.getPlayer().getUniqueId().toString() + "'");
         }
         catch (SQLException e)
