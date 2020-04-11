@@ -96,7 +96,7 @@ public class BackpackListener implements Listener
     }
 
     //@EventHandler
-    public void onClickInvetory(InventoryClickEvent event) {
+    /*public void onClickInvetory(InventoryClickEvent event) {
         if(!event.getView().getTitle().startsWith("Backpack")) return;
 
         if(event.getCurrentItem() == null)  {
@@ -111,7 +111,7 @@ public class BackpackListener implements Listener
         }
        // if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
 
-    }
+    }*/
 
     @EventHandler
     public void onMove(InventoryMoveItemEvent event) {
