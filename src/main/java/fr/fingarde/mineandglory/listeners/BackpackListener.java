@@ -120,7 +120,7 @@ public class BackpackListener implements Listener
              Statement statement = connection.createStatement()
         )
         {
-            statement.executeUpdate("UPDATE tb_backpack SET bp_item = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE bp_id = '" + bagUUID + "'" );
+            statement.executeUpdate("UPDATE tb_backpack SET bp_item = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE bp_id = '" + bagUUID + "'");
         }
         catch (SQLException e)
         {
