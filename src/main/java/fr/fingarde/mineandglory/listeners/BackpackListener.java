@@ -111,9 +111,9 @@ public class BackpackListener implements Listener
     }*/
 
     @EventHandler
-    public void onMove(InventoryDragEvent event) {
-        Bukkit.broadcastMessage("oui");
-        if(event.getOldCursor().getType() == Material.IRON_NUGGET) event.setCancelled(true);
+    public void onClickNumber(InventoryClickEvent event) {
+        if(event.getClick() != ClickType.NUMBER_KEY) return;
+        if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() == Material.IRON_NUGGET) event.setCancelled(true);
     }
 
     @EventHandler
