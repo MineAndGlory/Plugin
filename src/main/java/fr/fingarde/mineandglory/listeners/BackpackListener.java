@@ -102,7 +102,8 @@ public class BackpackListener implements Listener
             Bukkit.broadcastMessage("null");
         }
 
-        if(event.getCursor() == null) {
+        if(event.getCursor().getType() == Material.IRON_NUGGET) {
+            event.setCancelled(true);
             Bukkit.broadcastMessage("boubou");
         }
        // if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
