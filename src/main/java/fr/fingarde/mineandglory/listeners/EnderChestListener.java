@@ -1,7 +1,6 @@
 package fr.fingarde.mineandglory.listeners;
 
 import fr.fingarde.mineandglory.items.CustomItems;
-import fr.fingarde.mineandglory.utils.ColorUtils;
 import fr.fingarde.mineandglory.utils.Database;
 import fr.fingarde.mineandglory.utils.ItemSerializer;
 import org.bukkit.Bukkit;
@@ -14,16 +13,40 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.UUID;
 
 public class EnderChestListener implements Listener
 {
+
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+
+        if(event.getClickedBlock().getType() != Material.ENDER_CHEST) return;
+
+        event.setCancelled(true);
+        try (Connection connection = Database.getSource().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet result = statement.executeQuery("SELECT * FROM tb_enderchest WHERE ec_player = '" + event.getPlayer().getUniqueId().toString() + "'"))
+        {
+            result.next();
+
+            Inventory inv = Bukkit.createInventory(null, 36, "Enderchest");
+
+            if(result.getString("ec_items") != null) {
+                inv.setContents(ItemSerializer.deserializeArray(result.getString("ec_items")));
+            }
+
+            event.getPlayer().openInventory(inv);
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
     @EventHandler
     public void onClick(PlayerInteractEvent event)
     {
@@ -36,7 +59,6 @@ public class EnderChestListener implements Listener
 
         if (event.getItem().getType() != Material.IRON_NUGGET) return;
 
-        ItemMeta meta = event.getItem().getItemMeta();
         if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.ENDER_BACKPACK.name())) return;
 
         try (Connection connection = Database.getSource().getConnection();
