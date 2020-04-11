@@ -13,6 +13,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
@@ -94,9 +95,9 @@ public class BackpackListener implements Listener
         }
     }
 
-    @EventHandler
+    //@EventHandler
     public void onClickInvetory(InventoryClickEvent event) {
-        if(!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
+        if(!event.getView().getTitle().startsWith("Backpack")) return;
 
         if(event.getCurrentItem() == null)  {
             event.setCancelled(true);
@@ -110,6 +111,11 @@ public class BackpackListener implements Listener
         }
        // if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
 
+    }
+
+    @EventHandler
+    public void onMove(InventoryMoveItemEvent event) {
+        if(event.getItem().getType() == Material.IRON_NUGGET) event.setCancelled(true);
     }
 
     @EventHandler
