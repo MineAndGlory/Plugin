@@ -113,11 +113,13 @@ public class BackpackListener implements Listener
     @EventHandler
     public void onClickNumber(InventoryClickEvent event) {
         if(event.getClick() != ClickType.NUMBER_KEY) return;
+        if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;
         if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() == Material.IRON_NUGGET) event.setCancelled(true);
     }
 
     @EventHandler
     public void onClickNumberCancel(InventoryClickEvent event) {
+        if(event.getCurrentItem() == null) return;
         if(event.getCurrentItem().getType() == Material.IRON_NUGGET) event.setCancelled(true);
     }
 
