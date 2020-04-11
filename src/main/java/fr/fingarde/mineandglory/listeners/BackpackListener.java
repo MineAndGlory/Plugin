@@ -43,6 +43,7 @@ public class BackpackListener implements Listener
         if(meta.getLore() != null)
         {
             for(String lore : meta.getLore()) {
+                Bukkit.broadcastMessage(ColorUtils.removeColor(lore));
                 if(ColorUtils.removeColor(lore).startsWith("ID: ")) {
                     Bukkit.broadcastMessage(lore.split(" ")[1]);
                     bagUUID = UUID.fromString(lore.split(" ")[1]);
