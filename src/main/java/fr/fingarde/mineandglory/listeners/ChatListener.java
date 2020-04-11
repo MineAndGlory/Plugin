@@ -1,6 +1,8 @@
 package fr.fingarde.mineandglory.listeners;
 
 import fr.fingarde.mineandglory.objects.User;
+import fr.fingarde.mineandglory.utils.ColorUtils;
+import org.apache.commons.lang.CharUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -20,7 +22,7 @@ public class ChatListener implements Listener
 
         User user = User.getByUUID(player.getUniqueId());
 
-        String message = event.getMessage().replaceAll("&", "§");
+        String message = ColorUtils.encodeAmperstamp(event.getMessage());
 
         message = ((user.getRank().getChatColor() == null) ? "§r" : user.getRank().getChatColor()) + message;
 
