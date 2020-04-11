@@ -5,12 +5,12 @@ import fr.fingarde.mineandglory.utils.ColorUtils;
 import fr.fingarde.mineandglory.utils.Database;
 import fr.fingarde.mineandglory.utils.ItemSerializer;
 import org.bukkit.Bukkit;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -28,7 +28,7 @@ import java.util.UUID;
 public class BackpackListener implements Listener
 {
     @EventHandler
-    public void onClickWithRock(PlayerInteractEvent event)
+    public void onClick(PlayerInteractEvent event)
     {
         Player player = event.getPlayer();
 
@@ -91,6 +91,14 @@ public class BackpackListener implements Listener
         {
             e.printStackTrace();
         }
+    }
+
+    @EventHandler
+    public void onClickInvetory(InventoryClickEvent event) {
+        if(!event.getView().getTitle().startsWith("Backpack")) return;
+        if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
+
+        event.setCancelled(true);
     }
 
     @EventHandler
