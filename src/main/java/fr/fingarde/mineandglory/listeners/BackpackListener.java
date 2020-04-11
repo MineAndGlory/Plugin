@@ -80,7 +80,10 @@ public class BackpackListener implements Listener
             result.next();
 
             Inventory inv = Bukkit.createInventory(null, result.getInt("bp_size"), "Backpack " + ColorUtils.hideChars(bagUUID.toString()));
-            inv.setContents(ItemSerializer.deserializeArray(result.getString("bp_item")));
+
+            if(result.getString("bp_item") != null) {
+                inv.setContents(ItemSerializer.deserializeArray(result.getString("bp_item")));
+            }
 
             player.openInventory(inv);
         } catch (SQLException e)
