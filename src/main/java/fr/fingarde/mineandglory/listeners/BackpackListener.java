@@ -40,20 +40,23 @@ public class BackpackListener implements Listener
         if (event.getItem().getType() != Material.IRON_NUGGET) return;
 
         ItemMeta meta = event.getItem().getItemMeta();
-        if (!meta.getLocalizedName().equals(CustomItems.BACKPACK.name()) && !meta.getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
+        if (!meta.getLocalizedName().equals(CustomItems.BACKPACK.name()) && !meta.getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
+            return;
 
         UUID bagUUID = null;
-        if(meta.getLore() != null)
+        if (meta.getLore() != null)
         {
-            for(String lore : meta.getLore()) {
-                if(ColorUtils.removeColor(lore).startsWith("ID: ")) {
+            for (String lore : meta.getLore())
+            {
+                if (ColorUtils.removeColor(lore).startsWith("ID: "))
+                {
                     bagUUID = UUID.fromString(lore.split(" ")[1]);
                     break;
                 }
             }
         }
 
-        if(bagUUID == null)
+        if (bagUUID == null)
         {
             bagUUID = UUID.randomUUID();
             try (Connection connection = Database.getSource().getConnection();
@@ -82,7 +85,8 @@ public class BackpackListener implements Listener
 
             Inventory inv = Bukkit.createInventory(null, result.getInt("bp_size"), "Backpack " + ColorUtils.hideChars(bagUUID.toString()));
 
-            if(result.getString("bp_items") != null) {
+            if (result.getString("bp_items") != null)
+            {
                 inv.setContents(ItemSerializer.deserializeArray(result.getString("bp_items")));
             }
 
@@ -94,31 +98,37 @@ public class BackpackListener implements Listener
     }
 
     @EventHandler
-    public void onClickNumber(InventoryClickEvent event) {
-        if(event.getClick() != ClickType.NUMBER_KEY) return;
-        if(!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
+    public void onClickNumber(InventoryClickEvent event)
+    {
+        if (event.getClick() != ClickType.NUMBER_KEY) return;
+        if (!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
 
-        if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;
-        if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() != Material.IRON_NUGGET) return;
-        if(!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
-
-        event.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onClickNumberCancel(InventoryClickEvent event) {
-        if(event.getCurrentItem() == null) return;
-        if(!event.getView().getTitle().startsWith("Backpack")) return;
-
-        if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
-        if(!event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
+        if (event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;
+        if (event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() != Material.IRON_NUGGET)
+            return;
+        if (!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
+            return;
 
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void onClose(InventoryCloseEvent event) {
-        if(!event.getView().getTitle().startsWith("Backpack")) return;
+    public void onClickNumberCancel(InventoryClickEvent event)
+    {
+        if (event.getCurrentItem() == null) return;
+        if (!event.getView().getTitle().startsWith("Backpack")) return;
+
+        if (event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
+        if (!event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
+            return;
+
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onClose(InventoryCloseEvent event)
+    {
+        if (!event.getView().getTitle().startsWith("Backpack")) return;
         UUID bagUUID = UUID.fromString(ColorUtils.unhideChars(event.getView().getTitle().split(" ")[1]));
 
         try (Connection connection = Database.getSource().getConnection();
@@ -126,8 +136,7 @@ public class BackpackListener implements Listener
         )
         {
             statement.executeUpdate("UPDATE tb_backpack SET bp_items = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE bp_id = '" + bagUUID + "'");
-        }
-        catch (SQLException e)
+        } catch (SQLException e)
         {
             e.printStackTrace();
         }

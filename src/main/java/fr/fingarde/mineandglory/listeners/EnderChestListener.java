@@ -23,12 +23,12 @@ import java.sql.Statement;
 
 public class EnderChestListener implements Listener
 {
-
     @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
-        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+    public void onInteract(PlayerInteractEvent event)
+    {
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
-        if(event.getClickedBlock().getType() != Material.ENDER_CHEST) return;
+        if (event.getClickedBlock().getType() != Material.ENDER_CHEST) return;
 
         event.setCancelled(true);
         try (Connection connection = Database.getSource().getConnection();
@@ -39,11 +39,13 @@ public class EnderChestListener implements Listener
 
             Inventory inv = Bukkit.createInventory(null, 36, "Enderchest");
 
-            if(result.getString("ec_items") != null) {
+            if (result.getString("ec_items") != null)
+            {
                 inv.setContents(ItemSerializer.deserializeArray(result.getString("ec_items")));
             }
 
-            for(int i = result.getInt("ec_size"); i < 36; i++) {
+            for (int i = result.getInt("ec_size"); i < 36; i++)
+            {
                 inv.setItem(i, new ItemStack(Material.BARRIER));
             }
 
@@ -76,11 +78,13 @@ public class EnderChestListener implements Listener
 
             Inventory inv = Bukkit.createInventory(null, 36, "Enderchest");
 
-            if(result.getString("ec_items") != null) {
+            if (result.getString("ec_items") != null)
+            {
                 inv.setContents(ItemSerializer.deserializeArray(result.getString("ec_items")));
             }
 
-            for(int i = result.getInt("ec_size"); i < 36; i++) {
+            for (int i = result.getInt("ec_size"); i < 36; i++)
+            {
                 inv.setItem(i, new ItemStack(Material.BARRIER));
             }
 
@@ -92,8 +96,9 @@ public class EnderChestListener implements Listener
     }
 
     @EventHandler
-    public void onClose(InventoryCloseEvent event) {
-        if(!event.getView().getTitle().startsWith("Enderchest")) return;
+    public void onClose(InventoryCloseEvent event)
+    {
+        if (!event.getView().getTitle().startsWith("Enderchest")) return;
 
         try (Connection connection = Database.getSource().getConnection();
              Statement statement = connection.createStatement()
@@ -101,19 +106,19 @@ public class EnderChestListener implements Listener
         {
             event.getInventory().remove(Material.BARRIER);
             statement.executeUpdate("UPDATE tb_enderchest SET ec_items = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE ec_player = '" + event.getPlayer().getUniqueId().toString() + "'");
-        }
-        catch (SQLException e)
+        } catch (SQLException e)
         {
             e.printStackTrace();
         }
     }
 
     @EventHandler
-    public void onClick(InventoryClickEvent event) {
-        if(!event.getView().getTitle().equals("Enderchest")) return;
+    public void onClick(InventoryClickEvent event)
+    {
+        if (!event.getView().getTitle().equals("Enderchest")) return;
 
-        if(event.getCurrentItem() == null) return;
-        if(event.getCurrentItem().getType() != Material.BARRIER) return;
+        if (event.getCurrentItem() == null) return;
+        if (event.getCurrentItem().getType() != Material.BARRIER) return;
 
         event.setCancelled(true);
     }
