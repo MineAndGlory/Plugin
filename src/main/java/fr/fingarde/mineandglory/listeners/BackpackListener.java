@@ -74,7 +74,7 @@ public class BackpackListener implements Listener
 
         try (Connection connection = Database.getSource().getConnection();
              Statement statement = connection.createStatement();
-             ResultSet result = statement.executeQuery("SELECT bp_size FROM tb_backpack WHERE bp_id = " + bagUUID.toString()) )
+             ResultSet result = statement.executeQuery("SELECT bp_size FROM tb_backpack WHERE bp_id = '" + bagUUID.toString() + "'"))
         {
             Inventory inv = Bukkit.createInventory(null, result.getInt("bp_size"));
             player.openInventory(inv);
