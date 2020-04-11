@@ -40,7 +40,7 @@ public class BackpackListener implements Listener
         if (event.getItem().getType() != Material.IRON_NUGGET) return;
 
         ItemMeta meta = event.getItem().getItemMeta();
-        if (!meta.getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
+        if (!meta.getLocalizedName().equals(CustomItems.BACKPACK.name()) && !meta.getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
 
         UUID bagUUID = null;
         if(meta.getLore() != null)
@@ -99,7 +99,10 @@ public class BackpackListener implements Listener
         if(!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
 
         if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;
-        if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() == Material.IRON_NUGGET) event.setCancelled(true);
+        if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() != Material.IRON_NUGGET) return;
+        if (!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name())) return;
+
+        event.setCancelled(true);
     }
 
     @EventHandler
