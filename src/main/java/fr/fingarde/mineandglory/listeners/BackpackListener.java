@@ -117,6 +117,11 @@ public class BackpackListener implements Listener
     }
 
     @EventHandler
+    public void onClickNumberCancel(InventoryClickEvent event) {
+        if(event.getCurrentItem().getType() == Material.IRON_NUGGET) event.setCancelled(true);
+    }
+
+    @EventHandler
     public void onClose(InventoryCloseEvent event) {
         if(!event.getView().getTitle().startsWith("Backpack")) return;
         UUID bagUUID = UUID.fromString(ColorUtils.unhideChars(event.getView().getTitle().split(" ")[1]));
