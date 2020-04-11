@@ -12,6 +12,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.sql.Connection;
@@ -43,12 +44,9 @@ public class BackpackListener implements Listener
         if(meta.getLore() != null)
         {
             for(String lore : meta.getLore()) {
-                Bukkit.broadcastMessage(ColorUtils.removeColor(lore));
                 if(ColorUtils.removeColor(lore).startsWith("ID: ")) {
-                    Bukkit.broadcastMessage(lore.split(" ")[1]);
                     bagUUID = UUID.fromString(lore.split(" ")[1]);
-
-
+                    break;
                 }
             }
         }
@@ -74,12 +72,12 @@ public class BackpackListener implements Listener
             }
         }
 
-        Bukkit.broadcastMessage("bag oppened");
         try (Connection connection = Database.getSource().getConnection();
              Statement statement = connection.createStatement();
-             ResultSet result = statement.executeQuery("") )
+             ResultSet result = statement.executeQuery("SELECT bp_size FROM tb_backpack WHERE bp_id = " + bagUUID.toString()) )
         {
-            Bukkit.broadcastMessage("bag oppened");
+            Inventory inv = Bukkit.createInventory(null, result.getInt("bp_size"));
+            player.openInventory(inv);
         } catch (SQLException e)
         {
             e.printStackTrace();
