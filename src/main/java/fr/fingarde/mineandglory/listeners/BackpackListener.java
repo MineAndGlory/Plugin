@@ -10,10 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.InventoryAction;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
@@ -114,9 +111,9 @@ public class BackpackListener implements Listener
     }*/
 
     @EventHandler
-    public void onMove(InventoryMoveItemEvent event) {
+    public void onMove(InventoryDragEvent event) {
         Bukkit.broadcastMessage("oui");
-        if(event.getItem().getType() == Material.IRON_NUGGET) event.setCancelled(true);
+        if(event.getOldCursor().getType() == Material.IRON_NUGGET) event.setCancelled(true);
     }
 
     @EventHandler
