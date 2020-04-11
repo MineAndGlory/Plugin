@@ -16,14 +16,13 @@ public class ChatListener implements Listener
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event)
     {
-        Player player = event.getPlayer();
 
         event.setCancelled(true);
 
+        Player player = event.getPlayer();
         User user = User.getByUUID(player.getUniqueId());
 
         String message = ColorUtils.encodeAmperstamp(event.getMessage());
-
         message = ((user.getRank().getChatColor() == null) ? "§r" : user.getRank().getChatColor()) + message;
 
         if (player.hasPermission("chat.mention.user"))
