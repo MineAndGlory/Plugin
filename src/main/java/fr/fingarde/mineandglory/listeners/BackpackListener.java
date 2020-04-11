@@ -108,7 +108,6 @@ public class BackpackListener implements Listener
         }
        // if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
 
-        event.setCancelled(true);
     }
 
     @EventHandler
