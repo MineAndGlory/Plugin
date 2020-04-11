@@ -93,24 +93,6 @@ public class BackpackListener implements Listener
         }
     }
 
-    //@EventHandler
-    /*public void onClickInvetory(InventoryClickEvent event) {
-        if(!event.getView().getTitle().startsWith("Backpack")) return;
-
-        if(event.getCurrentItem() == null)  {
-            event.setCancelled(true);
-            Bukkit.broadcastMessage("null");
-        }
-
-
-        if(event.getCursor().getType() == Material.IRON_NUGGET) {
-            event.setCancelled(true);
-            Bukkit.broadcastMessage("boubou");
-        }
-       // if(event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
-
-    }*/
-
     @EventHandler
     public void onClickNumber(InventoryClickEvent event) {
         if(event.getClick() != ClickType.NUMBER_KEY) return;
@@ -138,7 +120,7 @@ public class BackpackListener implements Listener
              Statement statement = connection.createStatement()
         )
         {
-            statement.executeUpdate("UPDATE tb_backpack SET bp_item = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "'");
+            statement.executeUpdate("UPDATE tb_backpack SET bp_item = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE bp_id = '" + bagUUID + "'" );
         }
         catch (SQLException e)
         {
