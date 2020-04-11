@@ -115,6 +115,7 @@ public class BackpackListener implements Listener
 
     @EventHandler
     public void onMove(InventoryMoveItemEvent event) {
+        Bukkit.broadcastMessage("oui");
         if(event.getItem().getType() == Material.IRON_NUGGET) event.setCancelled(true);
     }
 
