@@ -82,8 +82,8 @@ public class BackpackListener implements Listener
 
             Inventory inv = Bukkit.createInventory(null, result.getInt("bp_size"), "Backpack " + ColorUtils.hideChars(bagUUID.toString()));
 
-            if(result.getString("bp_item") != null) {
-                inv.setContents(ItemSerializer.deserializeArray(result.getString("bp_item")));
+            if(result.getString("bp_items") != null) {
+                inv.setContents(ItemSerializer.deserializeArray(result.getString("bp_items")));
             }
 
             player.openInventory(inv);
@@ -120,7 +120,7 @@ public class BackpackListener implements Listener
              Statement statement = connection.createStatement()
         )
         {
-            statement.executeUpdate("UPDATE tb_backpack SET bp_item = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE bp_id = '" + bagUUID + "'");
+            statement.executeUpdate("UPDATE tb_backpack SET bp_items = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "' WHERE bp_id = '" + bagUUID + "'");
         }
         catch (SQLException e)
         {

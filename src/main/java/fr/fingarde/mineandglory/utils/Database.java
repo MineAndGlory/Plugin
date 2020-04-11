@@ -135,7 +135,7 @@ public class Database
                     "CREATE TABLE IF NOT EXISTS tb_backpack(" +
                             "bp_id VARCHAR(36) NOT NULL PRIMARY KEY," +
                             "bp_size NUMERIC(2)," +
-                            "bp_item TEXT" +
+                            "bp_items TEXT" +
                             ");");
 
 
