@@ -96,7 +96,6 @@ public class BackpackListener implements Listener
     @EventHandler
     public void onClickNumber(InventoryClickEvent event) {
         if(event.getClick() != ClickType.NUMBER_KEY) return;
-        if(event.getWhoClicked().getOpenInventory() == null) return;
         if(!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
 
         if(event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;

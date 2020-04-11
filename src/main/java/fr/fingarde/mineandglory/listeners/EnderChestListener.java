@@ -43,7 +43,7 @@ public class EnderChestListener implements Listener
                 inv.setContents(ItemSerializer.deserializeArray(result.getString("ec_items")));
             }
 
-            for(int i = result.getInt("ec_size") - 1; i < 36; i++) {
+            for(int i = result.getInt("ec_size"); i < 36; i++) {
                 inv.setItem(i, new ItemStack(Material.BARRIER));
             }
 
@@ -80,7 +80,7 @@ public class EnderChestListener implements Listener
                 inv.setContents(ItemSerializer.deserializeArray(result.getString("ec_items")));
             }
 
-            for(int i = result.getInt("ec_size") - 1; i < 36; i++) {
+            for(int i = result.getInt("ec_size"); i < 36; i++) {
                 inv.setItem(i, new ItemStack(Material.BARRIER));
             }
 
