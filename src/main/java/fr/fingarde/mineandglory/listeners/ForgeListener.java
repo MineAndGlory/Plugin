@@ -3,9 +3,8 @@ package fr.fingarde.mineandglory.listeners;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import fr.fingarde.mineandglory.items.CustomItems;
-import fr.fingarde.mineandglory.utils.Config;
+import fr.fingarde.mineandglory.utils.ColorUtils;
 import fr.fingarde.mineandglory.utils.LocationSerializer;
-import fr.fingarde.mineandglory.utils.LoreSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,7 +16,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
@@ -27,7 +25,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 
 public class ForgeListener implements Listener
@@ -95,7 +92,7 @@ public class ForgeListener implements Listener
 
             JsonObject data = tool.getData();
             toolLore.add("§eCost " + data.get("amount").getAsString() + " " + data.get("ingredient").getAsString().toLowerCase());
-            toolLore.add(LoreSerializer.serialize("{\"anvil_pos\":\"" + LocationSerializer.serializeCentered(location) + "\", \"ingredient\":\"" + data.get("ingredient").getAsString() + "\", \"amount\":\"" + data.get("amount").getAsString() + "\"}"));
+            toolLore.add(ColorUtils.hideChars("{\"anvil_pos\":\"" + LocationSerializer.serializeCentered(location) + "\", \"ingredient\":\"" + data.get("ingredient").getAsString() + "\", \"amount\":\"" + data.get("amount").getAsString() + "\"}"));
 
             toolItemMeta.setLore(toolLore);
             toolItemStack.setItemMeta(toolItemMeta);
@@ -203,7 +200,7 @@ public class ForgeListener implements Listener
         List<String> lore = item.getItemMeta().getLore();
         if (!lore.get(0).startsWith("§eCost")) return;
 
-        obj = new JsonParser().parse(LoreSerializer.deserialize(lore.get(1))).getAsJsonObject();
+        obj = new JsonParser().parse(ColorUtils.unhideChars(lore.get(1))).getAsJsonObject();
 
         loc = LocationSerializer.deserialize(obj.get("anvil_pos").getAsString());
         cost = obj.get("amount").getAsInt();
