@@ -3,13 +3,14 @@ package fr.fingarde.mineandglory.listeners;
 import fr.fingarde.mineandglory.items.CustomItems;
 import fr.fingarde.mineandglory.utils.ColorUtils;
 import fr.fingarde.mineandglory.utils.Database;
+import fr.fingarde.mineandglory.utils.ItemSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.ItemMergeEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
@@ -74,16 +75,34 @@ public class BackpackListener implements Listener
 
         try (Connection connection = Database.getSource().getConnection();
              Statement statement = connection.createStatement();
-             ResultSet result = statement.executeQuery("SELECT bp_size FROM tb_backpack WHERE bp_id = '" + bagUUID.toString() + "'"))
+             ResultSet result = statement.executeQuery("SELECT * FROM tb_backpack WHERE bp_id = '" + bagUUID.toString() + "'"))
         {
             result.next();
 
-            Inventory inv = Bukkit.createInventory(null, result.getInt("bp_size"));
+            Inventory inv = Bukkit.createInventory(null, result.getInt("bp_size"), "Backpack " + ColorUtils.hideChars(bagUUID.toString()));
+            inv.setContents(ItemSerializer.deserializeArray(result.getString("bp_item")));
+
             player.openInventory(inv);
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
+    }
 
+    @EventHandler
+    public void onClose(InventoryCloseEvent event) {
+        if(!event.getView().getTitle().startsWith("Backpack")) return;
+        UUID bagUUID = UUID.fromString(event.getView().getTitle().split(" ")[1]);
+
+        try (Connection connection = Database.getSource().getConnection();
+             Statement statement = connection.createStatement()
+        )
+        {
+            statement.executeUpdate("UPDATE tb_backpack SET bp_item = '" + ItemSerializer.serializeArray(event.getInventory().getContents()) + "'");
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
