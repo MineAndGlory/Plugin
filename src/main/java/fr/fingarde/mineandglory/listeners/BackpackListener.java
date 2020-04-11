@@ -96,11 +96,13 @@ public class BackpackListener implements Listener
 
     @EventHandler
     public void onClickInvetory(InventoryClickEvent event) {
-        if(!event.getView().getTitle().startsWith("Backpack") && !event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
+        if(!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
 
         if(event.getCurrentItem() == null)  {
+            event.setCancelled(true);
             Bukkit.broadcastMessage("null");
         }
+
 
         if(event.getCursor().getType() == Material.IRON_NUGGET) {
             event.setCancelled(true);
