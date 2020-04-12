@@ -12,6 +12,7 @@ import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
 import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.recipes.Crafts;
+import fr.fingarde.mineandglory.utils.managers.*;
 import fr.fingarde.mineandglory.utils.storage.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
@@ -36,8 +37,12 @@ public class Main extends JavaPlugin
 
         Rank.loadRanks();
 
-        registerEvents();
-        registerCommands();
+        ListenerManager.registerListeners();
+        CommandManager.registerCommands();
+
+        TpsManager.refreshTPS();
+        TimeManager.updateGameTime();
+        TabManager.sheduleTablist();
 
         Crafts.registerCrafts();
 
@@ -50,29 +55,6 @@ public class Main extends JavaPlugin
         super.onDisable();
         Database.getSource().close();
     }
-
-    public void registerEvents()
-    {
-        getServer().getPluginManager().registerEvents(new ChatListener(), this);
-
-        getServer().getPluginManager().registerEvents(new PlayerBreakBlockByHandListener(), this);
-        getServer().getPluginManager().registerEvents(new ForgeListener(), this);
-        getServer().getPluginManager().registerEvents(new Crafts(), this);
-        getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
-        getServer().getPluginManager().registerEvents(new BlockPathListener(), this);
-
-        getServer().getPluginManager().registerEvents(new MinerListener(), this);
-        getServer().getPluginManager().registerEvents(new BackpackListener(), this);
-        getServer().getPluginManager().registerEvents(new EnderChestListener(), this);
-
-        getServer().getPluginManager().registerEvents(new DoubleDoorListener(), this);
-    }
-
-    public void registerCommands()
-    {
-        getCommand("cgive").setExecutor(new CGive());
-    }
-
 
     private void RestorePlayers()
     {
