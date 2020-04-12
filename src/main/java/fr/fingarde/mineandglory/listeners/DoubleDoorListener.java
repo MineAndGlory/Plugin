@@ -17,12 +17,15 @@ public class DoubleDoorListener implements Listener
         BlockState s = c.getState();
         Door d = (Door) s.getBlockData();
         d.setOpen(true);
+        s.setBlockData(d);
         s.update();
+
 
         c = c.getRelative(0, 1, 0);
         s = c.getState();
         d = (Door) s.getBlockData();
         d.setOpen(true);
+        s.setBlockData(d);
         s.update();
 
         /*
