@@ -24,7 +24,7 @@ public class DoubleDoorListener implements Listener
             relative = (Door) event.getClickedBlock().getRelative(1, 0, 0).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 Bukkit.broadcastMessage("7");
-                relative.setOpen(!door.isOpen());
+                relative.setOpen(!relative.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(-1, 0, 0).getType() == event.getClickedBlock().getType()) {
