@@ -13,28 +13,28 @@ public class DoubleDoorListener implements Listener
         if(event.getClickedBlock() == null) return;
         if(!event.getClickedBlock().getType().toString().endsWith("_DOOR")) return;
 
-        Door door = (Door) event.getClickedBlock().getState();
+        Door door = (Door) event.getClickedBlock().getBlockData();
         Door relative;
         if(event.getClickedBlock().getRelative(1, 0, 0).getType() == event.getClickedBlock().getType()) {
-            relative = (Door) event.getClickedBlock().getRelative(1, 0, 0).getState();
+            relative = (Door) event.getClickedBlock().getRelative(1, 0, 0).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 relative.setOpen(door.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(-1, 0, 0).getType() == event.getClickedBlock().getType()) {
-            relative = (Door) event.getClickedBlock().getRelative(-1, 0, 0).getState();
+            relative = (Door) event.getClickedBlock().getRelative(-1, 0, 0).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 relative.setOpen(door.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(0, 0, 1).getType() == event.getClickedBlock().getType()) {
-            relative = (Door) event.getClickedBlock().getRelative(0, 0, 1).getState();
+            relative = (Door) event.getClickedBlock().getRelative(0, 0, 1).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 relative.setOpen(door.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(0, 0, -1).getType() == event.getClickedBlock().getType()) {
-            relative = (Door) event.getClickedBlock().getRelative(0, 0, -1).getState();
+            relative = (Door) event.getClickedBlock().getRelative(0, 0, -1).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 relative.setOpen(door.isOpen());
             }
