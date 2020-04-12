@@ -51,7 +51,7 @@ public class DoubleDoorListener implements Listener
         switch (state.getFacing()) {
             case EAST:
             case WEST:
-                if(state.getHinge() == Door.Hinge.LEFT)
+                if(state.getHinge() == Door.Hinge.RIGHT)
                     relative = block.getRelative(0, 0, -1);
                 else
                     relative = block.getRelative(0, 0, 1);
