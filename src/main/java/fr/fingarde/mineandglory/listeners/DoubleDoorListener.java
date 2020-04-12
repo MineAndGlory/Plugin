@@ -1,6 +1,7 @@
 package fr.fingarde.mineandglory.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,6 +12,12 @@ public class DoubleDoorListener implements Listener
     @EventHandler
     public void onDoorClick(PlayerInteractEvent event)
     {
+        Block c = event.getClickedBlock().getWorld().getBlockAt(63, 92, -732);
+        Door d = (Door) c.getBlockData();
+        d.setOpen(true);
+
+
+        /*
         if(event.getClickedBlock() == null) return;
         Bukkit.broadcastMessage("1");
         if(!event.getClickedBlock().getType().toString().endsWith("_DOOR")) return;
@@ -24,7 +31,7 @@ public class DoubleDoorListener implements Listener
             relative = (Door) event.getClickedBlock().getRelative(1, 0, 0).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 Bukkit.broadcastMessage("7");
-                relative.setOpen(true);
+                relative.setOpen(!relative.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(-1, 0, 0).getType() == event.getClickedBlock().getType()) {
@@ -50,7 +57,7 @@ public class DoubleDoorListener implements Listener
                 Bukkit.broadcastMessage("10");
                 relative.setOpen(!door.isOpen());
             }
-        }
+        }*/
     }
 
     public Door.Hinge getInverse(Door.Hinge hinge) {
