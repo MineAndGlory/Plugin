@@ -3,10 +3,10 @@ package fr.fingarde.mineandglory.listeners;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.block.data.type.Door;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.material.Door;
 
 public class DoubleDoorListener implements Listener
 {
@@ -15,7 +15,7 @@ public class DoubleDoorListener implements Listener
     {
         Block c = event.getClickedBlock();
         BlockState s = c.getState();
-        Door d = (Door) s.getData();
+        Door d = (Door) s.getBlockData();
         d.setOpen(true);
         s.update();
 
