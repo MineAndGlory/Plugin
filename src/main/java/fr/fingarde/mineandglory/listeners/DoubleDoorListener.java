@@ -14,7 +14,7 @@ public class DoubleDoorListener implements Listener
     @EventHandler
     public void onDoorClick(PlayerInteractEvent event)
     {
-        Block c = event.getClickedBlock().getWorld().getBlockAt(63, 92, -732);
+        Block c = event.getClickedBlock();
         BlockState s = c.getState();
         Openable d = (Door) s.getBlockData();
         d.setOpen(true);
