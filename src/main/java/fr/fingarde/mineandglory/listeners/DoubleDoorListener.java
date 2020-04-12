@@ -20,19 +20,26 @@ public class DoubleDoorListener implements Listener
         Block block = event.getClickedBlock();
         Door state = (Door) event.getClickedBlock().getBlockData();
 
-
-
-
         Block relative;
         switch (state.getFacing()) {
             case EAST:
-            case WEST:
                 if(state.getHinge() == Door.Hinge.RIGHT)
                     relative = block.getRelative(0, 0, -1);
                 else
                     relative = block.getRelative(0, 0, 1);
                 break;
+            case WEST:
+                if(state.getHinge() == Door.Hinge.RIGHT)
+                    relative = block.getRelative(0, 0, 1);
+                else
+                    relative = block.getRelative(0, 0, -1);
+                break;
             case NORTH:
+                if(state.getHinge() == Door.Hinge.RIGHT)
+                    relative = block.getRelative(-1, 0, 0);
+                else
+                    relative = block.getRelative(1, 0, 0);
+                break;
             case SOUTH:
                 if(state.getHinge() == Door.Hinge.RIGHT)
                     relative = block.getRelative(1, 0, 0);
@@ -51,6 +58,4 @@ public class DoubleDoorListener implements Listener
         relativeState.setOpen(!state.isOpen());
         relative.setBlockData(relativeState);
     }
-
-
 }
