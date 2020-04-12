@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class DoubleDoorListener implements Listener
 {
-    @EventHandler
+    /*@EventHandler
     public void onDoorClick(PlayerInteractEvent event)
     {
         if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
@@ -59,7 +59,7 @@ public class DoubleDoorListener implements Listener
 
         relativeState.setOpen(!state.isOpen());
         relative.setBlockData(relativeState);
-    }
+    }*/
 
     @EventHandler
     public void onRedstone(BlockPhysicsEvent event) {
