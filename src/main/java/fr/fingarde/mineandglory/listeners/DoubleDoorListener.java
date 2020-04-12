@@ -14,7 +14,9 @@ public class DoubleDoorListener implements Listener
     {
         Block c = event.getClickedBlock().getWorld().getBlockAt(63, 92, -732);
         Door d = (Door) c.getBlockData();
+        Door e = (Door) c.getRelative(0, 1, 0).getBlockData();
         d.setOpen(true);
+        e.setOpen(true);
 
 
         /*
