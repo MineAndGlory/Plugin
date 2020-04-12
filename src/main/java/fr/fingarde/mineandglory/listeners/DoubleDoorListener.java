@@ -16,13 +16,13 @@ public class DoubleDoorListener implements Listener
     {
         Block c = event.getClickedBlock();
         BlockState s = c.getState();
-        Openable d = (Openable) s.getData();
+        Door d = (Door) s.getData();
         d.setOpen(true);
         s.update();
 
         c = c.getRelative(0, 1, 0);
         s = c.getState();
-        d = (Openable) s.getData();
+        d = (Door) s.getData();
         d.setOpen(true);
         s.update();
 
