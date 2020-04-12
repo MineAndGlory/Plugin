@@ -58,6 +58,8 @@ public class Main extends JavaPlugin
         getServer().getPluginManager().registerEvents(new MinerListener(), this);
         getServer().getPluginManager().registerEvents(new BackpackListener(), this);
         getServer().getPluginManager().registerEvents(new EnderChestListener(), this);
+
+        getServer().getPluginManager().registerEvents(new DoubleDoorListener(), this);
     }
 
     public void registerCommands()
