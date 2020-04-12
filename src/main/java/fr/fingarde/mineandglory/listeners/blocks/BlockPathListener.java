@@ -1,4 +1,4 @@
-package fr.fingarde.mineandglory.listeners;
+package fr.fingarde.mineandglory.listeners.blocks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

@@ -1,9 +1,9 @@
-package fr.fingarde.mineandglory.listeners;
+package fr.fingarde.mineandglory.listeners.items;
 
-import fr.fingarde.mineandglory.items.CustomItems;
+import fr.fingarde.mineandglory.objects.items.CustomItems;
 import fr.fingarde.mineandglory.utils.ColorUtils;
-import fr.fingarde.mineandglory.utils.Database;
-import fr.fingarde.mineandglory.utils.ItemSerializer;
+import fr.fingarde.mineandglory.utils.storage.Database;
+import fr.fingarde.mineandglory.utils.serializer.ItemSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

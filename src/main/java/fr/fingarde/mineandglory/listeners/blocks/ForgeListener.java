@@ -1,10 +1,10 @@
-package fr.fingarde.mineandglory.listeners;
+package fr.fingarde.mineandglory.listeners.blocks;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import fr.fingarde.mineandglory.items.CustomItems;
+import fr.fingarde.mineandglory.objects.items.CustomItems;
 import fr.fingarde.mineandglory.utils.ColorUtils;
-import fr.fingarde.mineandglory.utils.LocationSerializer;
+import fr.fingarde.mineandglory.utils.serializer.LocationSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

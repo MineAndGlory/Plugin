@@ -1,8 +1,8 @@
-package fr.fingarde.mineandglory.listeners;
+package fr.fingarde.mineandglory.listeners.items;
 
-import fr.fingarde.mineandglory.items.CustomItems;
-import fr.fingarde.mineandglory.utils.Database;
-import fr.fingarde.mineandglory.utils.ItemSerializer;
+import fr.fingarde.mineandglory.objects.items.CustomItems;
+import fr.fingarde.mineandglory.utils.storage.Database;
+import fr.fingarde.mineandglory.utils.serializer.ItemSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,7 +24,7 @@ import java.sql.Statement;
 public class EnderChestListener implements Listener
 {
     @EventHandler
-    public void onInteract(PlayerInteractEvent event)
+    public void onClickEnderchest(PlayerInteractEvent event)
     {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 

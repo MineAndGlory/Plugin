@@ -1,4 +1,4 @@
-package fr.fingarde.mineandglory.utils;
+package fr.fingarde.mineandglory.utils.storage;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.MemorySection;

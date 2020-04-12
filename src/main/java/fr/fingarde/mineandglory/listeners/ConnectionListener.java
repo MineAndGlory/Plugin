@@ -3,8 +3,8 @@ package fr.fingarde.mineandglory.listeners;
 import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
-import fr.fingarde.mineandglory.utils.Database;
-import fr.fingarde.mineandglory.utils.Title;
+import fr.fingarde.mineandglory.utils.storage.Database;
+import fr.fingarde.mineandglory.utils.TitleUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -86,7 +86,7 @@ public class ConnectionListener implements Listener
                 loc.setY(loc.getY() + 1.8);
 
                 player.spawnParticle(Particle.TOTEM, loc, 150, 0, 0, 0, 0.4);
-                Title.sendTitle(player, "§cMine And Glory");
+                TitleUtils.sendTitle(player, "§cMine And Glory");
             }
         }.runTaskLater(Main.getPlugin(), 5);
     }

@@ -1,4 +1,4 @@
-package fr.fingarde.mineandglory.items;
+package fr.fingarde.mineandglory.objects.items;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

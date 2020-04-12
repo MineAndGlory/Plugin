@@ -2,7 +2,7 @@ package fr.fingarde.mineandglory.objects;
 
 
 import fr.fingarde.mineandglory.Main;
-import fr.fingarde.mineandglory.utils.Database;
+import fr.fingarde.mineandglory.utils.storage.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package fr.fingarde.mineandglory.utils;
+package fr.fingarde.mineandglory.utils.serializer;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.io.BukkitObjectInputStream;

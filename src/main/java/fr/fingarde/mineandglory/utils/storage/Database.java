@@ -1,7 +1,8 @@
-package fr.fingarde.mineandglory.utils;
+package fr.fingarde.mineandglory.utils.storage;
 
 import com.zaxxer.hikari.HikariDataSource;
 import fr.fingarde.mineandglory.Main;
+import fr.fingarde.mineandglory.utils.storage.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 

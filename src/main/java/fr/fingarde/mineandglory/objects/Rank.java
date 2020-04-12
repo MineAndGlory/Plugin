@@ -1,7 +1,7 @@
 package fr.fingarde.mineandglory.objects;
 
 
-import fr.fingarde.mineandglory.utils.Config;
+import fr.fingarde.mineandglory.utils.storage.Config;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.YamlConfiguration;
 

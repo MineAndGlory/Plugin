@@ -1,6 +1,6 @@
-package fr.fingarde.mineandglory.listeners;
+package fr.fingarde.mineandglory.listeners.blocks;
 
-import fr.fingarde.mineandglory.items.CustomItems;
+import fr.fingarde.mineandglory.objects.items.CustomItems;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;

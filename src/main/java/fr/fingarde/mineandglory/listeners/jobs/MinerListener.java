@@ -3,7 +3,7 @@ package fr.fingarde.mineandglory.listeners.jobs;
 import fr.fingarde.mineandglory.objects.Job;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.objects.jobs.Miner;
-import fr.fingarde.mineandglory.utils.Title;
+import fr.fingarde.mineandglory.utils.TitleUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,7 +29,7 @@ public class MinerListener implements Listener
             return;
         }
 
-        Title.sendActionbar(event.getPlayer(), "§a+" + miner.getXp() + "xp");
+        TitleUtils.sendActionbar(event.getPlayer(), "§a+" + miner.getXp() + "xp");
 
         int currentLvl = user.getJobs().getMinerLvl();
         int oldExp = user.getJobs().getMinerExp();

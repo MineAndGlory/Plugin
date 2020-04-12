@@ -2,11 +2,17 @@ package fr.fingarde.mineandglory;
 
 import fr.fingarde.mineandglory.commands.CGive;
 import fr.fingarde.mineandglory.listeners.*;
+import fr.fingarde.mineandglory.listeners.blocks.BlockPathListener;
+import fr.fingarde.mineandglory.listeners.blocks.DoubleDoorListener;
+import fr.fingarde.mineandglory.listeners.blocks.ForgeListener;
+import fr.fingarde.mineandglory.listeners.blocks.PlayerBreakBlockByHandListener;
+import fr.fingarde.mineandglory.listeners.items.BackpackListener;
+import fr.fingarde.mineandglory.listeners.items.EnderChestListener;
 import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
 import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.recipes.Crafts;
-import fr.fingarde.mineandglory.utils.Database;
+import fr.fingarde.mineandglory.utils.storage.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
