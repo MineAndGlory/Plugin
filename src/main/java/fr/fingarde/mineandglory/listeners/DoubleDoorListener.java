@@ -59,9 +59,9 @@ public class DoubleDoorListener implements Listener
             case NORTH:
             case SOUTH:
                 if(state.getHinge() == Door.Hinge.RIGHT)
-                    relative = block.getRelative(0, 0, 1);
+                    relative = block.getRelative(1, 0, 0);
                 else
-                    relative = block.getRelative(0, 0, -1);
+                    relative = block.getRelative(-1, 0, 0);
                 break;
             default:
                 relative = null;
