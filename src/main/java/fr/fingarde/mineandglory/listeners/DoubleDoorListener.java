@@ -13,66 +13,37 @@ public class DoubleDoorListener implements Listener
     @EventHandler
     public void onDoorClick(PlayerInteractEvent event)
     {
-        Block c = event.getClickedBlock();
-        BlockState s = c.getState();
-        Door d = (Door) s.getBlockData();
-        d.setOpen(true);
-        s.setBlockData(d);
-        s.update();
-
-
-        c = c.getRelative(0, 1, 0);
-        s = c.getState();
-        d = (Door) s.getBlockData();
-        d.setOpen(true);
-        s.setBlockData(d);
-        s.update();
-
-        /*
-        if(event.getClickedBlock() == null) return;
+        if (event.getClickedBlock() == null) return;
         Bukkit.broadcastMessage("1");
-        if(!event.getClickedBlock().getType().toString().endsWith("_DOOR")) return;
+        if (!event.getClickedBlock().getType().toString().endsWith("_DOOR")) return;
         Bukkit.broadcastMessage("2");
 
-        Door door = (Door) event.getClickedBlock().getBlockData();
-        Door relative;
+        Block block = event.getClickedBlock();
+        Block relative = null;
 
-        if(event.getClickedBlock().getRelative(1, 0, 0).getType() == event.getClickedBlock().getType()) {
-            Bukkit.broadcastMessage("3");
-            relative = (Door) event.getClickedBlock().getRelative(1, 0, 0).getBlockData();
-            if(relative.getHinge() != getInverse(door.getHinge())) {
-                Bukkit.broadcastMessage("7");
-                relative.setOpen(!relative.isOpen());
-            }
-        }
-        if(event.getClickedBlock().getRelative(-1, 0, 0).getType() == event.getClickedBlock().getType()) {
-            Bukkit.broadcastMessage("4");
-            relative = (Door) event.getClickedBlock().getRelative(-1, 0, 0).getBlockData();
-            if(relative.getHinge() != getInverse(door.getHinge())) {
-                Bukkit.broadcastMessage("8");
-                relative.setOpen(!door.isOpen());
-            }
-        }
-        if(event.getClickedBlock().getRelative(0, 0, 1).getType() == event.getClickedBlock().getType()) {
-            Bukkit.broadcastMessage("5");
-            relative = (Door) event.getClickedBlock().getRelative(0, 0, 1).getBlockData();
-            if(relative.getHinge() != getInverse(door.getHinge())) {
-                Bukkit.broadcastMessage("9");
-                relative.setOpen(!door.isOpen());
-            }
-        }
-        if(event.getClickedBlock().getRelative(0, 0, -1).getType() == event.getClickedBlock().getType()) {
-            Bukkit.broadcastMessage("6");
-            relative = (Door) event.getClickedBlock().getRelative(0, 0, -1).getBlockData();
-            if(relative.getHinge() != getInverse(door.getHinge())) {
-                Bukkit.broadcastMessage("10");
-                relative.setOpen(!door.isOpen());
-            }
-        }*/
-    }
+        Door state = (Door) event.getClickedBlock().getBlockData();
+        Door relativeState;
 
-    public Door.Hinge getInverse(Door.Hinge hinge) {
-        if(hinge == Door.Hinge.LEFT) return Door.Hinge.RIGHT;
-        return Door.Hinge.LEFT;
+        if (block.getRelative(1, 0, 0).getType() == block.getType() && ((Door) block.getRelative(1, 0, 0).getBlockData()).getHinge() != state.getHinge())
+        {
+            relative = block.getRelative(1, 0, 0);
+        } else if (block.getRelative(-1, 0, 0).getType() == block.getType() && ((Door) block.getRelative(-1, 0, 0).getBlockData()).getHinge() != state.getHinge())
+        {
+            relative = block.getRelative(-1, 0, 0);
+        }
+        else if (block.getRelative(0, 0, 1).getType() == block.getType() && ((Door) block.getRelative(0, 0, 1).getBlockData()).getHinge() != state.getHinge())
+        {
+            relative = block.getRelative(0, 0, 1);
+        }
+        else if (block.getRelative(0, 0, -1).getType() == block.getType() && ((Door) block.getRelative(0, 0, -1).getBlockData()).getHinge() != state.getHinge())
+        {
+            relative = block.getRelative(0, 0, -1);
+        }
+
+        if(relative == null) return;
+
+        relativeState = (Door) relative.getBlockData();
+        relativeState.setOpen(state.isOpen());
+        relative.setBlockData(relativeState);
     }
 }
