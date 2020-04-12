@@ -30,17 +30,15 @@ public class DoubleDoorListener implements Listener
         } else if (block.getRelative(-1, 0, 0).getType() == block.getType() && ((Door) block.getRelative(-1, 0, 0).getBlockData()).getHinge() != state.getHinge())
         {
             relative = block.getRelative(-1, 0, 0);
-        }
-        else if (block.getRelative(0, 0, 1).getType() == block.getType() && ((Door) block.getRelative(0, 0, 1).getBlockData()).getHinge() != state.getHinge())
+        } else if (block.getRelative(0, 0, 1).getType() == block.getType() && ((Door) block.getRelative(0, 0, 1).getBlockData()).getHinge() != state.getHinge())
         {
             relative = block.getRelative(0, 0, 1);
-        }
-        else if (block.getRelative(0, 0, -1).getType() == block.getType() && ((Door) block.getRelative(0, 0, -1).getBlockData()).getHinge() != state.getHinge())
+        } else if (block.getRelative(0, 0, -1).getType() == block.getType() && ((Door) block.getRelative(0, 0, -1).getBlockData()).getHinge() != state.getHinge())
         {
             relative = block.getRelative(0, 0, -1);
         }
 
-        if(relative == null) return;
+        if (relative == null) return;
 
         relativeState = (Door) relative.getBlockData();
         relativeState.setOpen(state.isOpen());
