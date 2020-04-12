@@ -64,7 +64,7 @@ public class DoubleDoorListener implements Listener
     @EventHandler
     public void onRedstone(BlockPhysicsEvent event) {
         if (!event.getBlock().getType().toString().endsWith("_DOOR")) return;
-
+        event.setCancelled(true);
         Bukkit.broadcastMessage("ui");
         Block block = event.getBlock();
         Door state = (Door) event.getBlock().getBlockData();
