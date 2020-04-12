@@ -110,7 +110,7 @@ public class Crafts implements Listener
     @EventHandler
     public void onCraft(final InventoryClickEvent event)
     {
-        if(event.getClickedInventory() == null) return;
+        if (event.getClickedInventory() == null) return;
         if (event.getClickedInventory().getType() != InventoryType.WORKBENCH) return;
 
         CraftingInventory inv = (CraftingInventory) event.getClickedInventory();

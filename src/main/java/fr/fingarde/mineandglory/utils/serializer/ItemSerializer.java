@@ -29,8 +29,7 @@ public class ItemSerializer
             dataOutput.close();
 
             return Base64Coder.encodeLines(outputStream.toByteArray());
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             throw new IllegalStateException("Unable to save item stacks.", e);
         }
@@ -49,8 +48,8 @@ public class ItemSerializer
             dataOutput.close();
 
             return Base64Coder.encodeLines(outputStream.toByteArray());
-        }
-        catch (Exception e) {
+        } catch (Exception e)
+        {
             throw new IllegalStateException("Unable to save item stack.", e);
         }
     }
@@ -71,8 +70,7 @@ public class ItemSerializer
             dataInput.close();
 
             return items;
-        }
-        catch (ClassNotFoundException | IOException e)
+        } catch (ClassNotFoundException | IOException e)
         {
             e.printStackTrace();
         }
@@ -91,8 +89,7 @@ public class ItemSerializer
             dataInput.close();
 
             return item;
-        }
-        catch (ClassNotFoundException | IOException e)
+        } catch (ClassNotFoundException | IOException e)
         {
             e.printStackTrace();
         }
