@@ -103,7 +103,7 @@ public class DoubleDoorListener implements Listener
 
         if(relativeState.getHinge() == state.getHinge()) return;
 
-        relativeState.setOpen(!state.isOpen());
+        relativeState.setOpen(state.isOpen());
         relative.setBlockData(relativeState);
     }
 }
