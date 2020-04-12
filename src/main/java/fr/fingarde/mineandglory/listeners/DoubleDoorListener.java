@@ -41,7 +41,7 @@ public class DoubleDoorListener implements Listener
         if (relative == null) return;
 
         relativeState = (Door) relative.getBlockData();
-        relativeState.setOpen(state.isOpen());
+        relativeState.setOpen(!state.isOpen());
         relative.setBlockData(relativeState);
     }
 }
