@@ -16,10 +16,16 @@ public class DoubleDoorListener implements Listener
     {
         Block c = event.getClickedBlock();
         BlockState s = c.getState();
-        Openable d = (Door) s.getData();
+        Openable d = (Openable) s.getData();
         d.setOpen(true);
         s.update();
 
+        c = c.getRelative(0, 1, 0);
+        s = c.getState();
+        d = (Openable) s.getData();
+        d.setOpen(true);
+        s.update();
+        
         /*
         if(event.getClickedBlock() == null) return;
         Bukkit.broadcastMessage("1");
