@@ -16,7 +16,7 @@ public class DoubleDoorListener implements Listener
     {
         Block c = event.getClickedBlock();
         BlockState s = c.getState();
-        Openable d = (Door) s.getBlockData();
+        Openable d = (Door) s.getData();
         d.setOpen(true);
         s.update();
 
