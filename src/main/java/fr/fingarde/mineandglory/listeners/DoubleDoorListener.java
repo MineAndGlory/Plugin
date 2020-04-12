@@ -21,7 +21,7 @@ public class DoubleDoorListener implements Listener
 
         c = c.getRelative(0, 1, 0);
         s = c.getState();
-        d = (Door) s.getData();
+        d = (Door) s.getBlockData();
         d.setOpen(true);
         s.update();
 
