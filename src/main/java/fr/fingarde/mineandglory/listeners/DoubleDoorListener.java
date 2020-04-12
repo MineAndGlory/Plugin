@@ -6,6 +6,7 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.data.type.Door;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class DoubleDoorListener implements Listener
@@ -13,10 +14,8 @@ public class DoubleDoorListener implements Listener
     @EventHandler
     public void onDoorClick(PlayerInteractEvent event)
     {
-        if (event.getClickedBlock() == null) return;
-        Bukkit.broadcastMessage("1");
+        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (!event.getClickedBlock().getType().toString().endsWith("_DOOR")) return;
-        Bukkit.broadcastMessage("2");
 
         Block block = event.getClickedBlock();
         Block relative = null;
