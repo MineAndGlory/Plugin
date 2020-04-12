@@ -24,7 +24,7 @@ public class DoubleDoorListener implements Listener
             relative = (Door) event.getClickedBlock().getRelative(1, 0, 0).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 Bukkit.broadcastMessage("7");
-                relative.setOpen(door.isOpen());
+                relative.setOpen(!door.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(-1, 0, 0).getType() == event.getClickedBlock().getType()) {
@@ -32,7 +32,7 @@ public class DoubleDoorListener implements Listener
             relative = (Door) event.getClickedBlock().getRelative(-1, 0, 0).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 Bukkit.broadcastMessage("8");
-                relative.setOpen(door.isOpen());
+                relative.setOpen(!door.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(0, 0, 1).getType() == event.getClickedBlock().getType()) {
@@ -40,7 +40,7 @@ public class DoubleDoorListener implements Listener
             relative = (Door) event.getClickedBlock().getRelative(0, 0, 1).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 Bukkit.broadcastMessage("9");
-                relative.setOpen(door.isOpen());
+                relative.setOpen(!door.isOpen());
             }
         }
         if(event.getClickedBlock().getRelative(0, 0, -1).getType() == event.getClickedBlock().getType()) {
@@ -48,7 +48,7 @@ public class DoubleDoorListener implements Listener
             relative = (Door) event.getClickedBlock().getRelative(0, 0, -1).getBlockData();
             if(relative.getHinge() != getInverse(door.getHinge())) {
                 Bukkit.broadcastMessage("10");
-                relative.setOpen(door.isOpen());
+                relative.setOpen(!door.isOpen());
             }
         }
     }
