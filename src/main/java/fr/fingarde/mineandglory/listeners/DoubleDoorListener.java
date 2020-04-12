@@ -25,7 +25,7 @@ public class DoubleDoorListener implements Listener
         d = (Openable) s.getData();
         d.setOpen(true);
         s.update();
-        
+
         /*
         if(event.getClickedBlock() == null) return;
         Bukkit.broadcastMessage("1");
