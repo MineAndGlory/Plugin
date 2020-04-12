@@ -44,7 +44,7 @@ public class Main extends JavaPlugin
         TimeManager.updateGameTime();
         TabManager.sheduleTablist();
 
-        Crafts.registerCrafts();
+        CraftManager.registerCrafts();
 
         RestorePlayers();
     }
