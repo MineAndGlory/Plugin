@@ -20,7 +20,7 @@ public class TabManager
             public void run()
             {
                 if(switchMode == 8) {
-                    current = current + 1 % modes.length;
+                    current = (current + 1) % modes.length;
                     switchMode = 0;
                 }
 
