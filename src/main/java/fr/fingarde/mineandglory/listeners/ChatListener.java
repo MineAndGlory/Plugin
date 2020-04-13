@@ -47,7 +47,7 @@ public class ChatListener implements Listener
             }
         }
 
-        List<String> lines = Arrays.asList(message.split("\n"));
+        List<String> lines = Arrays.asList(message.split("\\n"));
         Bukkit.broadcastMessage(player.getDisplayName() + " §r§6❭❭ " + lines.get(0));
         lines.remove(0);
 
