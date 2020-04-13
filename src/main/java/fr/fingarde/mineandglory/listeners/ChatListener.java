@@ -32,7 +32,7 @@ public class ChatListener implements Listener
             {
                 if (message.toLowerCase().contains(players.getName().toLowerCase()))
                 {
-                    TitleUtils.sendActionbar(players, player.getDisplayName() + " &avous a mentionné");
+                    TitleUtils.sendActionbar(players, "&avous a mentionné");
 
                     String color = ChatColor.getLastColors(message.substring(0, message.toLowerCase().lastIndexOf(players.getName().toLowerCase())));
                     int start = message.toLowerCase().indexOf(players.getName().toLowerCase());
