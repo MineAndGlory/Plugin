@@ -15,6 +15,7 @@ import fr.fingarde.mineandglory.recipes.Crafts;
 import fr.fingarde.mineandglory.utils.managers.*;
 import fr.fingarde.mineandglory.utils.storage.Database;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +33,9 @@ public class Main extends JavaPlugin
 
         plugin = this;
         console = Bukkit.getConsoleSender();
+
+        Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false));
+
 
         Database.connectDB();
         Database.createTables();

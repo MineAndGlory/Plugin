@@ -19,28 +19,29 @@ public class TabManager
             @Override
             public void run()
             {
-                if(switchMode == 8) {
+                if (switchMode == 8)
+                {
                     current = (current + 1) % modes.length;
                     switchMode = 0;
                 }
 
-                for (Player player : Bukkit.getOnlinePlayers())
+                Bukkit.getOnlinePlayers().forEach(player ->
                 {
                     player.setPlayerListHeader(
                             "§r \n" +
-                            "§r§eMine And Glory\n" +
-                            "§r      §m                   §r      \n");
+                                    "§r§eMine And Glory\n" +
+                                    "§r      §m                   §r      \n");
 
                     player.setPlayerListFooter(
                             "§r      §m                   §r      \n" +
-                            "§rOnline: §b" + Bukkit.getOnlinePlayers().size() + "§r/§b" + Bukkit.getMaxPlayers() + "\n" +
-                            "§rTPS: §a" + TpsManager.getTps() + "\n" +
-                            "§r      §m                   §r      \n" +
-                            "§r" + modes[current] + "\n" +
-                            "§r      §m                   §r      \n" +
-                            "§r§e" + TimeManager.getHeure() + "\n" +
-                            "§r ");
-                }
+                                    "§rOnline: §b" + Bukkit.getOnlinePlayers().size() + "§r/§b" + Bukkit.getMaxPlayers() + "\n" +
+                                    "§rTPS: §a" + TpsManager.getTps() + "\n" +
+                                    "§r      §m                   §r      \n" +
+                                    "§r" + modes[current] + "\n" +
+                                    "§r      §m                   §r      \n" +
+                                    "§r§e" + TimeManager.getHeure() + "\n" +
+                                    "§r ");
+                });
 
                 switchMode++;
             }
