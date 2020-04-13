@@ -33,7 +33,7 @@ public class TabManager
 
                     player.setPlayerListFooter(
                             "§r      §m                   §r      \n" +
-                            "§rOnline: §b" + Bukkit.getOnlinePlayers().size() + "§r/§b" + Bukkit.getMaxPlayers() + "\n" +
+                            "§rOnline: §b" + Bukkit.getOnlinePlayers().size() + "§r/§b" + Bukkit.getMaxPlayers() + "§r    |    " + "§rTPS: §a" + TpsManager.getTps() + "\n" +
                             //"§rTPS: §a" + TpsManager.getTps() + "\n" +
                             "§r" + modes[current] + "\n" +
                             "§r      §m                   §r      \n" +
