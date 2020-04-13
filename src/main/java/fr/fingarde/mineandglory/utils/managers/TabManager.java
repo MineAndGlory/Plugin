@@ -9,7 +9,7 @@ public class TabManager
 {
     private static int switchMode = 0; // Every 80tips switch mode to the next one
 
-    private static String modes[] = {"§aSite: §rmineandglory.fr", "§9Discord: §rmineandglroy.fr/discord"};
+    private static String modes[] = {"§aSite: §rmineandglory.fr", "§9Discord: §rmineandglory.fr/discord"};
     private static int current = 0;
 
     public static void sheduleTablist()
@@ -23,6 +23,7 @@ public class TabManager
                 {
                     if(switchMode == 8) {
                         current = current + 1 % modes.length;
+                        switchMode = 0;
                     }
 
                     player.setPlayerListHeader(
