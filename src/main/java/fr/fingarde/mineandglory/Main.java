@@ -29,6 +29,7 @@ public class Main extends JavaPlugin
     public void onEnable()
     {
         super.onEnable();
+
         plugin = this;
         console = Bukkit.getConsoleSender();
 
@@ -46,7 +47,7 @@ public class Main extends JavaPlugin
 
         CraftManager.registerCrafts();
 
-        RestorePlayers();
+        PlayerManager.restorePlayers();
     }
 
     @Override
@@ -56,27 +57,7 @@ public class Main extends JavaPlugin
         Database.getSource().close();
     }
 
-    private void RestorePlayers()
-    {
-        new BukkitRunnable()
-        {
-            @Override
-            public void run()
-            {
-                for (Player player : Bukkit.getOnlinePlayers())
-                {
-                    User user = new User(player.getUniqueId());
 
-                    user.loadName();
-                    user.loadPermissions();
-
-                    User.users.add(user);
-
-                    player.sendMessage("§cServer was reloaded!");
-                }
-            }
-        }.runTaskAsynchronously(this);
-    }
 
 
     // Getters

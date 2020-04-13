@@ -2,6 +2,7 @@ package fr.fingarde.mineandglory.listeners;
 
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.utils.ColorUtils;
+import fr.fingarde.mineandglory.utils.TitleUtils;
 import org.apache.commons.lang.CharUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,6 +11,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ChatListener implements Listener
 {
@@ -31,6 +35,8 @@ public class ChatListener implements Listener
             {
                 if (message.toLowerCase().contains(players.getName().toLowerCase()))
                 {
+                    TitleUtils.sendActionbar(players, player.getDisplayName() + " &avous a mentionné");
+
                     String color = ChatColor.getLastColors(message.substring(0, message.toLowerCase().lastIndexOf(players.getName().toLowerCase())));
                     int start = message.toLowerCase().indexOf(players.getName().toLowerCase());
 
@@ -41,6 +47,12 @@ public class ChatListener implements Listener
             }
         }
 
-        Bukkit.broadcastMessage(player.getDisplayName() + " §r§6❭❭ " + message);
+        List<String> lines = Arrays.asList(message.split("\n"));
+        Bukkit.broadcastMessage(player.getDisplayName() + " §r§6❭❭ " + lines.get(0));
+        lines.remove(0);
+
+        for(String line : lines) {
+            Bukkit.broadcastMessage(line);
+        }
     }
 }
