@@ -12,9 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class ChatListener implements Listener
 {
     @EventHandler
@@ -47,12 +44,6 @@ public class ChatListener implements Listener
             }
         }
 
-        List<String> lines = Arrays.asList(message.split("\\n"));
-        Bukkit.broadcastMessage(player.getDisplayName() + " §r§6❭❭ " + lines.get(0));
-        lines.remove(0);
-
-        for(String line : lines) {
-            Bukkit.broadcastMessage(line);
-        }
+        Bukkit.broadcastMessage(player.getDisplayName() + " §r§6❭❭ " + message);
     }
 }
