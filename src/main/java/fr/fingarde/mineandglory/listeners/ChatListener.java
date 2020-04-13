@@ -39,7 +39,7 @@ public class ChatListener implements Listener
                         @Override
                         public void run()
                         {
-                            TitleUtils.sendActionbar(players, player.getDisplayName() + " §avous a mentionné");
+                            TitleUtils.sendActionbar(players, player.getDisplayName() + " §rvous a mentionné");
                         }
                     }.runTask(Main.getPlugin());
 

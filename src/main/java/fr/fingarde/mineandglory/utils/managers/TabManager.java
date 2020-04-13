@@ -7,6 +7,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class TabManager
 {
+    private static int switchMode = 0; // Every 80tips switch mode to the next one
+
+    private static String modes[] = {"§aSite: §rmineandglory.fr", "§9Discord: §rmineandglroy.fr/discord"};
+    private static int current = 0;
+
     public static void sheduleTablist()
     {
         new BukkitRunnable()
@@ -16,6 +21,10 @@ public class TabManager
             {
                 for (Player player : Bukkit.getOnlinePlayers())
                 {
+                    if(switchMode == 8) {
+                        current = current + 1 % modes.length;
+                    }
+
                     player.setPlayerListHeader(
                             "§r \n" +
                             "§r§eMine And Glory\n" +
@@ -24,11 +33,14 @@ public class TabManager
                     player.setPlayerListFooter(
                             "§r      §m                   §r      \n" +
                             "§rOnline: §b" + Bukkit.getOnlinePlayers().size() + "§r/§b" + Bukkit.getMaxPlayers() + "\n" +
-                            "§rTPS: §a" + TpsManager.getTps() + "\n" +
+                            //"§rTPS: §a" + TpsManager.getTps() + "\n" +
+                            "§r" + modes[current] + "\n" +
                             "§r      §m                   §r      \n" +
                             "§r§e" + TimeManager.getHeure() + "\n" +
                             "§r ");
                 }
+
+                switchMode++;
             }
         }.runTaskTimer(Main.getPlugin(), 0, 10);
     }
