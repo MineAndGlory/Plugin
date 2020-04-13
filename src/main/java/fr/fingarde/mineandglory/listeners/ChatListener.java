@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.listeners;
 
+import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.utils.ColorUtils;
 import fr.fingarde.mineandglory.utils.TitleUtils;
@@ -11,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class ChatListener implements Listener
 {
@@ -32,7 +34,14 @@ public class ChatListener implements Listener
             {
                 if (message.toLowerCase().contains(players.getName().toLowerCase()))
                 {
-                    TitleUtils.sendActionbar(players, "&avous a mentionné");
+                    new BukkitRunnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            TitleUtils.sendActionbar(players, player.getDisplayName() + " §avous a mentionné");
+                        }
+                    }.runTask(Main.getPlugin());
 
                     String color = ChatColor.getLastColors(message.substring(0, message.toLowerCase().lastIndexOf(players.getName().toLowerCase())));
                     int start = message.toLowerCase().indexOf(players.getName().toLowerCase());
