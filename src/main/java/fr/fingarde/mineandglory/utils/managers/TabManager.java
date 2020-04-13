@@ -19,13 +19,13 @@ public class TabManager
             @Override
             public void run()
             {
+                if(switchMode == 8) {
+                    current = current + 1 % modes.length;
+                    switchMode = 0;
+                }
+
                 for (Player player : Bukkit.getOnlinePlayers())
                 {
-                    if(switchMode == 8) {
-                        current = current + 1 % modes.length;
-                        switchMode = 0;
-                    }
-
                     player.setPlayerListHeader(
                             "§r \n" +
                             "§r§eMine And Glory\n" +
