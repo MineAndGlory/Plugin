@@ -1,25 +1,12 @@
 package fr.fingarde.mineandglory;
 
-import fr.fingarde.mineandglory.commands.CGive;
-import fr.fingarde.mineandglory.listeners.*;
-import fr.fingarde.mineandglory.listeners.blocks.BlockPathListener;
-import fr.fingarde.mineandglory.listeners.blocks.DoubleDoorListener;
-import fr.fingarde.mineandglory.listeners.blocks.ForgeListener;
-import fr.fingarde.mineandglory.listeners.blocks.PlayerBreakBlockByHandListener;
-import fr.fingarde.mineandglory.listeners.items.BackpackListener;
-import fr.fingarde.mineandglory.listeners.items.EnderChestListener;
-import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
 import fr.fingarde.mineandglory.objects.Rank;
-import fr.fingarde.mineandglory.objects.User;
-import fr.fingarde.mineandglory.recipes.Crafts;
 import fr.fingarde.mineandglory.utils.managers.*;
 import fr.fingarde.mineandglory.utils.storage.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class Main extends JavaPlugin
 {
@@ -35,7 +22,6 @@ public class Main extends JavaPlugin
         console = Bukkit.getConsoleSender();
 
         Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false));
-
 
         Database.connectDB();
         Database.createTables();
@@ -60,9 +46,6 @@ public class Main extends JavaPlugin
         super.onDisable();
         Database.getSource().close();
     }
-
-
-
 
     // Getters
 

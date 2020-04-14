@@ -3,6 +3,7 @@ package fr.fingarde.mineandglory.utils.managers;
 import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.listeners.ChatListener;
 import fr.fingarde.mineandglory.listeners.ConnectionListener;
+import fr.fingarde.mineandglory.listeners.VillagerListener;
 import fr.fingarde.mineandglory.listeners.blocks.BlockPathListener;
 import fr.fingarde.mineandglory.listeners.blocks.DoubleDoorListener;
 import fr.fingarde.mineandglory.listeners.blocks.ForgeListener;
@@ -10,7 +11,6 @@ import fr.fingarde.mineandglory.listeners.blocks.PlayerBreakBlockByHandListener;
 import fr.fingarde.mineandglory.listeners.items.BackpackListener;
 import fr.fingarde.mineandglory.listeners.items.EnderChestListener;
 import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
-import fr.fingarde.mineandglory.recipes.Crafts;
 import org.bukkit.event.Listener;
 
 public class ListenerManager
@@ -21,7 +21,7 @@ public class ListenerManager
 
         register(new PlayerBreakBlockByHandListener());
         register(new ForgeListener());
-        register(new Crafts());
+        register(new ConnectionListener.CraftListener());
         register(new ConnectionListener());
         register(new BlockPathListener());
 
@@ -30,6 +30,7 @@ public class ListenerManager
         register(new EnderChestListener());
 
         register(new DoubleDoorListener());
+        register(new VillagerListener());
     }
 
     private static void register(Listener listener)

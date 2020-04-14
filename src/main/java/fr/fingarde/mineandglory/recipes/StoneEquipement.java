@@ -5,7 +5,7 @@ import fr.fingarde.mineandglory.utils.managers.CraftManager;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import static fr.fingarde.mineandglory.recipes.Crafts.shapelessCrafts;
+import static fr.fingarde.mineandglory.listeners.ConnectionListener.CraftListener.shapelessCrafts;
 
 public class StoneEquipement implements Recipes
 {
