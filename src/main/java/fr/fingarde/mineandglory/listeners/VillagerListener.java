@@ -35,7 +35,7 @@ public class VillagerListener implements Listener
                 villager.setRecipes(recipes);
 
             }
-        }.runTaskLater(Main.getPlugin(), 800);
+        }.runTaskLater(Main.getPlugin(), 100);
 
     }
 }
