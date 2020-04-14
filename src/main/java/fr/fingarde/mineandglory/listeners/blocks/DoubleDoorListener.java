@@ -98,6 +98,8 @@ public class DoubleDoorListener implements Listener
         }
 
         if (relative == null) return;
+        if(relative.getType() != block.getType()) return;
+
         Door relativeState = (Door) relative.getBlockData();
 
         if(relativeState.getHinge() == state.getHinge()) return;
