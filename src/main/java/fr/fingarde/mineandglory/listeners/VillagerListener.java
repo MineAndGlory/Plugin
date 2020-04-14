@@ -29,6 +29,7 @@ public class VillagerListener implements Listener
         for(MerchantRecipe recipe : recipes)
         {
             ItemStack stack = recipe.getResult();
+            stack.setAmount(10);
             if(stack.getType() == Material.EMERALD) {
 
                 stack.setType(coin.getType());
