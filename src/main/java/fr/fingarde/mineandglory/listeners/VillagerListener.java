@@ -19,49 +19,52 @@ import java.util.List;
 public class VillagerListener implements Listener
 {
     @EventHandler
-    public void onVillagerSpawn(VillagerCareerChangeEvent event) {
+    public void onVillagerSpawn(VillagerCareerChangeEvent event)
+    {
         new BukkitRunnable()
         {
             @Override
             public void run()
             {
-                //if(event.getEntity().getType() != EntityType.VILLAGER) return;
-
-                Villager villager = (Villager) event.getEntity();
-                if(villager.getProfession() == Villager.Profession.NONE) return;
+                Villager villager = event.getEntity();
+                if (villager.getProfession() == Villager.Profession.NONE) return;
 
                 List<MerchantRecipe> recipes = villager.getRecipes();
-                Bukkit.broadcastMessage(recipes.size() + "");
                 ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
 
-                for(MerchantRecipe recipe : recipes)
+                for (MerchantRecipe oldRecipe : recipes)
                 {
-                    ItemStack stack = recipe.getResult();
-                    stack.setAmount(10);
-                    if(stack.getType() == Material.EMERALD) {
-
-                        stack.setType(coin.getType());
-                        stack.setItemMeta(coin.getItemMeta());
-
+                    ItemStack result = oldRecipe.getResult();
+                    if (result.getType() == Material.EMERALD)
+                    {
+                        result.setType(coin.getType());
+                        result.setItemMeta(coin.getItemMeta());
                     }
 
-                    List<ItemStack> ingredients = recipe.getIngredients();
-                    MerchantRecipe recipe1 = new MerchantRecipe(stack, recipe.getMaxUses());
+                    List<ItemStack> ingredients = oldRecipe.getIngredients();
+                    MerchantRecipe newRecipe = new MerchantRecipe(result, oldRecipe.getMaxUses());
 
-                    for(ItemStack itemStack : ingredients) {
-                        if(itemStack.getType() != Material.EMERALD) continue;
+                    for (ItemStack ingredient : ingredients)
+                    {
+                        if (ingredient.getType() != Material.EMERALD) continue;
 
-                        itemStack.setType(coin.getType());
-                        itemStack.setItemMeta(coin.getItemMeta());
+                        ingredient.setType(coin.getType());
+                        ingredient.setItemMeta(coin.getItemMeta());
                     }
 
-                    recipe1.setIngredients(ingredients);
-                    villager.setRecipe(recipes.indexOf(recipe), recipe1);
+                    newRecipe.setMaxUses(oldRecipe.getMaxUses());
+                    newRecipe.setExperienceReward(oldRecipe.hasExperienceReward());
+                    newRecipe.setPriceMultiplier(oldRecipe.getPriceMultiplier());
+                    newRecipe.setUses(oldRecipe.getUses());
+                    newRecipe.setVillagerExperience(oldRecipe.getVillagerExperience());
+
+                    newRecipe.setIngredients(ingredients);
+                    villager.setRecipe(recipes.indexOf(oldRecipe), newRecipe);
                 }
             }
         }.runTaskLater(Main.getPlugin(), 1);
 
-       // recipes.forEach(merchantRecipe -> );
-       // villager.setRecipes(recipes);
+        // recipes.forEach(merchantRecipe -> );
+        // villager.setRecipes(recipes);
     }
 }
