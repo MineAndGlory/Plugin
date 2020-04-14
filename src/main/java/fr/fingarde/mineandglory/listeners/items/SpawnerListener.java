@@ -46,12 +46,11 @@ public class SpawnerListener implements Listener
     @EventHandler
     public void onPlace(BlockPlaceEvent event)
     {
-        Bukkit.broadcastMessage("EVENT");
         if (event.getBlock().getType() != Material.SPAWNER) return;
-        Bukkit.broadcastMessage("1");
         if (event.getItemInHand().getItemMeta().getLocalizedName() == "") return;
-        Bukkit.broadcastMessage("2");
+
         CreatureSpawner spawner = (CreatureSpawner) event.getBlock().getState();
+
         spawner.setSpawnedType(EntityType.valueOf(event.getItemInHand().getItemMeta().getLocalizedName()));
         spawner.update();
     }
