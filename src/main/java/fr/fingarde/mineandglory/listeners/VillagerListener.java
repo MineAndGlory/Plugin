@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.listeners;
 
+import fr.fingarde.mineandglory.objects.items.CustomItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -23,11 +24,18 @@ public class VillagerListener implements Listener
 
         List<MerchantRecipe> recipes = villager.getRecipes();
         Bukkit.broadcastMessage(recipes.size() + "");
+        ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
 
         for(MerchantRecipe recipe : recipes)
         {
             ItemStack stack = recipe.getResult();
-            stack.setAmount(60);
+            if(stack.getType() == Material.EMERALD) {
+
+                stack.setType(coin.getType());
+                stack.setItemMeta(coin.getItemMeta());
+
+            }
+
             MerchantRecipe recipe1 = new MerchantRecipe(stack, recipe.getMaxUses());
             recipe1.setIngredients(recipe.getIngredients());
             villager.setRecipe(recipes.indexOf(recipe), recipe1);
