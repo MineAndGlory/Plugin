@@ -23,6 +23,7 @@ public class VillagerListener implements Listener
         List<MerchantRecipe> recipes = villager.getRecipes();
         Bukkit.broadcastMessage(recipes.size() + "");
 
+        recipes.forEach(merchantRecipe -> merchantRecipe.getResult().setType(Material.STONE));
 
         recipes.forEach(merchantRecipe -> villager.setRecipe(recipes.indexOf(merchantRecipe), merchantRecipe));
        // villager.setRecipes(recipes);
