@@ -50,7 +50,7 @@ public class VillagerListener implements Listener
                     villager.setRecipe(recipes.indexOf(recipe), recipe1);
                 }
             }
-        }.runTaskLater(Main.getPlugin(), 10);
+        }.runTaskLater(Main.getPlugin(), 1);
 
        // recipes.forEach(merchantRecipe -> );
        // villager.setRecipes(recipes);
