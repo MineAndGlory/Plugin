@@ -29,6 +29,6 @@ public class VillagerListener implements Listener
         List<MerchantRecipe> recipes = villager.getRecipes();
         recipes.forEach(merchantRecipe -> merchantRecipe.getResult().setType(Material.STONE));
 
-
+        villager.setRecipes(recipes);
     }
 }
