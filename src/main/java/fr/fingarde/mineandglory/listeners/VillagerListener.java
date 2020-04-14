@@ -7,6 +7,7 @@ import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
 
 import java.util.List;
@@ -25,8 +26,11 @@ public class VillagerListener implements Listener
 
         for(MerchantRecipe recipe : recipes)
         {
-            recipe.getResult().setAmount(60);
-            villager.setRecipe(recipes.indexOf(recipe), recipe);
+            ItemStack stack = recipe.getResult();
+            stack.setAmount(60);
+            MerchantRecipe recipe1 = new MerchantRecipe(stack, recipe.getMaxUses());
+            recipe1.setIngredients(recipe1.getIngredients());
+            villager.setRecipe(recipes.indexOf(recipe), recipe1);
         }
        // recipes.forEach(merchantRecipe -> );
        // villager.setRecipes(recipes);
