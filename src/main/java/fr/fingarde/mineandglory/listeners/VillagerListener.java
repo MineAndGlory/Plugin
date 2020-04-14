@@ -22,12 +22,13 @@ public class VillagerListener implements Listener
         ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
 
         List<MerchantRecipe> recipes = villager.getRecipes();
-        recipes.forEach(merchantRecipe -> {
+        recipes.clear();
+        /*recipes.forEach(merchantRecipe -> {
             merchantRecipe.getResult().setType(Material.STONE);
           /*  if(merchantRecipe.getResult().getType() == Material.EMERALD)
                 merchantRecipe.getResult().setType(coin.getType());
-                merchantRecipe.getResult().setItemMeta(coin.getItemMeta());*/
-        });
+                merchantRecipe.getResult().setItemMeta(coin.getItemMeta());
+        });*/
 
         villager.setRecipes(recipes);
     }
