@@ -21,15 +21,8 @@ public class VillagerListener implements Listener
         Villager villager = event.getEntity();
         ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
 
-        List<MerchantRecipe> recipes = villager.getRecipes();
-        recipes.clear();
-        /*recipes.forEach(merchantRecipe -> {
-            merchantRecipe.getResult().setType(Material.STONE);
-          /*  if(merchantRecipe.getResult().getType() == Material.EMERALD)
-                merchantRecipe.getResult().setType(coin.getType());
-                merchantRecipe.getResult().setItemMeta(coin.getItemMeta());
-        });*/
+        MerchantRecipe recipe = new MerchantRecipe(coin, 90000);
 
-        villager.setRecipes(recipes);
+        villager.setRecipe(0, recipe);
     }
 }
