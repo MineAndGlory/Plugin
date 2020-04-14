@@ -11,6 +11,6 @@ public class ServerListListener implements Listener
 {
     @EventHandler
     public void onPing(ServerListPingEvent event) {
-        event.setMotd("123456789012345678901234567890123456789012345\n123456789012345678901234567890123456789012345");
+        event.setMotd("123456789012345678901234567890123456789012345\n|                                           |");
     }
 }
