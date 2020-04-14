@@ -34,7 +34,7 @@ public class SpawnerListener implements Listener
 
         meta.setDisplayName(entityType.substring(0,1) + entityType.substring(1).toLowerCase() + " Spawner");
         List<String> lore = new ArrayList<>();
-        lore.add("§eSpawner a§7: §6" + entityType.toLowerCase());
+        lore.add("§eSpawner a §6" + entityType.toLowerCase());
 
         meta.setLocalizedName(entityType);
         meta.setLore(lore);
