@@ -20,13 +20,15 @@ public class SpawnerListener implements Listener
         if(!event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getLocalizedName().equals(CustomItems.SPAWNER_PICKAXE.name())) return;
         if(event.getBlock().getType() != Material.SPAWNER) return;
 
+        event.setExpToDrop(0);
+
         ItemStack spawner = new ItemStack(Material.SPAWNER);
         ItemMeta meta = spawner.getItemMeta();
 
-        String entityType = ((CreatureSpawner) event.getBlock().getState()).getSpawnedType().name();
+        String entityType = ((CreatureSpawner) event.getBlock().getState()).getSpawnedType().name().toLowerCase();
 
         List<String> lore = new ArrayList<>();
-        lore.add("Spawner à: §6" + entityType);
+        lore.add("§rSpawner à: §6" + entityType);
 
         meta.setLore(lore);
         spawner.setItemMeta(meta);
