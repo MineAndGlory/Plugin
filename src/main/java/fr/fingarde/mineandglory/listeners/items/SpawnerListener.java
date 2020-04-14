@@ -1,6 +1,7 @@
 package fr.fingarde.mineandglory.listeners.items;
 
 import fr.fingarde.mineandglory.objects.items.CustomItems;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
@@ -45,10 +46,11 @@ public class SpawnerListener implements Listener
     @EventHandler
     public void onPlace(BlockPlaceEvent event)
     {
+        Bukkit.broadcastMessage("EVENT");
         if (event.getBlock().getType() != Material.SPAWNER) return;
         if (event.getItemInHand().getItemMeta().getLocalizedName() == "") return;
-
-        CreatureSpawner spawner = (CreatureSpawner) event.getBlock().getState();
+        Bukkit.broadcastMessage("2");
+        CreatureSpawner spawner = (CreatureSpawner) event.getBlock().getBlockData();
         spawner.setSpawnedType(EntityType.valueOf(event.getItemInHand().getItemMeta().getLocalizedName()));
     }
 }
