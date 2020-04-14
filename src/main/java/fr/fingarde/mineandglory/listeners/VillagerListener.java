@@ -23,6 +23,8 @@ public class VillagerListener implements Listener
         List<MerchantRecipe> recipes = villager.getRecipes();
         Bukkit.broadcastMessage(recipes.size() + "");
 
-        villager.setRecipes(recipes);
+
+        recipes.forEach(merchantRecipe -> villager.setRecipe(recipes.indexOf(merchantRecipe), merchantRecipe));
+       // villager.setRecipes(recipes);
     }
 }
