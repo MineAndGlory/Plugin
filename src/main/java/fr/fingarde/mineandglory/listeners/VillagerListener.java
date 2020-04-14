@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VillagerListener implements Listener
@@ -22,7 +23,9 @@ public class VillagerListener implements Listener
         ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
 
         MerchantRecipe recipe = new MerchantRecipe(coin, 90000);
-
+        List<ItemStack> stacks = new ArrayList<>();
+        stacks.add(coin);
+        recipe.setIngredients(stacks);
         villager.setRecipe(0, recipe);
     }
 }
