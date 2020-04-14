@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.listeners;
 
+import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.objects.items.CustomItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -19,15 +20,23 @@ public class VillagerListener implements Listener
     @EventHandler
     public void onVillagerSpawn(VillagerCareerChangeEvent event) {
         Villager villager = event.getEntity();
-        if(villager.getRecipes().size() == 0) return;
+        if(villager.getRecipes().size() != 0) return;
         Bukkit.broadcastMessage("ouioiuo");
 
         ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
 
-        MerchantRecipe recipe = new MerchantRecipe(coin, 90000);
-        List<ItemStack> stacks = new ArrayList<>();
-        stacks.add(coin);
-        recipe.setIngredients(stacks);
-        villager.setRecipe(0, recipe);
+        new BukkitRunnable()
+        {
+            @Override
+            public void run()
+            {
+                MerchantRecipe recipe = new MerchantRecipe(coin, 90000);
+                List<ItemStack> stacks = new ArrayList<>();
+                stacks.add(coin);
+                recipe.setIngredients(stacks);
+                villager.setRecipe(0, recipe);
+            }
+        }.runTaskLater(Main.getPlugin(), 80);
+
     }
 }
