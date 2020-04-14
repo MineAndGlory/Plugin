@@ -18,8 +18,10 @@ public class VillagerListener implements Listener
 {
     @EventHandler
     public void onVillagerSpawn(VillagerCareerChangeEvent event) {
-        Bukkit.broadcastMessage("ouioiuo");
         Villager villager = event.getEntity();
+        if(villager.getRecipes().size() == 0) return;
+        Bukkit.broadcastMessage("ouioiuo");
+
         ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
 
         MerchantRecipe recipe = new MerchantRecipe(coin, 90000);
