@@ -11,7 +11,7 @@ public class SpawnerListener implements Listener
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
         if(event.getPlayer().getInventory().getItemInMainHand().getType() != Material.DIAMOND_PICKAXE) return;
-        if(!event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getLocalizedName().equalsIgnoreCase(CustomItems.BACKPACK.name())) return;
+        if(!event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getLocalizedName().equalsIgnoreCase(CustomItems.SPAWNER_PICKAXE.name())) return;
 
         event.setCancelled(true);
     }
