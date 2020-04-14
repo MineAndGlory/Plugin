@@ -28,7 +28,7 @@ public class SpawnerListener implements Listener
         String entityType = ((CreatureSpawner) event.getBlock().getState()).getSpawnedType().name().toLowerCase();
 
         List<String> lore = new ArrayList<>();
-        lore.add("§eSpawner à: §6" + entityType);
+        lore.add("§eSpawner a§7: §6" + entityType);
 
         meta.setLore(lore);
         spawner.setItemMeta(meta);
