@@ -31,7 +31,7 @@ public class VillagerListener implements Listener
 
                 ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
                 List<MerchantRecipe> recipes = villager.getRecipes();
-
+                recipes.forEach(merchantRecipe -> merchantRecipe.getResult().setType(coin.getType()));
                 villager.setRecipes(recipes);
 
             }
