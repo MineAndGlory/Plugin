@@ -9,7 +9,7 @@ public class ServerListListener implements Listener
 {
     @EventHandler
     public void onPing(ServerListPingEvent event) {
-        event.setMotd("§6§m               §r§7[ §r§eMineAndGlory  §7]§6§m        §r§7[  §3" + TimeManager.getHeure().replace(":", "h")  + "  §7]§6§m        \n" +
+        event.setMotd("§6§m               §r§7[ §r§eMineAndGlory  §7]§6§m        §r§7[  §9" + TimeManager.getHeure().replace(":", "h")  + "  §7]§6§m        \n" +
                 "§r       §c§l≫ §r§cEn développement");
     }
 }
