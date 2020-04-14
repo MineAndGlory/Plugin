@@ -45,8 +45,17 @@ public class VillagerListener implements Listener
 
                     }
 
+                    List<ItemStack> ingredients = recipe.getIngredients();
                     MerchantRecipe recipe1 = new MerchantRecipe(stack, recipe.getMaxUses());
-                    recipe1.setIngredients(recipe.getIngredients());
+
+                    for(ItemStack itemStack : ingredients) {
+                        if(itemStack.getType() != Material.EMERALD) continue;
+
+                        itemStack.setType(coin.getType());
+                        itemStack.setItemMeta(coin.getItemMeta());
+                    }
+
+                    recipe1.setIngredients(ingredients);
                     villager.setRecipe(recipes.indexOf(recipe), recipe1);
                 }
             }
