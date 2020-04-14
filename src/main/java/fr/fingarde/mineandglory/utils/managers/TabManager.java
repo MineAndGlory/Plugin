@@ -9,7 +9,7 @@ public class TabManager
 {
     private static int switchMode = 0; // Every 80tips switch mode to the next one
 
-    private static String modes[] = {"§aSite: §rmineandglory.fr", "§9/discord"};
+    private static String modes[] = {"§aSite: §rmineandglory.fr", "Joir us §9/discord"};
     private static int current = 0;
 
     public static void sheduleTablist()
