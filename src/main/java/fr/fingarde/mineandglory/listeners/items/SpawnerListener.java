@@ -9,6 +9,9 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SpawnerListener implements Listener
 {
     @EventHandler
@@ -19,7 +22,13 @@ public class SpawnerListener implements Listener
 
         ItemStack spawner = new ItemStack(Material.SPAWNER);
         ItemMeta meta = spawner.getItemMeta();
-        meta.setDisplayName(((CreatureSpawner) event.getBlock().getState()).getSpawnedType().name() + " SPAWNER");
+
+        String entityType = ((CreatureSpawner) event.getBlock().getState()).getSpawnedType().name();
+
+        List<String> lore = new ArrayList<>();
+        lore.add("Spawner à: §6" + entityType);
+
+        meta.setLore(lore);
         spawner.setItemMeta(meta);
 
         event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), spawner);
