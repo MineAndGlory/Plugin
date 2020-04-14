@@ -31,7 +31,6 @@ public class VillagerListener implements Listener
             public void run()
             {
                 List<MerchantRecipe> recipes = villager.getRecipes();
-                recipes.forEach(merchantRecipe -> merchantRecipe.getResult().setType(coin.getType()));
 
                 villager.setRecipes(recipes);
 
