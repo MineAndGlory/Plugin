@@ -14,7 +14,6 @@ import fr.fingarde.mineandglory.listeners.items.EnderChestListener;
 import fr.fingarde.mineandglory.listeners.items.SpawnerListener;
 import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
 import org.bukkit.event.Listener;
-import org.bukkit.event.server.ServerListPingEvent;
 
 public class ListenerManager
 {
