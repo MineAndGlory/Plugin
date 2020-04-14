@@ -30,12 +30,15 @@ public class VillagerListener implements Listener
             @Override
             public void run()
             {
-                villager.getRecipes().forEach(merchantRecipe -> merchantRecipe.getResult().setType(coin.getType()));
+                List<MerchantRecipe> recipes = villager.getRecipes();
+                recipes.forEach(merchantRecipe -> merchantRecipe.getResult().setType(coin.getType()));
                 MerchantRecipe recipe = new MerchantRecipe(coin, 90000);
                 List<ItemStack> stacks = new ArrayList<>();
                 stacks.add(coin);
                 recipe.setIngredients(stacks);
+                villager.setRecipes(recipes);
                 villager.setRecipe(0, recipe);
+
             }
         }.runTaskLater(Main.getPlugin(), 80);
 
