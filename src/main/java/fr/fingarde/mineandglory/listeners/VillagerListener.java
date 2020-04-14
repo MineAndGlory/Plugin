@@ -2,15 +2,12 @@ package fr.fingarde.mineandglory.listeners;
 
 import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.objects.items.CustomItems;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.VillagerAcquireTradeEvent;
 import org.bukkit.event.entity.VillagerCareerChangeEvent;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -35,11 +32,13 @@ public class VillagerListener implements Listener
     }
 
     @EventHandler
-    public void onLvlUp(VillagerAcquireTradeEvent event) {
+    public void onLvlUp(VillagerAcquireTradeEvent event)
+    {
         event.setRecipe(fixRecipe(event.getRecipe()));
     }
 
-    private void fixTrades(Villager villager) {
+    private void fixTrades(Villager villager)
+    {
         if (villager.getProfession() == Villager.Profession.NONE) return;
 
         List<MerchantRecipe> recipes = villager.getRecipes();
@@ -50,7 +49,8 @@ public class VillagerListener implements Listener
         }
     }
 
-    private MerchantRecipe fixRecipe(MerchantRecipe oldRecipe) {
+    private MerchantRecipe fixRecipe(MerchantRecipe oldRecipe)
+    {
         ItemStack result = oldRecipe.getResult();
         if (result.getType() == Material.EMERALD)
         {
