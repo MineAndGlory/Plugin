@@ -29,7 +29,7 @@ public class VillagerListener implements Listener
             ItemStack stack = recipe.getResult();
             stack.setAmount(60);
             MerchantRecipe recipe1 = new MerchantRecipe(stack, recipe.getMaxUses());
-            recipe1.setIngredients(recipe1.getIngredients());
+            recipe1.setIngredients(recipe.getIngredients());
             villager.setRecipe(recipes.indexOf(recipe), recipe1);
         }
        // recipes.forEach(merchantRecipe -> );
