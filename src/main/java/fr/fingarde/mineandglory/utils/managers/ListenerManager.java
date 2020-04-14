@@ -10,6 +10,7 @@ import fr.fingarde.mineandglory.listeners.blocks.ForgeListener;
 import fr.fingarde.mineandglory.listeners.blocks.PlayerBreakBlockByHandListener;
 import fr.fingarde.mineandglory.listeners.items.BackpackListener;
 import fr.fingarde.mineandglory.listeners.items.EnderChestListener;
+import fr.fingarde.mineandglory.listeners.items.SpawnerListener;
 import fr.fingarde.mineandglory.listeners.jobs.MinerListener;
 import org.bukkit.event.Listener;
 
@@ -31,6 +32,7 @@ public class ListenerManager
 
         register(new DoubleDoorListener());
         register(new VillagerListener());
+        register(new SpawnerListener());
     }
 
     private static void register(Listener listener)
