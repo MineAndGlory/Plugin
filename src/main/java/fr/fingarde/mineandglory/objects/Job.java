@@ -5,8 +5,8 @@ public class Job
     private int farmerLvl;
     private int farmerExp;
 
-    private int animalBreaderLvl;
-    private int animalBreaderExp;
+    private int animalBreederLvl;
+    private int animalBreederExp;
 
     private int minerLvl;
     private int minerExp;
@@ -63,22 +63,22 @@ public class Job
 
     public int getAnimalBreaderLvl()
     {
-        return animalBreaderLvl;
+        return animalBreederLvl;
     }
 
-    public void setAnimalBreaderLvl(int animalBreaderLvl)
+    public void setAnimalBreaderLvl(int animalBreederLvl)
     {
-        this.animalBreaderLvl = animalBreaderLvl;
+        this.animalBreederLvl = animalBreederLvl;
     }
 
     public int getAnimalBreaderExp()
     {
-        return animalBreaderExp;
+        return animalBreederExp;
     }
 
-    public void setAnimalBreaderExp(int animalBreaderExp)
+    public void setAnimalBreaderExp(int animalBreederExp)
     {
-        this.animalBreaderExp = animalBreaderExp;
+        this.animalBreederExp = animalBreederExp;
     }
 
     public int getMinerLvl()
