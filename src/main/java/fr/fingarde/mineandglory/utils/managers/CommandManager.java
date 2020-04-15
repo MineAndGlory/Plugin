@@ -4,6 +4,7 @@ import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.commands.CGive;
 import fr.fingarde.mineandglory.commands.EnderChestCommand;
 import fr.fingarde.mineandglory.commands.FeedCommand;
+import fr.fingarde.mineandglory.commands.HealCommand;
 import org.bukkit.command.CommandExecutor;
 
 public class CommandManager
@@ -12,7 +13,7 @@ public class CommandManager
     {
         registerCommand("enderchest", new EnderChestCommand());
         registerCommand("feed", new FeedCommand());
-        registerCommand("heal", new FeedCommand());
+        registerCommand("heal", new HealCommand());
         registerCommand("cgive", new CGive());
     }
 
