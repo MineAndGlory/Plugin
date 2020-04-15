@@ -33,7 +33,7 @@ public class FeedCommand implements CommandExecutor
         }
 
         if(player == null) {
-            if(sender instanceof Player) {
+            if(!(sender instanceof Player)) {
                 sender.sendMessage(ErrorMessage.onlyOnPlayer());
                 return false;
             }
@@ -43,6 +43,9 @@ public class FeedCommand implements CommandExecutor
 
         player.setFoodLevel(20);
         player.setSaturation(20);
+
+        if(player != sender) sender.sendMessage("Vous avez rassasié " + player.getName());
+        player.sendMessage("Vous avez été rassasié");
 
         return false;
     }
