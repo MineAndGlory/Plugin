@@ -13,7 +13,7 @@ public class HealCommand implements CommandExecutor
     private static String permission = "command.heal";
     private static String permissionOther = "command.heal.other";
 
-    private static String usage = "/feed [player]";
+    private static String usage = "/heal [player]";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments)
