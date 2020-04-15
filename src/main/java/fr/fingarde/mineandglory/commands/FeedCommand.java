@@ -44,8 +44,8 @@ public class FeedCommand implements CommandExecutor
         player.setFoodLevel(20);
         player.setSaturation(20);
 
-        if(player != sender) sender.sendMessage("Vous avez rassasié " + player.getName());
-        player.sendMessage("Vous avez été rassasié");
+        if(player == sender) sender.sendMessage("§aVous avez rassasié §b" + player.getName());
+        player.sendMessage("§aVous avez été rassasié");
 
         return false;
     }
