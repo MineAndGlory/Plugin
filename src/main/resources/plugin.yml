@@ -5,5 +5,9 @@ description: Plugin for MineAndGlory
 author: Fingarde
 api-version: 1.13
 commands:
+  enderchest:
+    aliases:
+      - ec
+    description: Ouvre l'ender chest
   cgive:
     description: Give
