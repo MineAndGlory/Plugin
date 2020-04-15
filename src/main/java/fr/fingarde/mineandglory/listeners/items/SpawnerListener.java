@@ -41,7 +41,6 @@ public class SpawnerListener implements Listener
         spawner.setItemMeta(meta);
 
         event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), spawner);
-
     }
 
     @EventHandler
