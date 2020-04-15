@@ -9,5 +9,7 @@ commands:
     aliases:
       - ec
     description: Ouvre l'ender chest
+  feed:
+      description: Nourrit le joueur
   cgive:
     description: Give

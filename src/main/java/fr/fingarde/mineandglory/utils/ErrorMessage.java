@@ -9,4 +9,8 @@ public class ErrorMessage
     public static String onlyPlayer() {
         return "Cette command est uniquement utilisable par les joueurs ";
     }
+
+    public static String onlyOnPlayer() {
+        return "Cette command est uniquement utilisable sur des joueurs ";
+    }
 }
