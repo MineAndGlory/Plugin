@@ -11,5 +11,7 @@ commands:
     description: Ouvre l'ender chest
   feed:
       description: Nourrit le joueur
+  heal:
+      description: Soigne le joueur
   cgive:
     description: Give

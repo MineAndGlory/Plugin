@@ -12,6 +12,7 @@ public class CommandManager
     {
         registerCommand("enderchest", new EnderChestCommand());
         registerCommand("feed", new FeedCommand());
+        registerCommand("heal", new FeedCommand());
         registerCommand("cgive", new CGive());
     }
 

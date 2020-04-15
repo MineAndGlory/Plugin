@@ -2,15 +2,16 @@ package fr.fingarde.mineandglory.commands;
 
 import fr.fingarde.mineandglory.utils.ErrorMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class FeedCommand implements CommandExecutor
+public class HealCommand implements CommandExecutor
 {
-    private static String permission = "command.feed";
-    private static String permissionOther = "command.feed.other";
+    private static String permission = "command.heal";
+    private static String permissionOther = "command.heal.other";
 
     private static String usage = "/feed [player]";
 
@@ -57,10 +58,11 @@ public class FeedCommand implements CommandExecutor
             player = (Player) sender;
         }
 
+        player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         player.setFoodLevel(20);
         player.setSaturation(20);
 
-        if(player != sender) sender.sendMessage("§aVous avez rassasié §b" + player.getName());
-        player.sendMessage("§aVous avez été rassasié");
+        if(player != sender) sender.sendMessage("§aVous avez soigné §b" + player.getName());
+        player.sendMessage("§aVous avez été soigné");
     }
 }
