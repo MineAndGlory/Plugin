@@ -1,10 +1,7 @@
 package fr.fingarde.mineandglory.utils.managers;
 
 import fr.fingarde.mineandglory.Main;
-import fr.fingarde.mineandglory.commands.CGive;
-import fr.fingarde.mineandglory.commands.EnderChestCommand;
-import fr.fingarde.mineandglory.commands.FeedCommand;
-import fr.fingarde.mineandglory.commands.HealCommand;
+import fr.fingarde.mineandglory.commands.*;
 import org.bukkit.command.CommandExecutor;
 
 public class CommandManager
@@ -14,6 +11,7 @@ public class CommandManager
         registerCommand("enderchest", new EnderChestCommand());
         registerCommand("feed", new FeedCommand());
         registerCommand("heal", new HealCommand());
+        registerCommand("god", new GodCommand());
         registerCommand("cgive", new CGive());
     }
 

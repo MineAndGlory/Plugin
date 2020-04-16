@@ -7,7 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class TabManager
 {
-    private static int switchMode = 0; // Every 80tips switch mode to the next one
+    private static int switchMode = 0;
 
     private static String modes[] = {"§aSite: §rmineandglory.fr", "Join us §9/discord"};
     private static int current = 0;

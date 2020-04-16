@@ -10,8 +10,10 @@ commands:
       - ec
     description: Ouvre l'ender chest
   feed:
-      description: Nourrit le joueur
+      description: Nourrit un joueur
   heal:
-      description: Soigne le joueur
+      description: Soigne un joueur
+  god:
+    description: Rend un joueur invulnerable
   cgive:
     description: Give
