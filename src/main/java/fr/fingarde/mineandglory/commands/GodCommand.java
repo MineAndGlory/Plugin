@@ -54,7 +54,9 @@ public class GodCommand implements CommandExecutor
             }
         }
 
-       if(state == -1) {
+        if(arguments.length == 0) player = (Player) sender;
+
+        if(state == -1) {
             sender.sendMessage(usage);
            return false;
        }
