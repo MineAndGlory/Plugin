@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.commands;
 
+import com.google.gson.internal.$Gson$Preconditions;
 import fr.fingarde.mineandglory.utils.ErrorMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -73,11 +74,18 @@ public class GodCommand implements CommandExecutor
             player = (Player) sender;
         }
 
-        boolean bool = switch (state)
+        boolean bool;
+        switch (state)
                 {
-                    case 1 -> true;
-                    case 0 -> false;
-                    default -> !player.isInvulnerable();
+                    case 1:
+                        bool = true;
+                        break;
+                    case 0:
+                        bool = false;
+                    break;
+                    default:
+                        bool = !player.isInvulnerable();
+                    break;
                 };
 
         player.setInvulnerable(bool);
@@ -87,10 +95,15 @@ public class GodCommand implements CommandExecutor
     }
 
     private int switchVal(String val) {
-        return switch (val.toLowerCase()) {
-            case "on", "true" -> 1;
-            case "off", "false" -> 0;
-            default -> -1;
-        };
+        switch (val.toLowerCase()) {
+            case "on":
+            case "true":
+                return 1;
+            case "off":
+            case "false":
+                return 0;
+            default:
+                return -1;
+        }
     }
 }
