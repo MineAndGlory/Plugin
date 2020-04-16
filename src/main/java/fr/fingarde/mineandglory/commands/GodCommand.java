@@ -71,7 +71,8 @@ public class GodCommand implements CommandExecutor
                 return;
             }
 
-            player = (Player) sender;
+            sender.sendMessage(ErrorMessage.playerNotFound());
+            return;
         }
 
         boolean bool;

@@ -13,4 +13,8 @@ public class ErrorMessage
     public static String onlyOnPlayer() {
         return "Cette command est uniquement utilisable sur des joueurs ";
     }
+
+    public static String playerNotFound() {
+        return "Joueur introuvable";
+    }
 }
