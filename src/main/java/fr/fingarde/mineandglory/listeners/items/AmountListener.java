@@ -2,6 +2,8 @@ package fr.fingarde.mineandglory.listeners.items;
 
 import fr.fingarde.mineandglory.objects.items.CustomItems;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,8 +40,10 @@ public class AmountListener implements Listener
                 ItemStack clone = item.clone();
                 clone.setAmount(customItem.getMaxStack());
 
-                item.setAmount(0);
+                item.setAmount(item.getAmount() - customItem.getMaxStack());
+                ((Item) event.getEntity()).getItemStack().setType(Material.STONE);
                 inventory.setItem(i, clone);
+
 
                 event.setCancelled(true);
                 return;
