@@ -38,8 +38,9 @@ public class AmountListener implements Listener
                 ItemStack clone = item.clone();
                 clone.setAmount(customItem.getMaxStack());
 
-                item.setAmount(item.getAmount() - customItem.getMaxStack());
+                item.setAmount(0);
                 inventory.setItem(i, clone);
+
 
                 event.setCancelled(true);
                 return;
