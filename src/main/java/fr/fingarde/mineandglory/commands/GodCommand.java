@@ -1,6 +1,5 @@
 package fr.fingarde.mineandglory.commands;
 
-import com.google.gson.internal.$Gson$Preconditions;
 import fr.fingarde.mineandglory.utils.ErrorMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -15,15 +14,18 @@ public class GodCommand implements CommandExecutor
 
     private static String usage = "/god [player] [on|off]";
 
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments)
     {
-        if(!sender.hasPermission(permission)) {
+        if (!sender.hasPermission(permission))
+        {
             sender.sendMessage(ErrorMessage.noPermissionMessage(permission));
             return false;
         }
 
-        if(arguments.length > 2) {
+        if (arguments.length > 2)
+        {
             sender.sendMessage(usage);
             return false;
         }
@@ -31,35 +33,42 @@ public class GodCommand implements CommandExecutor
         int state = -2;
         Player player = null;
 
-        if(arguments.length >= 1) {
-            if(!sender.hasPermission(permissionOther)) {
+        if (arguments.length >= 1)
+        {
+            if (!sender.hasPermission(permissionOther))
+            {
                 sender.sendMessage(ErrorMessage.noPermissionMessage(permissionOther));
                 return false;
             }
 
-            for(Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                if(onlinePlayer.getName().equalsIgnoreCase(arguments[0])) {
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+            {
+                if (onlinePlayer.getName().equalsIgnoreCase(arguments[0]))
+                {
                     player = onlinePlayer;
                     break;
                 }
             }
 
-            if(arguments.length == 1) {
-                if(player == null) {
+            if (arguments.length == 1)
+            {
+                if (player == null)
+                {
                     state = switchVal(arguments[0]);
                 }
-            }
-            else {
+            } else
+            {
                 state = switchVal(arguments[1]);
             }
         }
 
-        if(arguments.length == 0) player = (Player) sender;
+        if (arguments.length == 0) player = (Player) sender;
 
-        if(state == -1) {
+        if (state == -1)
+        {
             sender.sendMessage(usage);
-           return false;
-       }
+            return false;
+        }
 
         execute(sender, player, state);
         return false;
@@ -67,8 +76,10 @@ public class GodCommand implements CommandExecutor
 
     static void execute(CommandSender sender, Player player, int state)
     {
-        if(player == null) {
-            if(!(sender instanceof Player)) {
+        if (player == null)
+        {
+            if (!(sender instanceof Player))
+            {
                 sender.sendMessage(ErrorMessage.onlyOnPlayer());
                 return;
             }
@@ -79,26 +90,29 @@ public class GodCommand implements CommandExecutor
 
         boolean bool;
         switch (state)
-                {
-                    case 1:
-                        bool = true;
-                        break;
-                    case 0:
-                        bool = false;
-                    break;
-                    default:
-                        bool = !player.isInvulnerable();
-                    break;
-                };
+        {
+            case 1:
+                bool = true;
+                break;
+            case 0:
+                bool = false;
+                break;
+            default:
+                bool = !player.isInvulnerable();
+                break;
+        }
+        ;
 
         player.setInvulnerable(bool);
 
-        if(player != sender) sender.sendMessage("§aVous avez rendu invulerable §b" + player.getName());
+        if (player != sender) sender.sendMessage("§aVous avez rendu invulerable §b" + player.getName());
         player.sendMessage("§aVous êtes invulerable");
     }
 
-    private int switchVal(String val) {
-        switch (val.toLowerCase()) {
+    private int switchVal(String val)
+    {
+        switch (val.toLowerCase())
+        {
             case "on":
             case "true":
                 return 1;
