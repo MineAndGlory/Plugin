@@ -21,20 +21,26 @@ public class AmountListener implements Listener
         Player player = (Player) event.getEntity();
         Inventory inventory = player.getInventory();
 
+        ItemStack item = event.getItem().getItemStack();
         CustomItems customItem = CustomItems.valueOf((event.getItem().getItemStack().getItemMeta().getLocalizedName()));
+
         for(ItemStack itemInInventory : inventory.getStorageContents()) {
             if(itemInInventory == null ) {
-                return;
+                // Add correct amount
+                if(item.getAmount() <= customItem.getMaxStack()) return;
+
+                //inventory.addItem(item)
             }
 
             if(itemInInventory.getItemMeta().getLocalizedName() == "") continue;
             CustomItems customItemInInventory = CustomItems.valueOf(itemInInventory.getItemMeta().getLocalizedName());
 
             if(customItemInInventory != customItem) continue;
-            if(customItemInInventory.getMaxStack() == itemInInventory.getAmount()) continue;
+            if(customItemInInventory.getMaxStack() >= itemInInventory.getAmount()) continue;
 
             itemInInventory.setAmount(itemInInventory.getAmount() + 1);
         }
+
         event.setCancelled(true);
     }
 }
