@@ -41,7 +41,6 @@ public class AmountListener implements Listener
                 item.setAmount(0);
                 inventory.setItem(i, clone);
 
-
                 event.setCancelled(true);
                 return;
             }
