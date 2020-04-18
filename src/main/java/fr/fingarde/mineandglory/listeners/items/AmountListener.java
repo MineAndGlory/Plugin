@@ -40,7 +40,7 @@ public class AmountListener implements Listener
 
                 int remaining = item.getAmount() - cloneAmount;
 
-                Item newItem = event.getItem().getWorld().dropItem(event.getItem().getLocation(), clone);
+                Item newItem = event.getItem().getWorld().dropItemNaturally(event.getItem().getLocation(), clone);
 
 
                 event.getItem().remove();
