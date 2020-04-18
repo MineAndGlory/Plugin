@@ -29,12 +29,17 @@ public class AmountListener implements Listener
                 // Add correct amount
                 Bukkit.broadcastMessage("4");
                 if(item.getAmount() <= customItem.getMaxStack()) return;
+
                 Bukkit.broadcastMessage("5");
                 //inventory.addItem(item)
+                item.setAmount(item.getAmount() - customItem.getMaxStack());
+                return;
             }
 
             Bukkit.broadcastMessage("6");
-            if(itemInInventory.getItemMeta().getLocalizedName() == "") continue;
+
+            if(itemInInventory.getItemMeta() == null) return;
+            if(itemInInventory.getItemMeta().getLocalizedName().equals("")) continue;
             CustomItems customItemInInventory = CustomItems.valueOf(itemInInventory.getItemMeta().getLocalizedName());
 
             Bukkit.broadcastMessage("7");
