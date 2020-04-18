@@ -2,6 +2,7 @@ package fr.fingarde.mineandglory.utils.managers;
 
 import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.commands.*;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 
 public class CommandManager
