@@ -3,6 +3,7 @@ package fr.fingarde.mineandglory.listeners.items;
 import fr.fingarde.mineandglory.objects.items.CustomItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -39,7 +40,11 @@ public class AmountListener implements Listener
 
                 int remaining = item.getAmount() - cloneAmount;
 
-                event.getItem().getItemStack().setType(Material.STONE);
+                Item newItem = (Item) event.getItem().getWorld().spawnEntity(event.getItem().getLocation(), EntityType.DROPPED_ITEM);
+                newItem.getItemStack().setType(Material.STONE);
+
+                event.getItem().remove();
+
                // event.getItem().remove();
                 inventory.setItem(i, clone);
 
