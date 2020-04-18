@@ -40,8 +40,8 @@ public class AmountListener implements Listener
 
                 int remaining = item.getAmount() - cloneAmount;
 
-                Item newItem = (Item) event.getItem().getWorld().spawnEntity(event.getItem().getLocation(), EntityType.DROPPED_ITEM);
-                newItem.getItemStack().setType(Material.STONE);
+                Item newItem = event.getItem().getWorld().dropItem(event.getItem().getLocation(), clone);
+
 
                 event.getItem().remove();
 
