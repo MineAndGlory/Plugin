@@ -31,17 +31,16 @@ public class AmountListener implements Listener
             ItemStack itemInInventory = inventory.getStorageContents()[i];
 
             if(itemInInventory == null ) {
-                // Add correct amount
-                Bukkit.broadcastMessage("4");
-                if(item.getAmount() <= customItem.getMaxStack()) return;
-
                 Bukkit.broadcastMessage("5");
 
+                int cloneAmount = Math.min(item.getAmount(), customItem.getMaxStack());
                 ItemStack clone = item.clone();
-                clone.setAmount(customItem.getMaxStack());
+                clone.setAmount(cloneAmount);
 
-                item.setAmount(item.getAmount() - customItem.getMaxStack());
-                event.getItem().remove();
+                int remaining = item.getAmount() - cloneAmount;
+
+                event.getItem().getItemStack().setType(Material.STONE);
+               // event.getItem().remove();
                 inventory.setItem(i, clone);
 
 
