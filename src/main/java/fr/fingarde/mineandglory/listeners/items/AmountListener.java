@@ -24,19 +24,28 @@ public class AmountListener implements Listener
         ItemStack item = event.getItem().getItemStack();
         CustomItems customItem = CustomItems.valueOf((event.getItem().getItemStack().getItemMeta().getLocalizedName()));
         Bukkit.broadcastMessage("3");
-        for(ItemStack itemInInventory : inventory.getStorageContents()) {
+
+        for(int i = 0; i < inventory.getStorageContents().length; i++) {
+            ItemStack itemInInventory = inventory.getStorageContents()[i];
+
             if(itemInInventory == null ) {
                 // Add correct amount
                 Bukkit.broadcastMessage("4");
                 if(item.getAmount() <= customItem.getMaxStack()) return;
 
                 Bukkit.broadcastMessage("5");
-                //inventory.addItem(item)
+
+                ItemStack clone = item.clone();
+                clone.setAmount(customItem.getMaxStack());
+
                 item.setAmount(item.getAmount() - customItem.getMaxStack());
+                inventory.setItem(i, clone);
+
+                event.setCancelled(true);
                 return;
             }
 
-            Bukkit.broadcastMessage("6");
+           /* Bukkit.broadcastMessage("6");
 
             if(itemInInventory.getItemMeta() == null) return;
             if(itemInInventory.getItemMeta().getLocalizedName().equals("")) continue;
@@ -48,7 +57,7 @@ public class AmountListener implements Listener
             if(customItemInInventory.getMaxStack() >= itemInInventory.getAmount()) continue;
 
             Bukkit.broadcastMessage("9");
-            itemInInventory.setAmount(itemInInventory.getAmount() + 1);
+            itemInInventory.setAmount(itemInInventory.getAmount() + 1);*/
         }
 
         Bukkit.broadcastMessage("10");
