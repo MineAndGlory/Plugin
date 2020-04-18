@@ -141,13 +141,6 @@ public class ConnectionListener implements Listener
             if (inv.getRecipe() != null) return;
 
             if (event.getCursor().getMaxStackSize() == 1) return;
-            if (event.getCursor().getItemMeta() != null)
-            {
-                if (!event.getCursor().getItemMeta().getLocalizedName().equals(""))
-                {
-                    if (CustomItems.valueOf(event.getCursor().getItemMeta().getLocalizedName()).getMaxStack() == 1) return;
-                }
-            }
 
             if (event.getClick().name().startsWith("SHIFT"))
             {
