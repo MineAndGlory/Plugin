@@ -37,8 +37,6 @@ public class BackpackListener implements Listener
         if (event.getAction() != Action.RIGHT_CLICK_AIR) return;
         if (event.getItem() == null) return;
 
-        if (event.getItem().getType() != Material.IRON_NUGGET) return;
-
         ItemMeta meta = event.getItem().getItemMeta();
         if (!meta.getLocalizedName().equals(CustomItems.BACKPACK.name()) && !meta.getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
             return;
@@ -104,8 +102,6 @@ public class BackpackListener implements Listener
         if (!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
 
         if (event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;
-        if (event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getType() != Material.IRON_NUGGET)
-            return;
         if (!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
             return;
 
@@ -118,7 +114,6 @@ public class BackpackListener implements Listener
         if (event.getCurrentItem() == null) return;
         if (!event.getView().getTitle().startsWith("Backpack")) return;
 
-        if (event.getCurrentItem().getType() != Material.IRON_NUGGET) return;
         if (!event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
             return;
 

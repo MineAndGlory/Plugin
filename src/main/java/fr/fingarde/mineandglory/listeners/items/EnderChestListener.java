@@ -66,8 +66,6 @@ public class EnderChestListener implements Listener
         if (event.getAction() != Action.RIGHT_CLICK_AIR) return;
         if (event.getItem() == null) return;
 
-        if (event.getItem().getType() != Material.IRON_NUGGET) return;
-
         if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.ENDER_BACKPACK.name())) return;
 
         try (Connection connection = Database.getSource().getConnection();
