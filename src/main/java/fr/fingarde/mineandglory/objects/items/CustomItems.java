@@ -15,7 +15,7 @@ public enum CustomItems
     SLIME_FINDER(Material.IRON_NUGGET, 1023, "Slime Finder", 1, null),
     BONE_MEAL_POUCH(Material.IRON_NUGGET, 1024, "Bone Meal Pouch", 1, null),
 
-    VILLAGER_COIN(Material.IRON_NUGGET, 901, "Villager Coin", 1, null),
+    VILLAGER_COIN(Material.IRON_NUGGET, 901, "Villager Coin", 32, null),
     SPAWNER_PICKAXE(Material.DIAMOND_PICKAXE, 502, "Spawner Pickaxe", 1, null),
 
     RUBY(Material.IRON_NUGGET, 101, "Ruby", 64, null),
