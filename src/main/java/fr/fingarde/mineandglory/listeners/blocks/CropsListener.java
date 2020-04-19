@@ -39,6 +39,9 @@ public class CropsListener implements Listener
     {
         Collection<ItemStack> items = Bukkit.getLootTable(NamespacedKey.minecraft("blocks/lettuce")).populateLoot(new Random(), new LootContext.Builder(new Location(Bukkit.getWorld("world"), 5, 5, 5))
                 .killer(event.getPlayer())
+                .luck(1f)
+                .lootingModifier(1)
+                .lootedEntity(event.getPlayer())
                 .build());
 
         items.forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getPlayer().getLocation(), itemStack));
