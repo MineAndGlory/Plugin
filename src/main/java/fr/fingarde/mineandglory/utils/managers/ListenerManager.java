@@ -5,10 +5,7 @@ import fr.fingarde.mineandglory.listeners.ChatListener;
 import fr.fingarde.mineandglory.listeners.ConnectionListener;
 import fr.fingarde.mineandglory.listeners.ServerListListener;
 import fr.fingarde.mineandglory.listeners.VillagerListener;
-import fr.fingarde.mineandglory.listeners.blocks.BlockPathListener;
-import fr.fingarde.mineandglory.listeners.blocks.DoubleDoorListener;
-import fr.fingarde.mineandglory.listeners.blocks.ForgeListener;
-import fr.fingarde.mineandglory.listeners.blocks.PlayerBreakBlockByHandListener;
+import fr.fingarde.mineandglory.listeners.blocks.*;
 import fr.fingarde.mineandglory.listeners.items.BackpackListener;
 import fr.fingarde.mineandglory.listeners.items.EnderChestListener;
 import fr.fingarde.mineandglory.listeners.items.SpawnerListener;
@@ -35,6 +32,8 @@ public class ListenerManager
         register(new DoubleDoorListener());
         register(new VillagerListener());
         register(new SpawnerListener());
+
+        register(new CropsListener());
     }
 
     private static void register(Listener listener)

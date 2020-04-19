@@ -27,7 +27,7 @@ import java.util.Collection;
 import java.util.List;
 
 
-public class ForgeListener implements Listener
+public class  ForgeListener implements Listener
 {
     @EventHandler
     public void onClickWithRock(PlayerInteractEvent event)
