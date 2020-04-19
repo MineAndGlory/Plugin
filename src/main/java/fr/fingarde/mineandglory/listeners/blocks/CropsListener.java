@@ -42,8 +42,6 @@ public class CropsListener implements Listener
                 .build());
 
         items.forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getPlayer().getLocation(), itemStack));
-
-        event.getClickedBlock().getDrops()
     }
 
     private boolean isCrop(Material material)
