@@ -38,10 +38,12 @@ public class CropsListener implements Listener
     public void onClick(PlayerInteractEvent event)
     {
         Collection<ItemStack> items = Bukkit.getLootTable(NamespacedKey.minecraft("blocks/lettuce")).populateLoot(new Random(), new LootContext.Builder(new Location(Bukkit.getWorld("world"), 5, 5, 5))
+                .killer(event.getPlayer())
                 .build());
 
         items.forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getPlayer().getLocation(), itemStack));
 
+        event.getClickedBlock().getDrops()
     }
 
     private boolean isCrop(Material material)
