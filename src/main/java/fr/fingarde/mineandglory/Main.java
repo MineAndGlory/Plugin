@@ -28,6 +28,8 @@ public class Main extends JavaPlugin
 
         Rank.loadRanks();
 
+        LootTableManager.registerLootTables();
+
         ListenerManager.registerListeners();
         CommandManager.registerCommands();
 

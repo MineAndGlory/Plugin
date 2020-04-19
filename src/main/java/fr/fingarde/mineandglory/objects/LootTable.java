@@ -14,7 +14,7 @@ public class LootTable
         boolean isTrue(ItemStack itemStack);
     }
 
-    public class EnchantCondition implements Condition
+    public static class EnchantCondition implements Condition
     {
         private Enchantment enchantment;
 
@@ -53,7 +53,7 @@ public class LootTable
         }
     }
 
-    public class Entry
+    public static class Entry
     {
         private ItemStack item;
         private List<Condition> conditions;
@@ -66,11 +66,6 @@ public class LootTable
         {
             this.item = item;
             this.conditions = new LinkedList<>();
-        }
-
-        void addCondition(Condition condition)
-        {
-            conditions.add(condition);
         }
 
         public ItemStack getItem()
@@ -98,31 +93,36 @@ public class LootTable
             return chance;
         }
 
-        public void setMin(int min)
+        public Entry addCondition(Condition condition)
+        {
+            conditions.add(condition);
+            return this;
+        }
+
+        public Entry setMin(int min)
         {
             this.min = min;
+            return this;
         }
 
-        public void setMax(int max)
+        public Entry setMax(int max)
         {
             this.max = max;
+            return this;
         }
 
-        public void setChance(float chance)
+        public Entry setChance(float chance)
         {
             this.chance = chance;
+            return this;
         }
     }
 
-    private List<Entry> entries;
+    private List<Entry> entries = new LinkedList<>();
 
-    public LootTable()
-    {
-        entries = new LinkedList<>();
-    }
-
-    public void addEntry(Entry entry)
+    public LootTable addEntry(Entry entry)
     {
         entries.add(entry);
+        return this;
     }
 }

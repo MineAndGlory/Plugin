@@ -1,17 +1,12 @@
 package fr.fingarde.mineandglory.listeners.blocks;
 
-import org.bukkit.*;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.loot.LootContext;
-
-import java.util.Collection;
-import java.util.Random;
 
 public class CropsListener implements Listener
 {
