@@ -33,7 +33,7 @@ public class LootTable
         }
     }
 
-    public class MaterialCondition implements Condition
+    public static class MaterialCondition implements Condition
     {
         private String material;
 
@@ -47,8 +47,8 @@ public class LootTable
         {
             if (itemStack == null) return false;
             if (itemStack.getType().name().equals(material)) return true;
-            ItemMeta meta = itemStack.getItemMeta();
 
+            ItemMeta meta = itemStack.getItemMeta();
             return meta.getLocalizedName().equals(material);
         }
     }
