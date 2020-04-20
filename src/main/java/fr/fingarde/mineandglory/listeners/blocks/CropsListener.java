@@ -10,7 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EquipmentSlot;
 
 public class CropsListener implements Listener
 {
@@ -37,7 +36,6 @@ public class CropsListener implements Listener
     public void onClick(PlayerInteractEvent event)
     {
         if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-       // if(event.getHand() != EquipmentSlot.HAND) return;
 
         if(event.getClickedBlock() == null) return;
         if(event.getClickedBlock().getType() != Material.CARROTS) return;
