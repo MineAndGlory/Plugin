@@ -13,7 +13,7 @@ public class CropsLootTable implements LootTableRegister
     @Override
     public void register()
     {
-        LootTableManager.addLootTable("Potatoes", new LootTable()
+        LootTableManager.addLootTable("potatoes", new LootTable()
                 .addEntry(new LootTable.Entry(CustomItems.getFromValue(CustomItems.VILLAGER_COIN))
                         .setChance(1)
                         .setMax(10)

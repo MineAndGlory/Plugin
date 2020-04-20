@@ -29,7 +29,7 @@ public class LootTableManager
 
     public static List<ItemStack> getDrops(String lootTableName, ItemStack itemStack)
     {
-        if(!lootTables.containsKey(lootTableName)) return null;
+        if(!lootTables.containsKey(lootTableName.toLowerCase())) return null;
 
         LootTable lootTable = lootTables.get(lootTableName);
 

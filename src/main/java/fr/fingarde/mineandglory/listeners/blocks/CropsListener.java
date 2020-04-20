@@ -1,7 +1,6 @@
 package fr.fingarde.mineandglory.listeners.blocks;
 
 import fr.fingarde.mineandglory.utils.managers.LootTableManager;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
@@ -9,9 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.List;
 
 public class CropsListener implements Listener
 {
@@ -37,15 +33,11 @@ public class CropsListener implements Listener
     @EventHandler
     public void onClick(PlayerInteractEvent event)
     {
-        List<ItemStack> loots = LootTableManager.getDrops("Potatoes", event.getItem());
-        Bukkit.broadcastMessage(loots + "");
-
+        LootTableManager.getDrops("potatoes", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getPlayer().getLocation(), itemStack));
     }
 
     private boolean isCrop(Material material)
     {
-
-
         switch (material)
         {
             case WHEAT:
