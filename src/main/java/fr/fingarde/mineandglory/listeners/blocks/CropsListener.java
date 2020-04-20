@@ -41,7 +41,6 @@ public class CropsListener implements Listener
         if (event.getClickedBlock() == null) return;
         if (!isCrop(event.getClickedBlock().getType())) return;
 
-
         Ageable ageable = (Ageable) event.getClickedBlock().getBlockData();
 
         Material type = event.getClickedBlock().getType();
@@ -79,8 +78,8 @@ public class CropsListener implements Listener
 
         LootTableManager.getDrops(e, event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
 
-       if(isBush(type)) ageable.setAge(ageable.getAge() - 3);
-       else ageable.setAge(ageable.getAge() - 6);
+        if(isBush(type)) ageable.setAge(ageable.getAge() - 3);
+        else ageable.setAge(ageable.getAge() - 6);
 
         event.getClickedBlock().setBlockData(ageable);
     }
@@ -88,5 +87,19 @@ public class CropsListener implements Listener
     private boolean isBush(Material material)
     {
         return material == Material.BEETROOTS;
+    }
+
+    private boolean isCrop(Material material)
+    {
+        switch (material)
+        {
+            case WHEAT:
+            case POTATOES:
+            case CARROTS:
+            case BEETROOTS:
+                return true;
+        }
+
+        return false;
     }
 }
