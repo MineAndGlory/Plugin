@@ -60,7 +60,7 @@ public class CropsListener implements Listener
                 else
                     e = "rice";
                 break;
-            case POTATO:
+            case POTATOES:
                 if (ageable.getAge() == 7)
                     e = "potato";
                 else
