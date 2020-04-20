@@ -78,7 +78,7 @@ public class CropsListener implements Listener
 
         LootTableManager.getDrops(e, event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
 
-        if (isBush(type)) ageable.setAge(ageable.getAge() - 3);
+        if (isBush(type)) ageable.setAge(ageable.getAge() - 2);
         else ageable.setAge(ageable.getAge() - 6);
 
         event.getClickedBlock().setBlockData(ageable);
