@@ -43,7 +43,7 @@ public class CropsLootTable implements LootTableRegister
                         .setChance(1)
                         .setMax(10)
                         .setMin(1)));
-        LootTableManager.addLootTable("strawberrry", new LootTable()
+        LootTableManager.addLootTable("strawberry", new LootTable()
                 .addEntry(new LootTable.Entry(CustomItems.getFromValue(CustomItems.STRAWBERRY))
                         .setChance(1)
                         .setMax(10)
