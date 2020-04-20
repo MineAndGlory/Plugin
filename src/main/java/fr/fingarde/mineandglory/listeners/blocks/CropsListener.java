@@ -35,17 +35,50 @@ public class CropsListener implements Listener
     @EventHandler
     public void onClick(PlayerInteractEvent event)
     {
-        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
-        if(event.getClickedBlock() == null) return;
-        if(event.getClickedBlock().getType() != Material.CARROTS) return;
+        if (event.getClickedBlock() == null) return;
+        if (!isCrop(event.getClickedBlock().getType())) return;
 
         Ageable ageable = (Ageable) event.getClickedBlock().getBlockData();
-        if(ageable.getAge() != CustomBlocks.TOMATO_STAGE3.getData().get("age").getAsInt()) return;
+        if (ageable.getAge() != 6 && ageable.getAge() != 7) return;
 
-        LootTableManager.getDrops("tomato", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
+        Material type = event.getClickedBlock().getType();
+        String e;
 
-        ageable.setAge(CustomBlocks.TOMATO_STAGE0.getData().get("age").getAsInt());
+        switch (type)
+        {
+            case CARROTS:
+                if (ageable.getAge() == 7)
+                    e = "carrot";
+                else
+                    e = "tomato";
+                break;
+            case WHEAT:
+                if (ageable.getAge() == 7)
+                    e = "wheat";
+                else
+                    e = "rice";
+                break;
+            case POTATO:
+                if (ageable.getAge() == 7)
+                    e = "potato";
+                else
+                    e = "lettuce";
+                break;
+            case BEETROOT:
+                if (ageable.getAge() == 3)
+                    e = "raspberry";
+                else
+                    e = "strawberry";
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+
+        LootTableManager.getDrops(e, event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
+
+        ageable.setAge(ageable.getAge() - 6);
 
         event.getClickedBlock().setBlockData(ageable);
     }
