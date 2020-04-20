@@ -28,6 +28,8 @@ public enum CustomItems
     PALLADIUM(Material.IRON_NUGGET, 107, "Palladium", null),
     LUMINITE(Material.IRON_NUGGET, 108, "Luminite", null),
 
+    TOMATO(Material.APPLE, 101, "Tomato", null),
+
     STONE_PICKAXE_HEAD(Material.CARROT_ON_A_STICK, 34001, "Stone Pickaxe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
     STONE_AXE_HEAD(Material.CARROT_ON_A_STICK, 34002, "Stone Axe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
     STONE_SHOVEL_HEAD(Material.CARROT_ON_A_STICK, 34003, "Stone Shovel Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),

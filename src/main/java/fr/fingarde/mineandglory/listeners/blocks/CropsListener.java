@@ -6,6 +6,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -33,7 +34,12 @@ public class CropsListener implements Listener
     @EventHandler
     public void onClick(PlayerInteractEvent event)
     {
-        LootTableManager.getDrops("potatoes", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getPlayer().getLocation(), itemStack));
+        if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+
+        if(event.getClickedBlock() == null) return;
+        if(event.getClickedBlock().getType() != Material.CARROTS) return;
+
+        LootTableManager.getDrops("potatoes", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
     }
 
     private boolean isCrop(Material material)
