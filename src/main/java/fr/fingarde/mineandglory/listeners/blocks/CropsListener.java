@@ -44,41 +44,41 @@ public class CropsListener implements Listener
         Ageable ageable = (Ageable) event.getClickedBlock().getBlockData();
 
         Material type = event.getClickedBlock().getType();
-        String e;
+        String e = null;
 
         switch (type)
         {
             case CARROTS:
                 if (ageable.getAge() == 7)
                     e = "carrot";
-                else
+                else if (ageable.getAge() == 6)
                     e = "tomato";
                 break;
             case WHEAT:
                 if (ageable.getAge() == 7)
                     e = "wheat";
-                else
+                else if (ageable.getAge() == 6)
                     e = "rice";
                 break;
             case POTATOES:
                 if (ageable.getAge() == 7)
                     e = "potato";
-                else
+                else if (ageable.getAge() == 6)
                     e = "lettuce";
                 break;
-            case BEETROOT:
+            case BEETROOTS:
                 if (ageable.getAge() == 3)
                     e = "raspberry";
-                else
+                else if (ageable.getAge() == 2)
                     e = "strawberry";
                 break;
-            default:
-                return;
         }
+
+        if(e == null) return;
 
         LootTableManager.getDrops(e, event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
 
-        if(isBush(type)) ageable.setAge(ageable.getAge() - 3);
+        if (isBush(type)) ageable.setAge(ageable.getAge() - 3);
         else ageable.setAge(ageable.getAge() - 6);
 
         event.getClickedBlock().setBlockData(ageable);
