@@ -125,4 +125,30 @@ public class LootTable
         entries.add(entry);
         return this;
     }
+
+    public List<ItemStack> getLoot(ItemStack itemStack)
+    {
+        List<Entry> entries = new LinkedList<>();
+        List<ItemStack> items = new LinkedList<>();
+
+        this.entries.forEach(entry -> {
+            boolean[] valid = {true};
+            entry.getConditions().forEach(condition ->
+            {
+                if (!condition.isTrue(itemStack)) valid[0] = false;
+           });
+
+            if(valid[0]) {
+                entries.add(entry);
+            }
+        });
+
+        entries.forEach(entry ->
+        {
+            items.add(entry.getItem());
+        });
+
+        if(items.size() == 0) return null;
+        return items;
+    }
 }

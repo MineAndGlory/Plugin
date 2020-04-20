@@ -1,5 +1,7 @@
 package fr.fingarde.mineandglory.listeners.blocks;
 
+import fr.fingarde.mineandglory.utils.managers.LootTableManager;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
@@ -32,8 +34,7 @@ public class CropsListener implements Listener
     @EventHandler
     public void onClick(PlayerInteractEvent event)
     {
-
-
+        LootTableManager.getDrops("potatoes", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getPlayer().getLocation(), itemStack));
     }
 
     private boolean isCrop(Material material)
