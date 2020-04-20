@@ -36,9 +36,11 @@ public class CropsListener implements Listener
     public void onClick(PlayerInteractEvent event)
     {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if(event.getPlayer().isSneaking()) return;
 
         if (event.getClickedBlock() == null) return;
         if (!isCrop(event.getClickedBlock().getType())) return;
+
 
         Ageable ageable = (Ageable) event.getClickedBlock().getBlockData();
         if (ageable.getAge() != 6 && ageable.getAge() != 7) return;
