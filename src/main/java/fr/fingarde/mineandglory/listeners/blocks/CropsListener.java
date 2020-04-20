@@ -36,14 +36,13 @@ public class CropsListener implements Listener
     public void onClick(PlayerInteractEvent event)
     {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-        if(event.getPlayer().isSneaking()) return;
+        if (event.getPlayer().isSneaking()) return;
 
         if (event.getClickedBlock() == null) return;
         if (!isCrop(event.getClickedBlock().getType())) return;
 
 
         Ageable ageable = (Ageable) event.getClickedBlock().getBlockData();
-        if (ageable.getAge() != 6 && ageable.getAge() != 7) return;
 
         Material type = event.getClickedBlock().getType();
         String e;
@@ -75,27 +74,19 @@ public class CropsListener implements Listener
                     e = "strawberry";
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + type);
+                return;
         }
 
         LootTableManager.getDrops(e, event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
 
-        ageable.setAge(ageable.getAge() - 6);
+       if(isBush(type)) ageable.setAge(ageable.getAge() - 3);
+       else ageable.setAge(ageable.getAge() - 6);
 
         event.getClickedBlock().setBlockData(ageable);
     }
 
-    private boolean isCrop(Material material)
+    private boolean isBush(Material material)
     {
-        switch (material)
-        {
-            case WHEAT:
-            case POTATOES:
-            case CARROTS:
-            case BEETROOTS:
-                return true;
-        }
-
-        return false;
+        return material == Material.BEETROOTS;
     }
 }
