@@ -32,6 +32,7 @@ public enum CustomItems
     LETTUCE(Material.APPLE, 102, "Lettuce", null),
     STRAWBERRY(Material.APPLE, 103, "Strawberry", null),
     RASPBERRY(Material.APPLE, 104, "Raspberry", null),
+    RICE(Material.APPLE, 105, "Rice", null),
 
     STONE_PICKAXE_HEAD(Material.CARROT_ON_A_STICK, 34001, "Stone Pickaxe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
     STONE_AXE_HEAD(Material.CARROT_ON_A_STICK, 34002, "Stone Axe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
