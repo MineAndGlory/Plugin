@@ -43,6 +43,16 @@ public class CropsLootTable implements LootTableRegister
                         .setChance(1)
                         .setMax(10)
                         .setMin(1)));
+        LootTableManager.addLootTable("strawberrry", new LootTable()
+                .addEntry(new LootTable.Entry(CustomItems.getFromValue(CustomItems.STRAWBERRY))
+                        .setChance(1)
+                        .setMax(10)
+                        .setMin(1)));
+        LootTableManager.addLootTable("raspberry", new LootTable()
+                .addEntry(new LootTable.Entry(CustomItems.getFromValue(CustomItems.RASPBERRY))
+                        .setChance(1)
+                        .setMax(10)
+                        .setMin(1)));
 
         LootTableManager.addLootTable("test", new LootTable()
                 .addEntry(new LootTable.Entry(CustomItems.getFromValue(CustomItems.VILLAGER_COIN))
