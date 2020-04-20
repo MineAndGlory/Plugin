@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.listeners.blocks;
 
+import fr.fingarde.mineandglory.objects.blocks.CustomBlocks;
 import fr.fingarde.mineandglory.utils.managers.LootTableManager;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -39,7 +40,13 @@ public class CropsListener implements Listener
         if(event.getClickedBlock() == null) return;
         if(event.getClickedBlock().getType() != Material.CARROTS) return;
 
-        LootTableManager.getDrops("potatoes", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
+        LootTableManager.getDrops("tomato", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
+
+        Ageable ageable = (Ageable) event.getClickedBlock().getBlockData();
+
+        ageable.setAge(CustomBlocks.TOMATO_STAGE0.getData().get("age").getAsInt());
+
+        event.getClickedBlock().setBlockData(ageable);
     }
 
     private boolean isCrop(Material material)
