@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 
 public class CropsListener implements Listener
 {
@@ -36,13 +37,15 @@ public class CropsListener implements Listener
     public void onClick(PlayerInteractEvent event)
     {
         if(event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if(event.getHand() != EquipmentSlot.HAND) return;
 
         if(event.getClickedBlock() == null) return;
         if(event.getClickedBlock().getType() != Material.CARROTS) return;
 
-        LootTableManager.getDrops("tomato", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
-
         Ageable ageable = (Ageable) event.getClickedBlock().getBlockData();
+        if(ageable.getAge() != CustomBlocks.TOMATO_STAGE3.getData().get("age").getAsInt()) return;
+
+        LootTableManager.getDrops("tomato", event.getItem()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getClickedBlock().getLocation(), itemStack));
 
         ageable.setAge(CustomBlocks.TOMATO_STAGE0.getData().get("age").getAsInt());
 
