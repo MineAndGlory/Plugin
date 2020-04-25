@@ -143,7 +143,7 @@ public class HDVCommand implements CommandExecutor
                         Connection connection = Database.getSource().getConnection();
                         Statement statement = connection.createStatement();
 
-                        ResultSet result = statement.executeQuery("SELECT * FROM tb_market ORDER BY mk_date LIMIT 36"))
+                        ResultSet result = statement.executeQuery("SELECT * FROM tb_market ORDER BY mk_date DESC LIMIT 36"))
                 {
                     while (result.next())
                     {
