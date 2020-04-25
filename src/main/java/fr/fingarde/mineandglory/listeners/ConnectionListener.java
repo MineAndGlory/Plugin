@@ -43,12 +43,12 @@ public class ConnectionListener implements Listener
             @Override
             public void run()
             {
-                try
-                {
-                    Connection connection = Database.getSource().getConnection();
-                    Statement statement = connection.createStatement();
+                try (
+                        Connection connection = Database.getSource().getConnection();
+                        Statement statement = connection.createStatement();
 
-                    ResultSet result = statement.executeQuery("SELECT * FROM tb_player WHERE pl_uuid = '" + player.getUniqueId().toString() + "'");
+                        ResultSet result = statement.executeQuery("SELECT * FROM tb_player WHERE pl_uuid = '" + player.getUniqueId().toString() + "'"))
+                {
 
                     Rank defaultRank = Rank.getDefaultRank();
                     if (defaultRank == null)

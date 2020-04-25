@@ -13,6 +13,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -117,8 +118,6 @@ public class HDVCommand implements CommandExecutor
                         Connection connection = Database.getSource().getConnection();
                         Statement statement = connection.createStatement())
                 {
-
-
                     statement.executeUpdate("INSERT INTO tb_market (mk_id, mk_player, mk_price, mk_date, mk_item) VALUES ('" + UUID.randomUUID().toString() + "', '" + player.getUniqueId().toString() + "', '" + finalPrice + "', '" + new Date().getTime() + "', '" + ItemSerializer.serializeItem(itemStack) + "')");
 
                 } catch (SQLException e)
@@ -131,23 +130,32 @@ public class HDVCommand implements CommandExecutor
         player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
     }
 
-    static void execute(CommandSender sender, Player player)
+    private void executeOpen(Player player)
     {
-        if (player == null)
+        Inventory inv = Bukkit.createInventory(null, 36);
+
+        new BukkitRunnable()
         {
-            if (!(sender instanceof Player))
+            @Override
+            public void run()
             {
-                sender.sendMessage(ErrorMessage.onlyOnPlayer());
-                return;
+                try (
+                        Connection connection = Database.getSource().getConnection();
+                        Statement statement = connection.createStatement();
+
+                        ResultSet result = statement.executeQuery("SELECT * FROM tb_market LIMIT 36"))
+                {
+                    while (result.next())
+                    {
+                        inv.addItem(ItemSerializer.deserializeItem(result.getString("mk_item")));
+                    }
+
+                    player.openInventory(inv);
+                } catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
             }
-
-            player = (Player) sender;
-        }
-
-        player.setFoodLevel(20);
-        player.setSaturation(20);
-
-        if (player != sender) sender.sendMessage("§aVous avez rassasié §b" + player.getName());
-        player.sendMessage("§aVous avez été rassasié");
+        }.runTaskAsynchronously(Main.getPlugin());
     }
 }
