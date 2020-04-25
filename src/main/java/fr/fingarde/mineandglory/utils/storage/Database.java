@@ -147,7 +147,7 @@ public class Database
                             "mk_date DATE NOT NULL," +
                             "mk_item TEXT NOT NULL," +
 
-                            "CONSTRAINT fk_tb_market FOREIGN KEY(mk_id) REFERENCES tb_player(pl_uuid)" +
+                            "CONSTRAINT fk_tb_market FOREIGN KEY(mk_player) REFERENCES tb_player(pl_uuid)" +
                             ");");
 
 
