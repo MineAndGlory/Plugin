@@ -128,8 +128,7 @@ public class HDVCommand implements CommandExecutor
             }
         }.runTaskAsynchronously(Main.getPlugin());
 
-        player.getInventory().getItemInMainHand().setType(Material.AIR);
-        player.updateInventory();
+        player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
     }
 
     static void execute(CommandSender sender, Player player)
