@@ -1,6 +1,7 @@
 package fr.fingarde.mineandglory.commands.hdv;
 
 import fr.fingarde.mineandglory.utils.ErrorMessage;
+import fr.fingarde.mineandglory.utils.FloatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -66,9 +67,21 @@ public class HDVCommand implements CommandExecutor
             player.sendMessage(ErrorMessage.emptyHand());
         }
 
-        float price = Float.parseFloat(priceString);
+        float price = -1;
+        try {
+            price = Float.parseFloat(priceString);
+        }
+        catch (NumberFormatException e) {
+            player.sendMessage(ErrorMessage.invalidPrice());
+             return;
+        }
 
+        price = FloatUtils.scaleDown(price);
 
+        if(price < 0) {
+            player.sendMessage(ErrorMessage.invalidPrice());
+            return;
+        }
 
         Bukkit.broadcastMessage(player.getName() + " a mit au enchères " + itemStack.getAmount() + "x " + itemStack.getType().toString().toLowerCase() + " pour " + price + "$");
     }

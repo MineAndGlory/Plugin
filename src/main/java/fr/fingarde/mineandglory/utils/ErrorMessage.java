@@ -22,4 +22,9 @@ public class ErrorMessage
     {
         return "Vous devez tenir un item en main";
     }
+
+    public static String invalidPrice()
+    {
+        return "Ce prix n'est pas correct";
+    }
 }
