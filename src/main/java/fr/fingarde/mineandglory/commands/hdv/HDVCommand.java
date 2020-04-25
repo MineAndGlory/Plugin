@@ -84,6 +84,7 @@ public class HDVCommand implements CommandExecutor
         if (itemStack.getType() == Material.AIR)
         {
             player.sendMessage(ErrorMessage.emptyHand());
+            return;
         }
 
         float price = -1;
@@ -128,6 +129,7 @@ public class HDVCommand implements CommandExecutor
         }.runTaskAsynchronously(Main.getPlugin());
 
         player.getInventory().getItemInMainHand().setType(Material.AIR);
+        player.updateInventory();
     }
 
     static void execute(CommandSender sender, Player player)
