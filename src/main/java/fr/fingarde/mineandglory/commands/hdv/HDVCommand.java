@@ -118,7 +118,7 @@ public class HDVCommand implements CommandExecutor
                 {
 
 
-                    statement.executeUpdate("INSERT INTO tb_market (mk_id, mk_player, mk_price, mk_date, mk_item) VALUES ('" + UUID.randomUUID().toString() + "', '" + player.getUniqueId().toString() + "', '" + finalPrice + "', '" + new Date().getTime() + "', '" + ItemSerializer.serializeItem(itemStack) + "')");
+                    statement.executeUpdate("INSERT INTO tb_market (mk_id, mk_player, mk_price, mk_date, mk_item) VALUES ('" + UUID.randomUUID().toString() + "', '" + player.getUniqueId().toString() + "', '" + finalPrice + "', '" + new java.sql.Date(new Date().getTime()) + "', '" + ItemSerializer.serializeItem(itemStack) + "')");
 
                 } catch (SQLException e)
                 {
