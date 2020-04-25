@@ -132,7 +132,7 @@ public class HDVCommand implements CommandExecutor
 
     private void executeOpen(Player player)
     {
-        Inventory inv = Bukkit.createInventory(null, 36);
+        Inventory inv = Bukkit.createInventory(null, 36, "Hotel des ventes");
 
         new BukkitRunnable()
         {
@@ -143,7 +143,7 @@ public class HDVCommand implements CommandExecutor
                         Connection connection = Database.getSource().getConnection();
                         Statement statement = connection.createStatement();
 
-                        ResultSet result = statement.executeQuery("SELECT * FROM tb_market LIMIT 36"))
+                        ResultSet result = statement.executeQuery("SELECT * FROM tb_market ORDER BY mk_date LIMIT 36"))
                 {
                     while (result.next())
                     {
