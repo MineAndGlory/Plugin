@@ -150,7 +150,14 @@ public class HDVCommand implements CommandExecutor
                         inv.addItem(ItemSerializer.deserializeItem(result.getString("mk_item")));
                     }
 
-                    player.openInventory(inv);
+                    new BukkitRunnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            player.openInventory(inv);
+                        }
+                    }.runTask(Main.getPlugin());
                 } catch (SQLException e)
                 {
                     e.printStackTrace();
