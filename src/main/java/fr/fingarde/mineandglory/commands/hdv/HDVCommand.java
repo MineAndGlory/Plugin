@@ -71,7 +71,7 @@ public class HDVCommand implements CommandExecutor
             executeSell(player, arguments[1]);
         } else
         {
-            // open hdv
+            executeOpen(player);
         }
 
 
