@@ -41,12 +41,12 @@ public class HDVCommand implements CommandExecutor
                 return false;
             }
 
-            if(!arguments[1].equalsIgnoreCase("sell")) {
+            if(!arguments[0].equalsIgnoreCase("sell")) {
                 sender.sendMessage(usage);
                 return false;
             }
 
-            executeSell(player);
+            executeSell(player, arguments[1]);
         }
         else
         {
@@ -57,7 +57,7 @@ public class HDVCommand implements CommandExecutor
         return false;
     }
 
-    private void executeSell(Player player)
+    private void executeSell(Player player, String priceString)
     {
         ItemStack itemStack = player.getInventory().getItemInMainHand();
 
@@ -66,7 +66,11 @@ public class HDVCommand implements CommandExecutor
             player.sendMessage(ErrorMessage.emptyHand());
         }
 
-        Bukkit.broadcastMessage(player.getName() + " a mit au enchères " + itemStack.getAmount() + "x " + itemStack.getType().toString().toLowerCase());
+        float price = Float.parseFloat(priceString);
+
+
+
+        Bukkit.broadcastMessage(player.getName() + " a mit au enchères " + itemStack.getAmount() + "x " + itemStack.getType().toString().toLowerCase() + "pour " + price + "$");
     }
 
     static void execute(CommandSender sender, Player player)
