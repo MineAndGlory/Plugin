@@ -144,7 +144,7 @@ public class Database
                             "mk_id VARCHAR(36) PRIMARY KEY," +
                             "mk_player VARCHAR(36) NOT NULL," +
                             "mk_price NUMERIC(15,2) NOT NULL," +
-                            "mk_date DATE NOT NULL," +
+                            "mk_date NUMERIC(16) NOT NULL," +
                             "mk_item TEXT NOT NULL," +
 
                             "CONSTRAINT fk_tb_market FOREIGN KEY(mk_player) REFERENCES tb_player(pl_uuid)" +
