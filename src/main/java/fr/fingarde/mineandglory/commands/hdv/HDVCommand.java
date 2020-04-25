@@ -70,7 +70,7 @@ public class HDVCommand implements CommandExecutor
 
 
 
-        Bukkit.broadcastMessage(player.getName() + " a mit au enchères " + itemStack.getAmount() + "x " + itemStack.getType().toString().toLowerCase() + "pour " + price + "$");
+        Bukkit.broadcastMessage(player.getName() + " a mit au enchères " + itemStack.getAmount() + "x " + itemStack.getType().toString().toLowerCase() + " pour " + price + "$");
     }
 
     static void execute(CommandSender sender, Player player)
