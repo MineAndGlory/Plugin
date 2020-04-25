@@ -17,4 +17,9 @@ public class ErrorMessage
     public static String playerNotFound() {
         return "Joueur introuvable";
     }
+
+    public static String emptyHand()
+    {
+        return "Vous devez tenir un item en main";
+    }
 }

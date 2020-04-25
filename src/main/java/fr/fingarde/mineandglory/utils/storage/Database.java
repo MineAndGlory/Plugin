@@ -134,9 +134,20 @@ public class Database
 
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS tb_backpack(" +
-                            "bp_id VARCHAR(36) NOT NULL PRIMARY KEY," +
+                            "bp_id VARCHAR(36) PRIMARY KEY," +
                             "bp_size NUMERIC(2)," +
                             "bp_items TEXT" +
+                            ");");
+
+            statement.executeUpdate(
+                    "CREATE TABLE IF NOT EXISTS tb_market(" +
+                            "mk_id VARCHAR(36) PRIMARY KEY," +
+                            "mk_player VARCHAR(36) NOT NULL," +
+                            "mk_price NUMERIC(15,2) NOT NULL," +
+                            "mk_date DATE NOT NULL," +
+                            "mk_item TEXT NOT NULL," +
+
+                            "CONSTRAINT fk_tb_market FOREIGN KEY(mk_id) REFERENCES tb_player(pl_uuid)" +
                             ");");
 
 

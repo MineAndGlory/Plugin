@@ -17,3 +17,5 @@ commands:
     description: Rend un joueur invulnerable
   cgive:
     description: Give
+  hdv:
+    description: Hotel des ventes
