@@ -15,13 +15,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 public class SpawnerListener implements Listener
 {
     @EventHandler
     public void onBreak(BlockBreakEvent event)
     {
         if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.DIAMOND_PICKAXE) return;
-        if (!event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getLocalizedName().equals(CustomItems.SPAWNER_PICKAXE.name()))
+        if (!event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getLocalizedName().equals(SPAWNER_PICKAXE.name()))
             return;
         if (event.getBlock().getType() != Material.SPAWNER) return;
 

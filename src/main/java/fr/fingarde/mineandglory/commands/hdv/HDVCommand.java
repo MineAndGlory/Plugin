@@ -25,6 +25,8 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.UUID;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 public class HDVCommand implements CommandExecutor
 {
     private static String permission = "command.hdv";
@@ -151,8 +153,8 @@ public class HDVCommand implements CommandExecutor
                         inv.addItem(ItemSerializer.deserializeItem(result.getString("mk_item")));
                     }
 
-                    inv.setItem(47, CustomItems.getFromValue(CustomItems.VILLAGER_COIN));
-                    inv.setItem(49, CustomItems.getFromValue(CustomItems.VILLAGER_COIN));
+                    inv.setItem(48, getFromValue(VILLAGER_COIN));
+                    inv.setItem(50, getFromValue(VILLAGER_COIN));
                     new BukkitRunnable()
                     {
                         @Override

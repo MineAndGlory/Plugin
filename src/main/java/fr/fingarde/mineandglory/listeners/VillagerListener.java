@@ -14,9 +14,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 public class VillagerListener implements Listener
 {
-    ItemStack coin = CustomItems.getFromValue(CustomItems.VILLAGER_COIN);
+    ItemStack coin = getFromValue(VILLAGER_COIN);
 
     @EventHandler
     public void onVillagerSpawn(VillagerCareerChangeEvent event)

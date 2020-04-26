@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 public class BackpackListener implements Listener
 {
 
@@ -38,7 +40,7 @@ public class BackpackListener implements Listener
         if (event.getItem() == null) return;
 
         ItemMeta meta = event.getItem().getItemMeta();
-        if (!meta.getLocalizedName().equals(CustomItems.BACKPACK.name()) && !meta.getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
+        if (!meta.getLocalizedName().equals(BACKPACK.name()) && !meta.getLocalizedName().equals(BIG_BACKPACK.name()))
             return;
 
         UUID bagUUID = null;
@@ -60,7 +62,7 @@ public class BackpackListener implements Listener
             try (Connection connection = Database.getSource().getConnection();
                  Statement statement = connection.createStatement())
             {
-                int size = (event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) ? 18 : 36);
+                int size = (event.getItem().getItemMeta().getLocalizedName().equals(BACKPACK.name()) ? 18 : 36);
                 statement.executeUpdate("INSERT INTO tb_backpack(bp_id, bp_size) VALUES('" + bagUUID.toString() + "', '" + size + "')");
 
                 List<String> lore = event.getItem().getItemMeta().getLore();
@@ -102,7 +104,7 @@ public class BackpackListener implements Listener
         if (!event.getWhoClicked().getOpenInventory().getTitle().startsWith("Backpack")) return;
 
         if (event.getWhoClicked().getInventory().getItem(event.getHotbarButton()) == null) return;
-        if (!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
+        if (!event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(BACKPACK.name()) && !event.getWhoClicked().getInventory().getItem(event.getHotbarButton()).getItemMeta().getLocalizedName().equals(BIG_BACKPACK.name()))
             return;
 
         event.setCancelled(true);
@@ -114,7 +116,7 @@ public class BackpackListener implements Listener
         if (event.getCurrentItem() == null) return;
         if (!event.getView().getTitle().startsWith("Backpack")) return;
 
-        if (!event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BACKPACK.name()) && !event.getCurrentItem().getItemMeta().getLocalizedName().equals(CustomItems.BIG_BACKPACK.name()))
+        if (!event.getCurrentItem().getItemMeta().getLocalizedName().equals(BACKPACK.name()) && !event.getCurrentItem().getItemMeta().getLocalizedName().equals(BIG_BACKPACK.name()))
             return;
 
         event.setCancelled(true);

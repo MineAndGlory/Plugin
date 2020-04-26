@@ -6,6 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 public class CGive implements CommandExecutor
 {
     @Override
@@ -13,7 +15,7 @@ public class CGive implements CommandExecutor
     {
         if (!(commandSender instanceof Player)) return true;
 
-        ((Player) commandSender).getInventory().addItem(CustomItems.getFromValue(CustomItems.valueOf(strings[0].toUpperCase())));
+        ((Player) commandSender).getInventory().addItem(getFromValue(valueOf(strings[0].toUpperCase())));
         return false;
     }
 }

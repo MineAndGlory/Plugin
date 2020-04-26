@@ -21,6 +21,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 public class EnderChestListener implements Listener
 {
     @EventHandler
@@ -66,7 +68,7 @@ public class EnderChestListener implements Listener
         if (event.getAction() != Action.RIGHT_CLICK_AIR) return;
         if (event.getItem() == null) return;
 
-        if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.ENDER_BACKPACK.name())) return;
+        if (!event.getItem().getItemMeta().getLocalizedName().equals(ENDER_BACKPACK.name())) return;
 
         try (Connection connection = Database.getSource().getConnection();
              Statement statement = connection.createStatement();

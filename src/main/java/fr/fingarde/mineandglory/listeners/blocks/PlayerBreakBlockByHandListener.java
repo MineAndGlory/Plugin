@@ -1,12 +1,14 @@
 package fr.fingarde.mineandglory.listeners.blocks;
 
-import fr.fingarde.mineandglory.objects.items.CustomItems;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+
+import static fr.fingarde.mineandglory.objects.items.CustomItems.ROCK;
+import static fr.fingarde.mineandglory.objects.items.CustomItems.getFromValue;
 
 public class PlayerBreakBlockByHandListener implements Listener
 {
@@ -19,7 +21,7 @@ public class PlayerBreakBlockByHandListener implements Listener
         event.setDropItems(false);
         Location location = event.getBlock().getLocation();
 
-        location.getWorld().dropItemNaturally(location, CustomItems.getFromValue(CustomItems.ROCK));
+        location.getWorld().dropItemNaturally(location, getFromValue(ROCK));
     }
 
     @EventHandler

@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 
 public class  ForgeListener implements Listener
 {
@@ -42,7 +44,7 @@ public class  ForgeListener implements Listener
         if (event.getItem() == null) return;
 
         if (event.getClickedBlock().getType() != Material.STONE) return;
-        if (!event.getItem().getItemMeta().getLocalizedName().equals(CustomItems.ROCK.name())) return;
+        if (!event.getItem().getItemMeta().getLocalizedName().equals(ROCK.name())) return;
 
         Location location = event.getClickedBlock().getLocation();
         location.setX(location.getBlockX() + 0.5);
@@ -68,16 +70,16 @@ public class  ForgeListener implements Listener
         if (isPresent) return;
 
         CustomItems[] stoneTools = {
-                CustomItems.STONE_PICKAXE_HEAD,
-                CustomItems.STONE_AXE_HEAD,
-                CustomItems.STONE_SWORD_HEAD,
-                CustomItems.STONE_SHOVEL_HEAD,
-                CustomItems.STONE_DAGGER_HEAD,
-                CustomItems.STONE_HAMMER_HEAD,
-                CustomItems.STONE_BLACKSMITH_HAMMER_HEAD,
-                CustomItems.STONE_EXCAVATOR_HEAD,
-                CustomItems.STONE_HOE_HEAD,
-                CustomItems.STONE_SHIELD_PLATE
+                STONE_PICKAXE_HEAD,
+                STONE_AXE_HEAD,
+                STONE_SWORD_HEAD,
+                STONE_SHOVEL_HEAD,
+                STONE_DAGGER_HEAD,
+                STONE_HAMMER_HEAD,
+                STONE_BLACKSMITH_HAMMER_HEAD,
+                STONE_EXCAVATOR_HEAD,
+                STONE_HOE_HEAD,
+                STONE_SHIELD_PLATE
         };
 
         Inventory inventory = Bukkit.createInventory(player, 27, "Stone Anvil");
@@ -86,7 +88,7 @@ public class  ForgeListener implements Listener
 
         for (CustomItems tool : stoneTools)
         {
-            ItemStack toolItemStack = CustomItems.getFromValue(tool);
+            ItemStack toolItemStack = getFromValue(tool);
             ItemMeta toolItemMeta = toolItemStack.getItemMeta();
             List<String> toolLore = new ArrayList<>();
 
@@ -150,7 +152,7 @@ public class  ForgeListener implements Listener
             {
                 String[] tagSplitted = tag.split("_");
 
-                item = CustomItems.valueOf(tagSplitted[tagSplitted.length - 1].replaceAll("-", "_"));
+                item = valueOf(tagSplitted[tagSplitted.length - 1].replaceAll("-", "_"));
             }
         }
 
@@ -161,7 +163,7 @@ public class  ForgeListener implements Listener
 
         if (percent == 100)
         {
-            dropLoc.getWorld().dropItem(dropLoc, CustomItems.getFromValue(item));
+            dropLoc.getWorld().dropItem(dropLoc, getFromValue(item));
 
             armorStand.remove();
             return;
@@ -187,7 +189,7 @@ public class  ForgeListener implements Listener
         for (ItemStack itemStack : event.getWhoClicked().getInventory().getContents())
         {
             if (itemStack == null) continue;
-            if (!itemStack.getItemMeta().getLocalizedName().equals(CustomItems.ROCK.name())) continue;
+            if (!itemStack.getItemMeta().getLocalizedName().equals(ROCK.name())) continue;
 
             numberRocks += itemStack.getAmount();
         }
@@ -213,7 +215,7 @@ public class  ForgeListener implements Listener
 
             if (numberToRemove <= 0) break;
             if (itemStack == null) continue;
-            if (!itemStack.getItemMeta().getLocalizedName().equals(CustomItems.ROCK.name())) continue;
+            if (!itemStack.getItemMeta().getLocalizedName().equals(ROCK.name())) continue;
 
             int diff = itemStack.getAmount() - numberToRemove;
             if (diff < 0)
@@ -228,8 +230,7 @@ public class  ForgeListener implements Listener
         }
 
         Location armorStandLoc = loc.clone();
-
-
+        
         ArmorStand armorStand = (ArmorStand) loc.getWorld().spawnEntity(armorStandLoc, EntityType.ARMOR_STAND);
         armorStand.addScoreboardTag("mineandglory_anvil");
         armorStand.addScoreboardTag("mineandglory_anvil_percent_0");
