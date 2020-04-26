@@ -3,6 +3,7 @@ package fr.fingarde.mineandglory.commands.hdv;
 import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.objects.Rank;
 import fr.fingarde.mineandglory.objects.User;
+import fr.fingarde.mineandglory.objects.items.CustomItems;
 import fr.fingarde.mineandglory.utils.ErrorMessage;
 import fr.fingarde.mineandglory.utils.FloatUtils;
 import fr.fingarde.mineandglory.utils.serializer.ItemSerializer;
@@ -132,7 +133,7 @@ public class HDVCommand implements CommandExecutor
 
     private void executeOpen(Player player)
     {
-        Inventory inv = Bukkit.createInventory(null, 36, "Hotel des ventes");
+        Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes");
 
         new BukkitRunnable()
         {
@@ -150,6 +151,8 @@ public class HDVCommand implements CommandExecutor
                         inv.addItem(ItemSerializer.deserializeItem(result.getString("mk_item")));
                     }
 
+                    inv.setItem(47, CustomItems.getFromValue(CustomItems.VILLAGER_COIN));
+                    inv.setItem(49, CustomItems.getFromValue(CustomItems.VILLAGER_COIN));
                     new BukkitRunnable()
                     {
                         @Override
