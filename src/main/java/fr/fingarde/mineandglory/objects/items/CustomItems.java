@@ -34,6 +34,9 @@ public enum CustomItems
     RASPBERRY(Material.APPLE, 104, "Raspberry", null),
     RICE(Material.APPLE, 105, "Rice", null),
 
+    NEXT(Material.CARROT_ON_A_STICK, 9601, "Next Page", null),
+    PREVIOUS(Material.CARROT_ON_A_STICK, 9602, "Previous Page", null),
+
     STONE_PICKAXE_HEAD(Material.CARROT_ON_A_STICK, 34001, "Stone Pickaxe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
     STONE_AXE_HEAD(Material.CARROT_ON_A_STICK, 34002, "Stone Axe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
     STONE_SHOVEL_HEAD(Material.CARROT_ON_A_STICK, 34003, "Stone Shovel Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
