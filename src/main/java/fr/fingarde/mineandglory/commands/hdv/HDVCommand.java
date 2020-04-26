@@ -153,8 +153,9 @@ public class HDVCommand implements CommandExecutor
                         inv.addItem(ItemSerializer.deserializeItem(result.getString("mk_item")));
                     }
 
-                    inv.setItem(48, getFromValue(VILLAGER_COIN));
-                    inv.setItem(50, getFromValue(VILLAGER_COIN));
+                    inv.setItem(48, getFromValue(PREVIOUS));
+                    inv.setItem(50, getFromValue(NEXT));
+
                     new BukkitRunnable()
                     {
                         @Override
