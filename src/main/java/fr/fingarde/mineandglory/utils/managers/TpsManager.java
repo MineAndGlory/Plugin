@@ -1,6 +1,7 @@
 package fr.fingarde.mineandglory.utils.managers;
 
 import fr.fingarde.mineandglory.Main;
+import fr.fingarde.mineandglory.utils.FloatUtils;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.math.BigDecimal;
@@ -23,9 +24,8 @@ public class TpsManager
 
                 tps = 100 / seconds;
 
-                BigDecimal bd = new BigDecimal(tps);
-                bd = bd.setScale(2, RoundingMode.DOWN);
-                tps = bd.doubleValue();
+
+                tps = FloatUtils.scaleDown((float) tps);
 
                 passedTime = System.currentTimeMillis();
             }

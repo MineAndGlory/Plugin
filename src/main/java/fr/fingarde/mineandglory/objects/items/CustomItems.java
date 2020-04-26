@@ -16,7 +16,7 @@ public enum CustomItems
     BONE_MEAL_POUCH(Material.CARROT_ON_A_STICK, 1024, "Bone Meal Pouch", null),
 
     VILLAGER_COIN(Material.IRON_NUGGET, 901, "Villager Coin", null),
-    SPAWNER_PICKAXE(Material.CARROT_ON_A_STICK, 502, "Spawner Pickaxe", null),
+    SPAWNER_PICKAXE(Material.DIAMOND_PICKAXE, 502, "Spawner Pickaxe", null),
 
     RUBY(Material.IRON_NUGGET, 101, "Ruby", null),
     SAPPHIRE(Material.IRON_NUGGET, 102, "Sapphire", null),

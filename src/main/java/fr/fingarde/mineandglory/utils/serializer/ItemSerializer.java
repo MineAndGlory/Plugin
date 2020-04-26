@@ -21,9 +21,9 @@ public class ItemSerializer
 
             dataOutput.writeInt(items.length);
 
-            for (int i = 0; i < items.length; i++)
+            for (ItemStack item : items)
             {
-                dataOutput.writeObject(items[i]);
+                dataOutput.writeObject(item);
             }
 
             dataOutput.close();
