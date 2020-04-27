@@ -25,6 +25,14 @@ public class MinerLootTable implements LootTableRegister
                 .addEntry(new LootTable.Entry(new ItemStack(Material.STONE))
                         .setChance(1)
                         .setMax(10)
-                        .setMin(1)));
+                        .setMin(1)
+                        .addCondition(new RegexConditionIgnoreCase("pickaxe$"))
+                        .addCondition(new EnchantCondition(Enchantment.SILK_TOUCH)))
+                .addEntry(new LootTable.Entry(new ItemStack(Material.COBBLESTONE))
+                        .setChance(1)
+                        .setMax(10)
+                        .setMin(1)
+                        .addCondition(new RegexConditionIgnoreCase("pickaxe$"))
+                        .addCondition(new NotCondition(new EnchantCondition(Enchantment.SILK_TOUCH)))));
     }
 }
