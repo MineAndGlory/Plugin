@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.listeners.blocks;
 
+import fr.fingarde.mineandglory.utils.managers.LootTableManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -16,12 +17,9 @@ public class PlayerBreakBlockByHandListener implements Listener
     public void onBreakStone(BlockBreakEvent event)
     {
         if (event.getBlock().getType() != Material.STONE) return;
-        if (event.getPlayer().getInventory().getItemInMainHand().getType().name().endsWith("_PICKAXE")) return;
-
         event.setDropItems(false);
-        Location location = event.getBlock().getLocation();
 
-        location.getWorld().dropItemNaturally(location, getFromValue(ROCK));
+        LootTableManager.getDrops("stone", event.getPlayer().getInventory().getItemInMainHand()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), itemStack));
     }
 
     @EventHandler

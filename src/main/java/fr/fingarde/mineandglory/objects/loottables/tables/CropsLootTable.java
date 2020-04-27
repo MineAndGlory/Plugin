@@ -1,8 +1,9 @@
-package fr.fingarde.mineandglory.objects.loottables;
+package fr.fingarde.mineandglory.objects.loottables.tables;
 
-        import fr.fingarde.mineandglory.objects.LootTable;
-        import fr.fingarde.mineandglory.objects.LootTableRegister;
+        import fr.fingarde.mineandglory.objects.conditions.EnchantCondition;
+        import fr.fingarde.mineandglory.objects.loottables.LootTableRegister;
         import fr.fingarde.mineandglory.objects.items.CustomItems;
+        import fr.fingarde.mineandglory.objects.loottables.LootTable;
         import fr.fingarde.mineandglory.utils.managers.LootTableManager;
         import org.bukkit.Material;
         import org.bukkit.enchantments.Enchantment;
@@ -59,7 +60,7 @@ public class CropsLootTable implements LootTableRegister
                         .setChance(1)
                         .setMax(10)
                         .setMin(1)
-                        .addCondition(new LootTable.EnchantCondition(Enchantment.SILK_TOUCH)))
+                        .addCondition(new EnchantCondition(Enchantment.SILK_TOUCH)))
                 .addEntry(new LootTable.Entry(new ItemStack(Material.STONE))
                         .setChance(1)
                         .setMax(10)

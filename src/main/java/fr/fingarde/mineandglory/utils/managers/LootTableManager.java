@@ -1,8 +1,9 @@
 package fr.fingarde.mineandglory.utils.managers;
 
-import fr.fingarde.mineandglory.objects.LootTable;
-import fr.fingarde.mineandglory.objects.LootTableRegister;
-import fr.fingarde.mineandglory.objects.loottables.CropsLootTable;
+import fr.fingarde.mineandglory.objects.loottables.LootTable;
+import fr.fingarde.mineandglory.objects.loottables.LootTableRegister;
+import fr.fingarde.mineandglory.objects.loottables.tables.CropsLootTable;
+import fr.fingarde.mineandglory.objects.loottables.tables.jobs.MinerLootTable;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class LootTableManager
     public static void registerLootTables()
     {
         register(new CropsLootTable());
+        register(new MinerLootTable());
     }
 
     private static void register(LootTableRegister register)

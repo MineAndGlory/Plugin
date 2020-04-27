@@ -1,58 +1,13 @@
-package fr.fingarde.mineandglory.objects;
+package fr.fingarde.mineandglory.objects.loottables;
 
-import org.bukkit.enchantments.Enchantment;
+import fr.fingarde.mineandglory.objects.conditions.Condition;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class LootTable
 {
-    public interface Condition
-    {
-        boolean isTrue(ItemStack itemStack);
-    }
-
-    public static class EnchantCondition implements Condition
-    {
-        private Enchantment enchantment;
-
-        public EnchantCondition(Enchantment enchantment)
-        {
-            this.enchantment = enchantment;
-        }
-
-        @Override
-        public boolean isTrue(ItemStack itemStack)
-        {
-            if (itemStack == null) return false;
-
-            ItemMeta meta = itemStack.getItemMeta();
-            return meta.hasEnchant(enchantment);
-        }
-    }
-
-    public static class MaterialCondition implements Condition
-    {
-        private String material;
-
-        public MaterialCondition(String material)
-        {
-            this.material = material;
-        }
-
-        @Override
-        public boolean isTrue(ItemStack itemStack)
-        {
-            if (itemStack == null) return false;
-            if (itemStack.getType().name().equals(material)) return true;
-
-            ItemMeta meta = itemStack.getItemMeta();
-            return meta.getLocalizedName().equals(material);
-        }
-    }
-
     public static class Entry
     {
         private ItemStack item;
