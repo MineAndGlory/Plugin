@@ -20,7 +20,7 @@ public class PlayerBreakBlockByHandListener implements Listener
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
 
         List<ItemStack> drops = LootTableManager.getDrops("stone", event.getPlayer().getInventory().getItemInMainHand());
-        if (drops.size() == 0) return;
+        if (drops == null) return;
 
         event.setDropItems(false);
         drops.forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), itemStack));
@@ -34,7 +34,7 @@ public class PlayerBreakBlockByHandListener implements Listener
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
 
         List<ItemStack> drops = LootTableManager.getDrops("log", event.getPlayer().getInventory().getItemInMainHand());
-        if (drops.size() == 0) return;
+        if (drops == null) return;
 
         event.setDropItems(false);
         drops.forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), itemStack));
