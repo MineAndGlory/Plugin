@@ -179,6 +179,7 @@ public class  ForgeListener implements Listener
     {
         if (!event.getView().getTitle().equals("Stone Anvil")) return;
         event.setCancelled(true);
+        ((Player) event.getWhoClicked()).updateInventory();
 
         ItemStack item = event.getCurrentItem();
         if (item == null) return;

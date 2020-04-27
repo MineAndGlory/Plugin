@@ -108,6 +108,7 @@ public class BackpackListener implements Listener
             return;
 
         event.setCancelled(true);
+        ((Player) event.getWhoClicked()).updateInventory();
     }
 
     @EventHandler
@@ -120,6 +121,7 @@ public class BackpackListener implements Listener
             return;
 
         event.setCancelled(true);
+        ((Player) event.getWhoClicked()).updateInventory();
     }
 
     @EventHandler

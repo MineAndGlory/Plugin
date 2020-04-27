@@ -121,6 +121,7 @@ public class EnderChestListener implements Listener
         if (event.getCurrentItem().getType() != Material.BARRIER) return;
 
         event.setCancelled(true);
+        ((Player) event.getWhoClicked()).updateInventory();
     }
 
 }

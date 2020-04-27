@@ -16,6 +16,7 @@ public class HDVListener implements Listener
         if(!event.getView().getTitle().startsWith("Hotel des ventes")) return;
 
         event.setCancelled(true);
+        ((Player) event.getWhoClicked()).updateInventory();
 
         if(event.getCurrentItem() == null) return;
         ItemStack clickedItem = event.getCurrentItem();
