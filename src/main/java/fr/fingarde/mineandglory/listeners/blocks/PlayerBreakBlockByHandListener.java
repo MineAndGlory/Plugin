@@ -17,11 +17,13 @@ public class PlayerBreakBlockByHandListener implements Listener
     public void onBreakStone(BlockBreakEvent event)
     {
         if (event.getBlock().getType() != Material.STONE) return;
-        if(event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
+        if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
+
+        List<ItemStack> drops = LootTableManager.getDrops("stone", event.getPlayer().getInventory().getItemInMainHand());
+        if (drops.size() == 0) return;
 
         event.setDropItems(false);
-
-        LootTableManager.getDrops("stone", event.getPlayer().getInventory().getItemInMainHand()).forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), itemStack));
+        drops.forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), itemStack));
     }
 
     @EventHandler
@@ -29,13 +31,10 @@ public class PlayerBreakBlockByHandListener implements Listener
     {
         if (!event.getBlock().getType().name().endsWith("_LOG")) return;
         if (event.getPlayer().getInventory().getItemInMainHand().getType().name().endsWith("_AXE")) return;
-        if(event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-
-
-        Location location = event.getBlock().getLocation();
+        if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
 
         List<ItemStack> drops = LootTableManager.getDrops("log", event.getPlayer().getInventory().getItemInMainHand());
-        if(drops.size() == 0) return;
+        if (drops.size() == 0) return;
 
         event.setDropItems(false);
         drops.forEach(itemStack -> event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), itemStack));
