@@ -19,10 +19,15 @@ public class HDVListener implements Listener
 
         if(event.getCurrentItem() == null) return;
         ItemStack clickedItem = event.getCurrentItem();
+        if(clickedItem.getItemMeta().getLocalizedName().equals("")) return;
 
-        Bukkit.broadcastMessage(event.getCurrentItem().getType().name());
+        int nextPage = 0;
+        if(clickedItem.getItemMeta().getLocalizedName().equals("NEXT")) nextPage++;
+        if(clickedItem.getItemMeta().getLocalizedName().equals("PREVIOUS")) nextPage--;
+
+        if(nextPage == 0) return;
 
         int page = Integer.parseInt(ColorUtils.unhideChars(event.getView().getTitle()).split(":")[1]);
-        HDVUtils.openPage(page + 1, (Player) event.getWhoClicked());
+        HDVUtils.openPage(page + nextPage, (Player) event.getWhoClicked());
     }
 }
