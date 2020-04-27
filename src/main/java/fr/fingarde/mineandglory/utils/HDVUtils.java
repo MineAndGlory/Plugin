@@ -30,7 +30,7 @@ public class HDVUtils
                         Connection connection = Database.getSource().getConnection();
                         Statement statement = connection.createStatement();
 
-                        ResultSet result = statement.executeQuery("SELECT * FROM tb_market ORDER BY mk_date DESC LIMIT " + (page * 36) + ", " + ((page + 1) * 36) + " + "))
+                        ResultSet result = statement.executeQuery("SELECT * FROM tb_market ORDER BY mk_date DESC LIMIT " + (page * 36) + ", " + ((page + 1) * 36)))
                 {
                     int nbItems = 0;
                     while (result.next())
