@@ -4,6 +4,7 @@ import fr.fingarde.mineandglory.objects.loottables.LootTable;
 import fr.fingarde.mineandglory.objects.loottables.LootTableRegister;
 import fr.fingarde.mineandglory.objects.loottables.tables.CropsLootTable;
 import fr.fingarde.mineandglory.objects.loottables.tables.jobs.MinerLootTable;
+import fr.fingarde.mineandglory.objects.loottables.tables.jobs.WoodcutterLootTable;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class LootTableManager
     {
         register(new CropsLootTable());
         register(new MinerLootTable());
+        register(new WoodcutterLootTable());
     }
 
     private static void register(LootTableRegister register)
