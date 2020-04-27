@@ -11,13 +11,15 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
+import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
+
 public class MinerLootTable implements LootTableRegister
 {
     @Override
     public void register()
     {
         LootTableManager.addLootTable("stone", new LootTable()
-                .addEntry(new LootTable.Entry(CustomItems.getFromValue(CustomItems.ROCK))
+                .addEntry(new LootTable.Entry(getFromValue(ROCK))
                         .setChance(1)
                         .setMax(10)
                         .setMin(1)
