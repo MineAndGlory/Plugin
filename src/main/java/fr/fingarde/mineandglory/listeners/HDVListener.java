@@ -14,6 +14,6 @@ public class HDVListener implements Listener
         event.setCancelled(true);
 
         if(event.getCurrentItem() == null) return;
-        Bukkit.broadcastMessage("coucou Elouan");
+        Bukkit.broadcastMessage(event.getCurrentItem().getType().name());
     }
 }
