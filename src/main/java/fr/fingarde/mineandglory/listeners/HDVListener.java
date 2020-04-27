@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class HDVListener implements Listener
 {
@@ -14,6 +15,9 @@ public class HDVListener implements Listener
         event.setCancelled(true);
 
         if(event.getCurrentItem() == null) return;
+        ItemStack clickedItem = event.getCurrentItem();
+
+
         Bukkit.broadcastMessage(event.getCurrentItem().getType().name());
     }
 }

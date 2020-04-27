@@ -29,7 +29,7 @@ public class TpsManager
 
                 passedTime = System.currentTimeMillis();
             }
-        }.runTaskTimer(Main.getPlugin(), 0L, 100L);
+        }.runTaskTimer(Main.getPlugin(), 0L, 50L);
     }
 
     public static double getTps()
