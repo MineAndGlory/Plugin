@@ -9,8 +9,10 @@ import java.math.RoundingMode;
 
 public class TpsManager
 {
-    private static float tps;
+    private static double tps;
     private static long passedTime;
+
+    public static final int REFRESH_RATE = 50;
 
     public static void refreshTPS()
     {
@@ -19,17 +21,16 @@ public class TpsManager
             @Override
             public void run()
             {
-                long millis = (System.currentTimeMillis() - passedTime);
-                float seconds = millis / 1000f;
+                double millis = (System.currentTimeMillis() - passedTime);
+                double seconds = millis / 1000.0;
 
-                tps = (50 / seconds);
-
+                tps = (REFRESH_RATE / seconds);
 
                 tps = FloatUtils.scaleDown(tps);
 
                 passedTime = System.currentTimeMillis();
             }
-        }.runTaskTimer(Main.getPlugin(), 0L, 50L);
+        }.runTaskTimer(Main.getPlugin(), 0, REFRESH_RATE);
     }
 
     public static double getTps()
