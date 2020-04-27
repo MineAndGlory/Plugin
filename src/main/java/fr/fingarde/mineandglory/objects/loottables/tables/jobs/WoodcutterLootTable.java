@@ -19,6 +19,6 @@ public class WoodcutterLootTable implements LootTableRegister
                         .setChance(1)
                         .setMax(10)
                         .setMin(1)
-                        .addCondition(new NotCondition(new RegexConditionIgnoreCase("pickaxe$")))));
+                        .addCondition(new NotCondition(new RegexConditionIgnoreCase("_axe$")))));
     }
 }
