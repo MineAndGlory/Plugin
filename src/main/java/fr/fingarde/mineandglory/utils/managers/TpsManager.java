@@ -22,7 +22,7 @@ public class TpsManager
                 long millis = (System.currentTimeMillis() - passedTime);
                 float seconds = millis / 1000f;
 
-                tps = (100 / seconds);
+                tps = (50 / seconds);
 
 
                 tps = FloatUtils.scaleDown(tps);
