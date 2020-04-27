@@ -27,7 +27,7 @@ public class HDVListener implements Listener
 
         if(nextPage == 0) return;
 
-        int page = Integer.parseInt(ColorUtils.unhideChars(event.getView().getTitle()).split(":")[1]);
+        int page = Integer.parseInt(event.getView().getTitle().split("°")[1]);
         HDVUtils.openPage(page + nextPage, (Player) event.getWhoClicked());
     }
 }

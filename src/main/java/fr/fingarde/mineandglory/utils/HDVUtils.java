@@ -19,7 +19,7 @@ public class HDVUtils
 {
     public static void openPage(int page, Player player)
     {
-        Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes - page N°" + page + "" + ColorUtils.hideChars(":" + page));
+        Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes - page N°" + page);
 
         new BukkitRunnable()
         {
