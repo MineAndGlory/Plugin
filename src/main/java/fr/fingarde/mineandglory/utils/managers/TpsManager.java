@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 
 public class TpsManager
 {
-    private static double tps;
+    private static float tps;
     private static long passedTime;
 
     public static void refreshTPS()
@@ -22,10 +22,10 @@ public class TpsManager
                 long millis = (System.currentTimeMillis() - passedTime);
                 double seconds = (float) millis / 1000.00;
 
-                tps = 100 / seconds;
+                tps = (float) (100 / seconds);
 
 
-                tps = FloatUtils.scaleDown((float) tps);
+                tps = FloatUtils.scaleDown(tps);
 
                 passedTime = System.currentTimeMillis();
             }
