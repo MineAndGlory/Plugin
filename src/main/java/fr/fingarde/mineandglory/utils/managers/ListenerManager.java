@@ -1,10 +1,7 @@
 package fr.fingarde.mineandglory.utils.managers;
 
 import fr.fingarde.mineandglory.Main;
-import fr.fingarde.mineandglory.listeners.ChatListener;
-import fr.fingarde.mineandglory.listeners.ConnectionListener;
-import fr.fingarde.mineandglory.listeners.ServerListListener;
-import fr.fingarde.mineandglory.listeners.VillagerListener;
+import fr.fingarde.mineandglory.listeners.*;
 import fr.fingarde.mineandglory.listeners.blocks.*;
 import fr.fingarde.mineandglory.listeners.items.BackpackListener;
 import fr.fingarde.mineandglory.listeners.items.EnderChestListener;
@@ -34,6 +31,7 @@ public class ListenerManager
         register(new SpawnerListener());
 
         register(new CropsListener());
+        register(new HDVListener());
     }
 
     private static void register(Listener listener)
