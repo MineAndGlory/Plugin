@@ -35,8 +35,8 @@ public class HDVUtils
                     int nbItems = 0;
                     while (result.next())
                     {
-                        nbItems++;
                         inv.setItem(nbItems, ItemSerializer.deserializeItem(result.getString("mk_item")));
+                        nbItems++;
                     }
 
                     if (page != 0) inv.setItem(48, getFromValue(PREVIOUS));
