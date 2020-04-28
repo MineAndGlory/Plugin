@@ -88,9 +88,22 @@ public class HDVUtils
 
         inv.setItem(29, cancel);
 
-        inv.setItem(31, itemStack);
-        inv.setItem(32, itemStack);
-        inv.setItem(33, itemStack);
+        ItemStack buy = new ItemStack(Material.BARRIER);
+        ItemMeta buyMeta = buy.getItemMeta();
+
+        buyMeta.setDisplayName("§rAcheter 1");
+        buy.setItemMeta(buyMeta);
+        inv.setItem(31, buy);
+
+        buyMeta.setDisplayName("§rAcheter 10");
+        buy.setItemMeta(buyMeta);
+        buy.setAmount(10);
+        inv.setItem(32, buy);
+
+        buyMeta.setDisplayName("§rAcheter tout");
+        buy.setItemMeta(buyMeta);
+        buy.setAmount(64);
+        inv.setItem(33, buy);
 
 
         player.openInventory(inv);
