@@ -92,7 +92,7 @@ public class HDVCommand implements CommandExecutor
             return;
         }
 
-        float price = -1;
+        float price;
         try
         {
             price = Float.parseFloat(priceString);

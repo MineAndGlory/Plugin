@@ -31,6 +31,10 @@ public class HDVListener implements Listener
             Bukkit.broadcastMessage("4");
             HDVUtils.openItem(clickedItem, (Player) event.getWhoClicked());
             Bukkit.broadcastMessage("5");
+            return;
         }
+
+        int page = Integer.parseInt(event.getView().getTitle().split("°")[1]);
+        HDVUtils.openPage(page + nextPage, (Player) event.getWhoClicked());
     }
 }

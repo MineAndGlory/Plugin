@@ -62,26 +62,12 @@ public class HDVUtils
     public static void openItem(ItemStack itemStack, Player player)
     {
         Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes");
+        Bukkit.broadcastMessage("9");
 
-        new BukkitRunnable()
-        {
-            @Override
-            public void run()
-            {
-                try (
-                        Connection connection = Database.getSource().getConnection();
-                        Statement statement = connection.createStatement())
+        inv.setItem(26, itemStack);
+        Bukkit.broadcastMessage("10");
+        player.openInventory(inv);
+        Bukkit.broadcastMessage("11");
 
-                        //ResultSet result = statement.executeQuery("SELECT * FROM tb_market ORDER BY mk_date DESC LIMIT " + (page * 36) + ",36"))
-                {
-                    inv.setItem(26, itemStack);
-
-                    player.openInventory(inv);
-                } catch (SQLException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }.runTaskAsynchronously(Main.getPlugin());
     }
 }
