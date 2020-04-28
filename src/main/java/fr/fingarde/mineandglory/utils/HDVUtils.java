@@ -44,7 +44,8 @@ public class HDVUtils
                         List<String> lore = new LinkedList<>();
 
                         lore.add("§ePrix " + result.getFloat("mk_price") + "$");
-                        lore.addAll(meta.getLore());
+
+                        if(meta.getLore() != null) lore.addAll(meta.getLore());
 
                         meta.setLore(lore);
                         item.setItemMeta(meta);
