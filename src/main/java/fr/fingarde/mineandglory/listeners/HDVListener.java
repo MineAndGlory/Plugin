@@ -20,7 +20,6 @@ public class HDVListener implements Listener
 
         if(event.getCurrentItem() == null) return;
         ItemStack clickedItem = event.getCurrentItem();
-        if(clickedItem.getItemMeta().getLocalizedName().equals("")) return;
 
         int nextPage = 0;
         if(clickedItem.getItemMeta().getLocalizedName().equals("NEXT")) nextPage++;
