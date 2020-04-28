@@ -26,7 +26,10 @@ public class HDVListener implements Listener
         if(clickedItem.getItemMeta().getLocalizedName().equals("NEXT")) nextPage++;
         if(clickedItem.getItemMeta().getLocalizedName().equals("PREVIOUS")) nextPage--;
 
-        if(nextPage == 0) return;
+        if(nextPage == 0) {
+            HDVUtils.openItem(clickedItem, (Player) event.getWhoClicked());
+            return;
+        }
 
         int page = Integer.parseInt(event.getView().getTitle().split("°")[1]);
         HDVUtils.openPage(page + nextPage, (Player) event.getWhoClicked());
