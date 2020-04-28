@@ -88,7 +88,7 @@ public class HDVUtils
 
         inv.setItem(29, cancel);
 
-        ItemStack buy = new ItemStack(Material.BARRIER);
+        ItemStack buy = new ItemStack(Material.EMERALD);
         ItemMeta buyMeta = buy.getItemMeta();
 
         buyMeta.setDisplayName("§rAcheter 1");
