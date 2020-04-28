@@ -64,7 +64,7 @@ public class HDVUtils
         Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes");
         Bukkit.broadcastMessage("9");
 
-        inv.setItem(26, itemStack);
+        inv.setItem(22, itemStack);
         Bukkit.broadcastMessage("10");
         player.openInventory(inv);
         Bukkit.broadcastMessage("11");
