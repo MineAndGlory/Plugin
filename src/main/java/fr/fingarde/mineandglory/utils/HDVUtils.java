@@ -4,6 +4,7 @@ import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.utils.serializer.ItemSerializer;
 import fr.fingarde.mineandglory.utils.storage.Database;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -79,7 +80,15 @@ public class HDVUtils
 
         inv.setItem(22, itemStack);
 
-        inv.setItem(29, itemStack);
+
+        ItemStack cancel = new ItemStack(Material.BARRIER);
+        ItemMeta cancelMeta = cancel.getItemMeta();
+        cancelMeta.setDisplayName("§rAnnuler");
+        cancel.setItemMeta(cancelMeta);
+
+        inv.setItem(29, cancel);
+
+        inv.setItem(31, itemStack);
         inv.setItem(32, itemStack);
         inv.setItem(33, itemStack);
 
