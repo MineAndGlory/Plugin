@@ -7,12 +7,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
 
 import static fr.fingarde.mineandglory.objects.items.CustomItems.*;
 
@@ -36,7 +39,17 @@ public class HDVUtils
                     int nbItems = 0;
                     while (result.next())
                     {
-                        inv.setItem(nbItems, ItemSerializer.deserializeItem(result.getString("mk_item")));
+                        ItemStack item = ItemSerializer.deserializeItem(result.getString("mk_item"));
+                        ItemMeta meta = item.getItemMeta();
+                        List<String> lore = new LinkedList<>();
+
+                        lore.add("§ePrix " + result.getFloat("mk_price") + "$");
+                        lore.addAll(meta.getLore());
+
+                        meta.setLore(lore);
+                        item.setItemMeta(meta);
+
+                        inv.setItem(nbItems, item);
                         nbItems++;
                     }
 
@@ -62,12 +75,8 @@ public class HDVUtils
     public static void openItem(ItemStack itemStack, Player player)
     {
         Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes");
-        Bukkit.broadcastMessage("9");
 
         inv.setItem(22, itemStack);
-        Bukkit.broadcastMessage("10");
         player.openInventory(inv);
-        Bukkit.broadcastMessage("11");
-
     }
 }
