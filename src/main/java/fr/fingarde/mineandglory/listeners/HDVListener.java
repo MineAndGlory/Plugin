@@ -53,7 +53,10 @@ public class HDVListener implements Listener
         if(clickedItem.getItemMeta().getLocalizedName().startsWith("PLUS:")) {
             int nbPlus = Integer.parseInt(clickedItem.getItemMeta().getLocalizedName().split(":")[1]);
 
-            event.getInventory().getItem(32).setAmount(nbPlus);
+            ItemStack plus = event.getInventory().getItem(32);
+            plus.setAmount(plus.getAmount() + nbPlus);
+
+            event.getInventory().setItem(32, plus);
         }
 
 
