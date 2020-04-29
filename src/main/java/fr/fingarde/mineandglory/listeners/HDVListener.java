@@ -12,13 +12,13 @@ import org.bukkit.inventory.ItemStack;
 public class HDVListener implements Listener
 {
     @EventHandler
-    public void onClick(InventoryClickEvent event) {
-        if(!event.getView().getTitle().startsWith("Hotel des ventes")) return;
+    public void onClickMenu(InventoryClickEvent event) {
+        if(!event.getView().getTitle().startsWith("Hotel des ventes - page N°")) return;
+        if(event.getCurrentItem() == null) return;
 
         event.setCancelled(true);
         ((Player) event.getWhoClicked()).updateInventory();
 
-        if(event.getCurrentItem() == null) return;
         ItemStack clickedItem = event.getCurrentItem();
 
         int nextPage = 0;
@@ -32,5 +32,34 @@ public class HDVListener implements Listener
 
         int page = Integer.parseInt(event.getView().getTitle().split("°")[1]);
         HDVUtils.openPage(page + nextPage, (Player) event.getWhoClicked());
+    }
+
+    @EventHandler
+    public void onClickBuy(InventoryClickEvent event) {
+        if(!event.getView().getTitle().startsWith("Hotel des ventes - Achat")) return;
+        if(event.getCurrentItem() == null) return;
+
+        event.setCancelled(true);
+        ((Player) event.getWhoClicked()).updateInventory();
+
+        ItemStack clickedItem = event.getCurrentItem();
+        if(clickedItem.getItemMeta().getLocalizedName().startsWith("CANCEL:")) {
+            int page = Integer.parseInt(event.getView().getTitle().split(":")[1]);
+
+            HDVUtils.openPage(page, (Player) event.getWhoClicked());
+        }
+
+        /*
+        int nextPage = 0;
+        if(clickedItem.getItemMeta().getLocalizedName().equals("NEXT")) nextPage++;
+        if(clickedItem.getItemMeta().getLocalizedName().equals("PREVIOUS")) nextPage--;
+
+        if(nextPage == 0) {
+            HDVUtils.openItem(clickedItem, (Player) event.getWhoClicked());
+            return;
+        }
+
+        int page = Integer.parseInt(event.getView().getTitle().split("°")[1]);
+        HDVUtils.openPage(page + nextPage, (Player) event.getWhoClicked());*/
     }
 }

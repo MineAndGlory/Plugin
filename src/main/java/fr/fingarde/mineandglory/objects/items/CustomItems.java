@@ -36,6 +36,8 @@ public enum CustomItems
 
     NEXT(Material.CARROT_ON_A_STICK, 9601, "Next Page", null),
     PREVIOUS(Material.CARROT_ON_A_STICK, 9602, "Previous Page", null),
+    PLUS(Material.IRON_NUGGET, 9603, "Plus", null),
+    MINUS(Material.IRON_NUGGET, 9604, "Minus", null),
 
     STONE_PICKAXE_HEAD(Material.CARROT_ON_A_STICK, 34001, "Stone Pickaxe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),
     STONE_AXE_HEAD(Material.CARROT_ON_A_STICK, 34002, "Stone Axe Head", new JsonParser().parse("{\"ingredient\":\"ROCK\", \"amount\":\"3\"}").getAsJsonObject()),

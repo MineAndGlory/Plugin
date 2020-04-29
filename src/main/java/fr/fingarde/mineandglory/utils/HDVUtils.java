@@ -1,6 +1,7 @@
 package fr.fingarde.mineandglory.utils;
 
 import fr.fingarde.mineandglory.Main;
+import fr.fingarde.mineandglory.objects.items.CustomItems;
 import fr.fingarde.mineandglory.utils.serializer.ItemSerializer;
 import fr.fingarde.mineandglory.utils.storage.Database;
 import org.bukkit.Bukkit;
@@ -76,7 +77,7 @@ public class HDVUtils
 
     public static void openItem(ItemStack itemStack, Player player)
     {
-        Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes");
+        Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes - Achat");
 
         inv.setItem(22, itemStack);
 
@@ -86,25 +87,41 @@ public class HDVUtils
         cancelMeta.setDisplayName("§rAnnuler");
         cancel.setItemMeta(cancelMeta);
 
-        inv.setItem(29, cancel);
+        inv.setItem(32, cancel);
 
-        ItemStack buy = new ItemStack(Material.EMERALD);
-        ItemMeta buyMeta = buy.getItemMeta();
+        ItemStack add = getFromValue(PLUS);
+        ItemMeta addMeta = add.getItemMeta();
 
-        buyMeta.setDisplayName("§rAcheter 1");
-        buy.setItemMeta(buyMeta);
-        inv.setItem(31, buy);
+        addMeta.setDisplayName("§rAjouter 1");
+        add.setItemMeta(addMeta);
+        inv.setItem(24, add);
 
-        buyMeta.setDisplayName("§rAcheter 10");
-        buy.setItemMeta(buyMeta);
-        buy.setAmount(10);
-        inv.setItem(32, buy);
+        addMeta.setDisplayName("§rAjouter 10");
+        add.setItemMeta(addMeta);
+        add.setAmount(10);
+        inv.setItem(25, add);
 
-        buyMeta.setDisplayName("§rAcheter tout");
-        buy.setItemMeta(buyMeta);
-        buy.setAmount(64);
-        inv.setItem(33, buy);
+        addMeta.setDisplayName("§rAcheter tout");
+        add.setItemMeta(addMeta);
+        add.setAmount(64);
+        inv.setItem(26, add);
 
+        ItemStack minus = getFromValue(MINUS);
+        ItemMeta minusMeta = minus.getItemMeta();
+
+        minusMeta.setDisplayName("§rEnlever 1");
+        minus.setItemMeta(minusMeta);
+        inv.setItem(20, minus);
+
+        minusMeta.setDisplayName("§rEnlever 10");
+        minus.setItemMeta(minusMeta);
+        minus.setAmount(10);
+        inv.setItem(19, minus);
+
+        minusMeta.setDisplayName("§rAcheter 1 tout");
+        minus.setItemMeta(minusMeta);
+        minus.setAmount(64);
+        inv.setItem(18, minus);
 
         player.openInventory(inv);
     }
