@@ -67,7 +67,7 @@ public class HDVListener implements Listener
             int nbMinus = Integer.parseInt(clickedItem.getItemMeta().getLocalizedName().split(":")[1]);
             ItemStack minus = event.getInventory().getItem(32);
 
-            int newAmount = minus.getAmount() + nbMinus;
+            int newAmount = minus.getAmount() - nbMinus;
             if(newAmount < 1) newAmount = 1;
 
             minus.setAmount(newAmount);
