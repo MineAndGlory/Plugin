@@ -33,6 +33,7 @@ public class HDVListener implements Listener
 
         if (nextPage == 0)
         {
+
             HDVUtils.openItem(clickedItem, (Player) event.getWhoClicked(), page);
             return;
         }
@@ -117,8 +118,9 @@ public class HDVListener implements Listener
            }
            if(!place) {
                 event.getWhoClicked().sendMessage(ErrorMessage.inventoryFull());
+                event.getWhoClicked().closeInventory();
+                return;
            }
-
 
            user.getMoney();
         }

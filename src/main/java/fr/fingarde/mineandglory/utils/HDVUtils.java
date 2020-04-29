@@ -1,5 +1,6 @@
 package fr.fingarde.mineandglory.utils;
 
+import com.google.gson.JsonParser;
 import fr.fingarde.mineandglory.Main;
 import fr.fingarde.mineandglory.objects.items.CustomItems;
 import fr.fingarde.mineandglory.utils.serializer.ItemSerializer;
@@ -46,7 +47,7 @@ public class HDVUtils
                         List<String> lore = new LinkedList<>();
 
                         lore.add("§ePrix " + result.getFloat("mk_price") + "$");
-
+                        lore.add("{\"price\":\"" + result.getFloat("mk_price") + "\", \"id\":\"" + result.getString("mk_id") + "\"}");
                         if(meta.getLore() != null) lore.addAll(meta.getLore());
 
                         meta.setLore(lore);
@@ -92,7 +93,7 @@ public class HDVUtils
         ItemStack buy = new ItemStack(Material.EMERALD);
         ItemMeta buyMeta = buy.getItemMeta();
         buyMeta.setDisplayName("§rAcheter " + itemStack.getAmount());
-        buyMeta.setLocalizedName("BUY");
+        buyMeta.setLocalizedName("BUY:");
         buy.setItemMeta(buyMeta);
         buy.setAmount(itemStack.getAmount());
         inv.setItem(32, buy);
