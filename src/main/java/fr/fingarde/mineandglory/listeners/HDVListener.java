@@ -67,7 +67,7 @@ public class HDVListener implements Listener
 
             plus.setAmount(newAmount);
             ItemMeta plusMeta = plus.getItemMeta();
-            plusMeta.setLocalizedName("Acheter " + newAmount);
+            plusMeta.setDisplayName("Acheter " + newAmount);
             plus.setItemMeta(plusMeta);
 
             event.getInventory().setItem(32, plus);
@@ -83,7 +83,7 @@ public class HDVListener implements Listener
 
             minus.setAmount(newAmount);
             ItemMeta minusMeta = minus.getItemMeta();
-            minusMeta.setLocalizedName("Acheter " + newAmount);
+            minusMeta.setDisplayName("Acheter " + newAmount);
             minus.setItemMeta(minusMeta);
 
             event.getInventory().setItem(32, minus);
@@ -96,7 +96,7 @@ public class HDVListener implements Listener
 
             set.setAmount(nbSet);
             ItemMeta setMeta = set.getItemMeta();
-            setMeta.setLocalizedName("Acheter " + nbSet);
+            setMeta.setDisplayName("Acheter " + nbSet);
             set.setItemMeta(setMeta);
 
             event.getInventory().setItem(32, set);
