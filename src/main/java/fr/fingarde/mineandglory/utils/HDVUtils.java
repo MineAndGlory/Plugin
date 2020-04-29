@@ -92,6 +92,7 @@ public class HDVUtils
         ItemStack buy = new ItemStack(Material.EMERALD);
         ItemMeta buyMeta = buy.getItemMeta();
         buyMeta.setDisplayName("§rAcheter " + itemStack.getAmount());
+        buyMeta.setLocalizedName("BUY");
         buy.setItemMeta(buyMeta);
         buy.setAmount(itemStack.getAmount());
         inv.setItem(32, buy);

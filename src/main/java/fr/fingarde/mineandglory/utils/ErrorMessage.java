@@ -27,4 +27,9 @@ public class ErrorMessage
     {
         return "Ce prix n'est pas correct";
     }
+
+    public static String inventoryFull()
+    {
+        return "Vous n'avez plus de place dans votre inventaire";
+    }
 }

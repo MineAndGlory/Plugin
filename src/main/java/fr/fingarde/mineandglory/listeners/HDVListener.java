@@ -1,6 +1,8 @@
 package fr.fingarde.mineandglory.listeners;
 
+import fr.fingarde.mineandglory.objects.User;
 import fr.fingarde.mineandglory.utils.ColorUtils;
+import fr.fingarde.mineandglory.utils.ErrorMessage;
 import fr.fingarde.mineandglory.utils.HDVUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -102,7 +104,24 @@ public class HDVListener implements Listener
             event.getInventory().setItem(32, set);
         }
 
+        if (clickedItem.getItemMeta().getLocalizedName().startsWith("BUY"))
+        {
+           User user = User.getByUUID(event.getWhoClicked().getUniqueId());
 
+           boolean place = false;
+           for(ItemStack item : event.getWhoClicked().getInventory().getStorageContents()) {
+               if(item == null) {
+                   place = true;
+                   break;
+               }
+           }
+           if(!place) {
+                event.getWhoClicked().sendMessage(ErrorMessage.inventoryFull());
+           }
+
+
+           user.getMoney();
+        }
 
 
 

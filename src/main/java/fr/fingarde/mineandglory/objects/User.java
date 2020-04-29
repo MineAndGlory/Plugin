@@ -145,6 +145,11 @@ public class User
         return jobs;
     }
 
+    public float getMoney()
+    {
+        return money;
+    }
+
     // Functions
 
     public void loadName()
