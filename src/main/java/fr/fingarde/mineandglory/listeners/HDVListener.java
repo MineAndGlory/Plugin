@@ -45,7 +45,7 @@ public class HDVListener implements Listener
 
         ItemStack clickedItem = event.getCurrentItem();
         if(clickedItem.getItemMeta().getLocalizedName().startsWith("CANCEL:")) {
-            int page = Integer.parseInt(event.getView().getTitle().split(":")[1]);
+            int page = Integer.parseInt(clickedItem.getItemMeta().getLocalizedName().split(":")[1]);
 
             HDVUtils.openPage(page, (Player) event.getWhoClicked());
         }
