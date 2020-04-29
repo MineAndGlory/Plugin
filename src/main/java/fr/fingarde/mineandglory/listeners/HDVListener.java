@@ -59,6 +59,15 @@ public class HDVListener implements Listener
             event.getInventory().setItem(32, plus);
         }
 
+        if(clickedItem.getItemMeta().getLocalizedName().startsWith("MINUS:")) {
+            int nbMinus = Integer.parseInt(clickedItem.getItemMeta().getLocalizedName().split(":")[1]);
+
+            ItemStack minus = event.getInventory().getItem(32);
+            minus.setAmount(minus.getAmount() - nbMinus);
+
+            event.getInventory().setItem(32, minus);
+        }
+
 
 
         /*
