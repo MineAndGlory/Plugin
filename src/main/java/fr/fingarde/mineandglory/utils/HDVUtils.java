@@ -100,15 +100,18 @@ public class HDVUtils
         ItemMeta addMeta = add.getItemMeta();
 
         addMeta.setDisplayName("§rAjouter 1");
+        cancelMeta.setLocalizedName("PLUS:1");
         add.setItemMeta(addMeta);
         inv.setItem(24, add);
 
         addMeta.setDisplayName("§rAjouter 10");
+        cancelMeta.setLocalizedName("PLUS:10");
         add.setItemMeta(addMeta);
         add.setAmount(10);
         inv.setItem(25, add);
 
         addMeta.setDisplayName("§rAcheter tout");
+        cancelMeta.setLocalizedName("SET:" + itemStack.getAmount());
         add.setItemMeta(addMeta);
         add.setAmount(64);
         inv.setItem(26, add);
@@ -117,15 +120,18 @@ public class HDVUtils
         ItemMeta minusMeta = minus.getItemMeta();
 
         minusMeta.setDisplayName("§rEnlever 1");
+        cancelMeta.setLocalizedName("MINUS:1");
         minus.setItemMeta(minusMeta);
         inv.setItem(20, minus);
 
         minusMeta.setDisplayName("§rEnlever 10");
+        cancelMeta.setLocalizedName("MINUS:10");
         minus.setItemMeta(minusMeta);
         minus.setAmount(10);
         inv.setItem(19, minus);
 
-        minusMeta.setDisplayName("§rAcheter 1 tout");
+        minusMeta.setDisplayName("§rAcheter 1");
+        cancelMeta.setLocalizedName("SET:1");
         minus.setItemMeta(minusMeta);
         minus.setAmount(64);
         inv.setItem(18, minus);

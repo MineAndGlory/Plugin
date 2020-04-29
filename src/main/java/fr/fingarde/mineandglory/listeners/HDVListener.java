@@ -50,6 +50,14 @@ public class HDVListener implements Listener
             HDVUtils.openPage(page, (Player) event.getWhoClicked());
         }
 
+        if(clickedItem.getItemMeta().getLocalizedName().startsWith("PLUS:")) {
+            int nbPlus = Integer.parseInt(clickedItem.getItemMeta().getLocalizedName().split(":")[1]);
+
+            event.getInventory().getItem(32).setAmount(nbPlus);
+        }
+
+
+
         /*
         int nextPage = 0;
         if(clickedItem.getItemMeta().getLocalizedName().equals("NEXT")) nextPage++;
