@@ -75,7 +75,7 @@ public class HDVUtils
         }.runTaskAsynchronously(Main.getPlugin());
     }
 
-    public static void openItem(ItemStack itemStack, Player player)
+    public static void openItem(ItemStack itemStack, Player player, int page)
     {
         Inventory inv = Bukkit.createInventory(null, 54, "Hotel des ventes - Achat");
 
@@ -85,9 +85,16 @@ public class HDVUtils
         ItemStack cancel = new ItemStack(Material.BARRIER);
         ItemMeta cancelMeta = cancel.getItemMeta();
         cancelMeta.setDisplayName("§rAnnuler");
+        cancelMeta.setLocalizedName("CANCEL:" + page);
         cancel.setItemMeta(cancelMeta);
+        inv.setItem(30, cancel);
 
-        inv.setItem(32, cancel);
+        ItemStack buy = new ItemStack(Material.EMERALD);
+        ItemMeta buyMeta = buy.getItemMeta();
+        buyMeta.setDisplayName("§rAcheter");
+        buy.setItemMeta(buyMeta);
+        buy.setAmount(itemStack.getAmount());
+        inv.setItem(32, buy);
 
         ItemStack add = getFromValue(PLUS);
         ItemMeta addMeta = add.getItemMeta();
