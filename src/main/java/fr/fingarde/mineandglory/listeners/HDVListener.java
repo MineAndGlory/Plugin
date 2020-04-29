@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class HDVListener implements Listener
 {
@@ -63,7 +64,11 @@ public class HDVListener implements Listener
             int newAmount = plus.getAmount() + nbPlus;
             if (newAmount > max) newAmount = max;
 
+
             plus.setAmount(newAmount);
+            ItemMeta plusMeta = plus.getItemMeta();
+            plusMeta.setLocalizedName("Acheter " + newAmount);
+            plus.setItemMeta(plusMeta);
 
             event.getInventory().setItem(32, plus);
         }
@@ -77,6 +82,9 @@ public class HDVListener implements Listener
             if (newAmount < 1) newAmount = 1;
 
             minus.setAmount(newAmount);
+            ItemMeta minusMeta = minus.getItemMeta();
+            minusMeta.setLocalizedName("Acheter " + newAmount);
+            minus.setItemMeta(minusMeta);
 
             event.getInventory().setItem(32, minus);
         }
@@ -87,6 +95,9 @@ public class HDVListener implements Listener
             ItemStack set = event.getInventory().getItem(32);
 
             set.setAmount(nbSet);
+            ItemMeta setMeta = set.getItemMeta();
+            setMeta.setLocalizedName("Acheter " + nbSet);
+            set.setItemMeta(setMeta);
 
             event.getInventory().setItem(32, set);
         }
